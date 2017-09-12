@@ -57,15 +57,30 @@ class harden_windows_server::configure {
   }
 
   if($harden_windows_server::ensure_account_lockout_duration_is_set_to_15_or_more_minutes) {
-
+    local_security_policy { 'Account lockout duration':
+      ensure         => 'present',
+      policy_setting => 'LockoutDuration',
+      policy_type    => 'System Access',
+      policy_value   => '30',
+    }
   }
 
   if($harden_windows_server::ensure_account_lockout_threshold_is_set_to_10_or_fewer_invalid_logon_attempts_but_not_0) {
-
+    local_security_policy { 'Account lockout threshold':
+      ensure         => 'present',
+      policy_setting => 'LockoutBadCount',
+      policy_type    => 'System Access',
+      policy_value   => '10',
+    }
   }
 
   if($harden_windows_server::ensure_reset_account_lockout_counter_after_is_set_to_15_or_more_minutes) {
-
+    local_security_policy { 'Reset account lockout counter after':
+      ensure         => 'present',
+      policy_setting => 'ResetLockoutCount',
+      policy_type    => 'System Access',
+      policy_value   => '30',
+    }
   }
 
 
