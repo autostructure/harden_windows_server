@@ -171,15 +171,79 @@ class harden_windows_server::configure {
   }
 
   if($harden_windows_server::ensure_back_up_files_and_directories_is_set_to_administrators) {
-
+    local_security_policy { 'Back up files and directories':
+      ensure         => 'present',
+      policy_setting => 'SeBackupPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
   }
 
   if($harden_windows_server::ensure_change_the_system_time_is_set_to_administrators_local_service) {
-
+    local_security_policy { 'Change the system time':
+      ensure         => 'present',
+      policy_setting => 'SeSystemtimePrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-19,*S-1-5-32-544',
+    }
   }
 
   if($harden_windows_server::ensure_change_the_time_zone_is_set_to_administrators_local_service) {
+    local_security_policy { 'Change the time zone':
+      ensure         => 'present',
+      policy_setting => 'SeTimeZonePrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-19,*S-1-5-32-544',
+    }
+  }
 
+  if($harden_windows_server::ensure_create_a_pagefile_is_set_to_administrators) {
+    local_security_policy { 'Create a pagefile':
+      ensure         => 'present',
+      policy_setting => 'SeCreatePagefilePrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_create_a_token_object_is_set_to_no_one) {
+    local_security_policy { 'Create a token object':
+      ensure         => 'absent',
+    }
+  }
+
+  if($harden_windows_server::ensure_create_global_objects_is_set_to_administrators_local_service_network_service_service) {
+    local_security_policy { 'Create global objects':
+      ensure         => 'present',
+      policy_setting => 'SeCreateGlobalPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+    }
+  }
+
+  if($harden_windows_server::ensure_create_permanent_shared_objects_is_set_to_no_one) {
+    local_security_policy { 'Create permanent shared objects':
+      ensure         => 'absent',
+    }
+  }
+
+  #only need S-1-85-0 if Hyper-V role is activated, not sure how to handle this
+  if($harden_windows_server::configure_create_symbolic_links) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Create symbolic links':
+        ensure         => 'present',
+        policy_setting => 'SeCreateSymbolicLinkPrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544',
+      }
+    } else {
+      local_security_policy { 'Create symbolic links':
+        ensure         => 'present',
+        policy_setting => 'SeCreateSymbolicLinkPrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544,*S-1-5-83-0',
+      }
+    }
   }
 
 }
