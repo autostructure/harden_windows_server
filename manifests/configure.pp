@@ -646,4 +646,82 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_interactive_logon_do_not_display_last_user_name_is_set_to_enabled) {
+    local_security_policy { 'Interactive logon: Do not display last user name':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\DontDisplayLastUserName',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_interactive_logon_do_not_require_ctrl_alt_del_is_set_to_disabled) {
+    local_security_policy { 'Interactive logon: Do not require CTRL+ALT+DEL':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableCAD',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+  #Choose a better text
+  if($harden_windows_server::configure_interactive_logon_message_text_for_users_attempting_to_log_on) {
+    local_security_policy { 'Interactive logon: Message text for users attempting to log on':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
+      policy_type    => 'Registry Values',
+      policy_value   => '7,Welcome!',
+    }
+  }
+
+  #Choose a better text
+  if($harden_windows_server::configure_interactive_logon_message_title_for_users_attempting_to_log_on) {
+    local_security_policy { 'Interactive logon: Message title for users attempting to log on':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
+      policy_type    => 'Registry Values',
+      policy_value   => '1,"Title Bar"',
+    }
+  }
+
+  if($harden_windows_server::ensure_interactive_logon_number_of_previous_logons_to_cache_is_set_to_4_or_fewer_logons) {
+    if(!$harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)':
+        ensure         => 'present',
+        policy_setting => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\CachedLogonsCount',
+        policy_type    => 'Registry Values',
+        policy_value   => '1,"4"',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_interactive_logon_prompt_user_to_change_password_before_expiration_is_set_to_between_5_and_14_days) {
+    local_security_policy { 'Interactive logon: Prompt user to change password before expiration':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\PasswordExpiryWarning',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,5',
+    }
+  }
+
+  if($harden_windows_server::ensure_interactive_logon_require_domain_controller_authentication_to_unlock_workstation_is_set_to_enabled) {
+    if(!$harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Interactive logon: Require Domain Controller authentication to unlock workstation':
+        ensure         => 'present',
+        policy_setting => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ForceUnlockLogon',
+        policy_type    => 'Registry Values',
+        policy_value   => '4,1',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_interactive_logon_smart_card_removal_behavior_is_set_to_lock_workstation_or_higher) {
+    local_security_policy { 'Interactive logon: Smart card removal behavior':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
+      policy_type    => 'Registry Values',
+      policy_value   => '1,"1"',
+    }
+  }
+
 }
