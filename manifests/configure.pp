@@ -418,4 +418,46 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_modify_an_object_label_is_set_to_no_one) {
+    local_security_policy { 'Modify an object label':
+      ensure         => 'absent',
+    }
+  }
+
+  if($harden_windows_server::ensure_modify_firmware_environment_values_is_set_to_administrators) {
+    local_security_policy { 'Modify firmware environment values':
+      ensure         => 'present',
+      policy_setting => 'SeSystemEnvironmentPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_perform_volume_maintenance_tasks_is_set_to_administrators) {
+    local_security_policy { 'Perform volume maintenance tasks':
+      ensure         => 'present',
+      policy_setting => 'SeManageVolumePrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_profile_single_process_is_set_to_administrators) {
+    local_security_policy { 'Profile single process':
+      ensure         => 'present',
+      policy_setting => 'SeProfileSingleProcessPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_profile_system_performance_is_set_to_administrators_nt_service_wdiservicehost) {
+    local_security_policy { 'Profile system performance':
+      ensure         => 'present',
+      policy_setting => 'SeSystemProfilePrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544,*S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420',
+    }
+  }
+
 }
