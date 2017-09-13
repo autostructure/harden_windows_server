@@ -592,4 +592,58 @@ class harden_windows_server::configure {
 
   #}
 
+  if($harden_windows_server::ensure_domain_member_digitally_encrypt_or_sign_secure_channel_data_always_is_set_to_enabled) {
+    local_security_policy { 'Domain member: Digitally encrypt or sign secure channel data (always)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\RequireSignOrSeal',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_domain_member_digitally_encrypt_or_sign_secure_channel_data_when_possible_is_set_to_enabled) {
+    local_security_policy { 'Domain member: Digitally encrypt secure channel data (when possible)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\SealSecureChannel',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_domain_member_digitally_sign_secure_channel_data_when_possible_is_set_to_enabled) {
+    local_security_policy { 'Domain member: Digitally sign secure channel data (when possible)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\SignSecureChannel',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_domain_member_disable_machine_account_password_changes_is_set_to_disabled) {
+    local_security_policy { 'Domain member: Disable machine account password changes':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\DisablePasswordChange',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+  if($harden_windows_server::ensure_domain_member_maximum_machine_account_password_age_is_set_to_30_or_fewer_days_but_not_0) {
+    local_security_policy { 'Domain member: Maximum machine account password age':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\MaximumPasswordAge',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,30',
+    }
+  }
+
+  if($harden_windows_server::ensure_domain_member_require_strong_session_key_windows_2000_or_later_is_set_to_enabled) {
+    local_security_policy { 'Domain member: Require strong (Windows 2000 or later) session key':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\RequireStrongKey',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
 }
