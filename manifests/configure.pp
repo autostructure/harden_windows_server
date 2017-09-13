@@ -724,4 +724,31 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_microsoft_network_client_digitally_sign_communications_always_is_set_to_enabled) {
+    local_security_policy { 'Microsoft network client: Digitally sign communications (always)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\RequireSecuritySignature',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_microsoft_network_client_digitally_sign_communications_if_server_agrees_is_set_to_enabled) {
+    local_security_policy { 'Microsoft network client: Digitally sign communications (if server agrees)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnableSecuritySignature',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_microsoft_network_client_send_unencrypted_password_to_third_party_smb_servers_is_set_to_disabled) {
+    local_security_policy { 'Microsoft network client: Send unencrypted password to third-party SMB servers':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnablePlainTextPassword',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
 }
