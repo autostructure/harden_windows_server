@@ -301,4 +301,66 @@ class harden_windows_server::configure {
     }
   }
 
+  #need to add local account
+  if($harden_windows_server::ensure_deny_log_on_through_remote_desktop_services_to_include_guests_local_account) {
+    local_security_policy { 'Deny log on through Remote Desktop Services':
+      ensure         => 'present',
+      policy_setting => 'SeDenyRemoteInteractiveLogonRight',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-546',
+    }
+  }
+
+  if($harden_windows_server::configure_enable_computer_and_user_acounts_to_be_trusted_for_delegation) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Enable computer and user accounts to be trusted for delegation':
+        ensure         => 'present',
+        policy_setting => 'SeEnableDelegationPrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544',
+      }
+    } else {
+      local_security_policy { 'Enable computer and user accounts to be trusted for delegation':
+        ensure         => 'absent',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_force_shutdown_from_a_remote_system_is_set_to_administrators) {
+    local_security_policy { 'Force shutdown from a remote system':
+      ensure         => 'present',
+      policy_setting => 'SeRemoteShutdownPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_generate_security_audits_is_set_to_local_service_network_service) {
+    local_security_policy { 'Generate security audits':
+      ensure         => 'present',
+      policy_setting => 'SeAuditPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-19,*S-1-5-20',
+    }
+  }
+
+  #S-1-5-17 is only used when the Web Server (IIS) role is activated
+  if($harden_windows_server::configure_impersonate_a_client_after_authentication) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Impersonate a client after authentication':
+        ensure         => 'present',
+        policy_setting => 'SeImpersonatePrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+      }
+    } else {
+      local_security_policy { 'Impersonate a client after authentication':
+        ensure         => 'present',
+        policy_setting => 'SeImpersonatePrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6,*S-1-5-17',
+      }
+    }
+  }
+
 }
