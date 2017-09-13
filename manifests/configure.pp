@@ -134,7 +134,52 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::configure_allow_log_on_locally) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Allow log on locally':
+        ensure         => 'present',
+        policy_setting => 'SeInteractiveLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544,*S-1-5-9',
+      }
+    } else {
+      local_security_policy { 'Allow log on locally':
+        ensure         => 'present',
+        policy_setting => 'SeInteractiveLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544',
+      }
+    }
+  }
 
+  if($harden_windows_server::configure_allow_log_on_through_remote_desktop_services) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Allow log on through Remote Desktop Services':
+        ensure         => 'present',
+        policy_setting => 'SeRemoteInteractiveLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544',
+      }
+    } else {
+      local_security_policy { 'Allow log on through Remote Desktop Services':
+        ensure         => 'present',
+        policy_setting => 'SeRemoteInteractiveLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544,*S-1-5-32-555',
+      }
+    }
+  }
 
+  if($harden_windows_server::ensure_back_up_files_and_directories_is_set_to_administrators) {
+
+  }
+
+  if($harden_windows_server::ensure_change_the_system_time_is_set_to_administrators_local_service) {
+
+  }
+
+  if($harden_windows_server::ensure_change_the_time_zone_is_set_to_administrators_local_service) {
+
+  }
 
 }
