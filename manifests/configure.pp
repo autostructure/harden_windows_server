@@ -751,4 +751,45 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_microsoft_network_server_idle_time_required_before_suspending_session_is_set_to_15_or_fewer_minutes) {
+    local_security_policy { 'Microsoft network server: Amount of idle time required before suspending session':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\AutoDisconnect',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,15',
+    }
+  }
+
+  if($harden_windows_server::ensure_microsoft_network_server_digitally_sign_communications_always_is_set_to_enabled) {
+    local_security_policy { 'Microsoft network server: Digitally sign communications (always)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RequireSecuritySignature',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_microsoft_network_server_digitally_sign_communications_if_client_agrees_is_set_to_enabled) {
+    local_security_policy { 'Microsoft network server: Digitally sign communications (if client agrees)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableSecuritySignature',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_microsoft_network_server_disconnect_clients_when_logon_hours_expire_is_set_to_enabled) {
+    local_security_policy { 'Microsoft network server: Disconnect clients when logon hours expire':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableForcedLogOff',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  #supposedly supported by local_security_policy but not showing up with puppet resource local_security_policy
+  #if($harden_windows_server::ensure_microsoft_network_server_spn_target_name_validation_level_is_set_to_accept_if_provided_by_client) {
+  #
+  #}
+
 }
