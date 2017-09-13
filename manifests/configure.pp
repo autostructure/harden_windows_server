@@ -246,4 +246,59 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_debug_programs_is_set_to_administrators) {
+    local_security_policy { 'Debug programs':
+      ensure         => 'present',
+      policy_setting => 'SeDebugPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  #need to add local account
+  if($harden_windows_server::configure_deny_access_to_this_computer_from_the_network) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Deny access to this computer from the network':
+        ensure         => 'present',
+        policy_setting => 'SeDenyNetworkLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-546',
+      }
+    } else {
+      local_security_policy { 'Deny access to this computer from the network':
+        ensure         => 'present',
+        policy_setting => 'SeDenyNetworkLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-546',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_deny_log_on_as_a_batch_job_to_include_guests) {
+    local_security_policy { 'Deny log on as a batch job':
+      ensure         => 'present',
+      policy_setting => 'SeDenyBatchLogonRight',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-546',
+    }
+  }
+
+  if($harden_windows_server::ensure_deny_log_on_as_a_service_to_include_guests) {
+    local_security_policy { 'Deny log on as a service':
+      ensure         => 'present',
+      policy_setting => 'SeDenyServiceLogonRight',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-546',
+    }
+  }
+
+  if($harden_windows_server::ensure_deny_log_on_locally_to_include_guests) {
+    local_security_policy { 'Deny log on locally':
+      ensure         => 'present',
+      policy_setting => 'SeDenyInteractiveLogonRight',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-546',
+    }
+  }
+
 }
