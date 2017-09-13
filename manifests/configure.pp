@@ -504,4 +504,62 @@ class harden_windows_server::configure {
     }
   }
 
+  #Not supported by local_security_policy
+  #if($harden_windows_server::ensure_accounts_administrator_account_status_is_set_to_disabled) {
+
+  #}
+
+  #if($harden_windows_server::ensure_accounts_guest_account_status_is_set_to_disabled) {
+
+  #}
+
+  if($harden_windows_server::ensure_accounts_limit_local_account_use_of_blank_password_to_console_logon_only_is_set_to_enabled) {
+    local_security_policy { 'Accounts: Limit local account use of blank passwords to console logon only':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\LimitBlankPasswordUse',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  #Must choose a different name for Administrator
+  if($harden_windows_server::configure_accounts_rename_administrator_account) {
+    local_security_policy { 'Accounts: Rename administrator account':
+      ensure         => 'present',
+      policy_setting => 'NewAdministratorName',
+      policy_type    => 'System Access',
+      policy_value   => '"Administrator"',
+    }
+  }
+
+  #Must choose a different name for Guest
+  if($harden_windows_server::configure_accounts_rename_guest_account) {
+    local_security_policy { 'Accounts: Rename guest account':
+      ensure         => 'present',
+      policy_setting => 'NewGuestName',
+      policy_type    => 'System Access',
+      policy_value   => '"Guest"',
+    }
+  }
+
+  if($harden_windows_server::ensure_audit_force_audit_policy_subcategory_settings_to_override_audit_policy_category_settings) {
+    $title2321 = 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings'
+    local_security_policy { $title2321:
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\SCENoApplyLegacyAuditPolicy',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_audit_shut_down_system_immediately_if_unable_to_log_security_audits_is_set_to_disabled) {
+    local_security_policy { 'Audit: Shut down system immediately if unable to log security audits':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\CrashOnAuditFail',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+
 }
