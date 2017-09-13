@@ -363,4 +363,59 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_increase_scheduling_priority_is_set_to_administrators) {
+    local_security_policy { 'Increase scheduling priority':
+      ensure         => 'present',
+      policy_setting => 'SeIncreaseBasePriorityPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_load_and_unload_device_drivers_is_set_to_administrators) {
+    local_security_policy { 'Load and unload device drivers':
+      ensure         => 'present',
+      policy_setting => 'SeLoadDriverPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_lock_pages_in_menory_is_set_to_no_one) {
+    local_security_policy { 'Lock pages in memory':
+      ensure         => 'absent',
+    }
+  }
+
+  #LEVEL 2, DC ONLY
+  if($harden_windows_server::ensure_log_on_as_a_batch_job_is_set_to_administrators) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Log on as a batch job':
+        ensure         => 'present',
+        policy_setting => 'SeBatchLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544,*S-1-5-32-551,*S-1-5-32-559',
+      }
+    }
+  }
+
+  #DCs also need Exchange Servers when Exchange is running, not sure how to handle
+  if($harden_windows_server::configure_manage_auditing_and_security_log) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Manage auditing and security log':
+        ensure         => 'present',
+        policy_setting => 'SeSecurityPrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544',
+      }
+    } else {
+      local_security_policy { 'Manage auditing and security log':
+        ensure         => 'present',
+        policy_setting => 'SeSecurityPrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544',
+      }
+    }
+  }
+
 }
