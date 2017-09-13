@@ -1,5 +1,6 @@
 #init.pp
 class harden_windows_server (
+  Boolean $is_domain_controller = false,
   #1
   Boolean $ensure_enforce_password_history_is_set_to_24_or_more_passwords = true,
   Boolean $ensure_maximum_password_age_is_set_to_60_or_fewer_days_but_not_0 = true,
