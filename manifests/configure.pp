@@ -460,4 +460,48 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_replace_a_process_level_token_is_set_to_local_service_network_service) {
+    local_security_policy { 'Replace a process level token':
+      ensure         => 'present',
+      policy_setting => 'SeAssignPrimaryTokenPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-19,*S-1-5-20',
+    }
+  }
+
+  if($harden_windows_server::ensure_restore_files_and_directories_is_set_to_administrators) {
+    local_security_policy { 'Restore files and directories':
+      ensure         => 'present',
+      policy_setting => 'SeRestorePrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_shut_down_the_system_is_set_to_administrators) {
+    local_security_policy { 'Shut down the system':
+      ensure         => 'present',
+      policy_setting => 'SeShutdownPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
+  if($harden_windows_server::ensure_synchronize_directory_service_data_is_set_to_no_one) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Synchronize directory service data':
+        ensure         => 'absent',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_take_ownership_of_files_or_other_objects_is_set_to_administrators) {
+    local_security_policy { 'Take ownership of files or other objects':
+      ensure         => 'present',
+      policy_setting => 'SeTakeOwnershipPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-32-544',
+    }
+  }
+
 }
