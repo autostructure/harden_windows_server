@@ -561,5 +561,35 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_devices_allowed_to_format_and_eject_removable_media_is_set_to_administrators) {
+    local_security_policy { 'Devices: Allowed to format and eject removable media':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AllocateDASD',
+      policy_type    => 'Registry Values',
+      policy_value   => '1,"0"',
+    }
+  }
+
+  if($harden_windows_server::ensure_devices_prevent_users_from_installing_printer_drivers_is_set_to_enabled) {
+    local_security_policy { 'Devices: Prevent users from installing printer drivers':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers\AddPrinterDrivers',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  #Domain Controller not supported by local_security_policy
+  #if($harden_windows_server::ensure_domain_controller_allow_server_operators_to_schedule_tasks_is_set_to_disabled) {
+
+  #}
+
+  #if($harden_windows_server::ensure_domain_controller_ldap_server_signing_requirements_is_set_to_require_signing) {
+
+  #}
+
+  #if($harden_windows_server::ensure_domain_controller_refuse_machine_account_password_changes_is_set_to_disabled) {
+
+  #}
 
 }
