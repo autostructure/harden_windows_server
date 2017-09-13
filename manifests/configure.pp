@@ -83,5 +83,58 @@ class harden_windows_server::configure {
     }
   }
 
+  #2.2
+  if($harden_windows_server::ensure_access_credential_manager_as_a_trusted_caller_is_set_to_no_one) {
+    local_security_policy { 'Access Credential Manager as a trusted caller':
+      ensure         => 'absent',
+    }
+  }
+
+  if($harden_windows_server::configure_access_this_computer_from_the_network) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Access this computer from the network':
+        ensure         => 'present',
+        policy_setting => 'SeNetworkLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544,*S-1-5-11,*S-1-5-9',
+      }
+    } else {
+      local_security_policy { 'Access this computer from the network':
+        ensure         => 'present',
+        policy_setting => 'SeNetworkLogonRight',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544,*S-1-5-11',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_act_as_part_of_the_operating_system_is_set_to_no_one) {
+    local_security_policy { 'Act as part of the operating system':
+      ensure         => 'absent',
+    }
+  }
+
+  if($harden_windows_server::ensure_add_workstations_to_domain_is_set_to_administrators) {
+    if($harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Add workstations to domain':
+        ensure         => 'present',
+        policy_setting => 'SeMachineAccountPrivilege',
+        policy_type    => 'Privilege Rights',
+        policy_value   => '*S-1-5-32-544',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_adjust_memory_quotas_for_a_process_is_set_to_administrators_local_service_network_service) {
+    local_security_policy { 'Adjust memory quotas for a process':
+      ensure         => 'present',
+      policy_setting => 'SeIncreaseQuotaPrivilege',
+      policy_type    => 'Privilege Rights',
+      policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544',
+    }
+  }
+
+
+
 
 }
