@@ -108,7 +108,7 @@ class harden_windows_server (
   Boolean $ensure_network_security_ldap_client_signing_requirements_is_set_to_negotiate_signing = true,
   Boolean $ensure_network_security_minimum_session_security_for_ntlm_ssp_based_clients = true,
   Boolean $ensure_network_security_minimum_session_security_for_ntlm_ssp_based_servers = true,
-  Boolean $ = true,
+  Boolean $ensure_shutdown_allow_system_to_be_shutdown_without_having_to_logon_is_set_to_disabled = true,
   Boolean $ = true,
   Boolean $ = true,
   Boolean $ = true,

@@ -973,5 +973,13 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_shutdown_allow_system_to_be_shutdown_without_having_to_logon_is_set_to_disabled) {
+    local_security_policy { 'Shutdown: Allow system to be shut down without having to log on':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ShutdownWithoutLogon',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
 
 }
