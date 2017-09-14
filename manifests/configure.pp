@@ -982,4 +982,31 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_system_objects_require_case_insensitivity_for_non_windows_subsystems_is_enabled) {
+    local_security_policy { 'System objects: Require case insensitivity for non-Windows subsystems':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Session Manager\Kernel\ObCaseInsensitive',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_system_objects_strengthen_default_permissions_of_internal_system_objects_is_enabled) {
+    local_security_policy { 'System objects: Strengthen default permissions of internal system objects (e.g., Symbolic Links)':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Session Manager\ProtectionMode',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_system_settings_optional_subsystems_is_set_to_defined_blank) {
+    local_security_policy { 'System settings: Optional subsystems':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Session Manager\SubSystems\optional',
+      policy_type    => 'Registry Values',
+      policy_value   => '7,Defined: (blank)',
+    }
+  }
+
 }
