@@ -902,5 +902,76 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_network_security_allow_local_system_to_use_computer_identity_for_ntlm_is_set_to_enabled) {
+    local_security_policy { 'Network security: All Local System to use computer identity for NTLM':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  #Not supported by local_security_policy module
+  # if($harden_windows_server::ensure_network_security_allow_localsystem_null_session_fallback_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_network_security_allow_pku2u_authentication_requests_to_use_online_identities_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_network_security_configure_encryption_types_allow_for_kerberos) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_network_security_do_not_store_lan_manager_hash_value_on_next_password_change_is_set_to_enabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_network_security_force_logoff_when_logon_hours_expire_is_set_to_enabled) {
+    local_security_policy { 'Network security: Force logoff when logon hours expire':
+      ensure         => 'present',
+      policy_setting => 'ForceLogoffWhenHourExpire',
+      policy_type    => 'System Access',
+      policy_value   => '1',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_security_lan_manager_authentication_level_is_set_to_send_ntlmv2_response_only) {
+    local_security_policy { 'Network security: LAN Manager authentication level':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\LmCompatibilityLevel',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,5',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_security_ldap_client_signing_requirements_is_set_to_negotiate_signing) {
+    local_security_policy { 'Network security: LDAP client signing requirements':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LDAP\LDAPClientIntegrity',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_security_minimum_session_security_for_ntlm_ssp_based_clients) {
+    local_security_policy { 'Network security: Minimum session security for NTLM SSP based (including secure RPC) clients':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinClientSec',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,537395200',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_security_minimum_session_security_for_ntlm_ssp_based_servers) {
+    local_security_policy { 'Network security: Minimum session security for NTLM SSP based (including secure RPC) servers':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinServerSec',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,537395200',
+    }
+  }
+
 
 }
