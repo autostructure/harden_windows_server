@@ -792,4 +792,115 @@ class harden_windows_server::configure {
   #
   #}
 
+  if($harden_windows_server::ensure_network_access_allow_anonymous_sid_name_tranlation_is_set_to_disabled) {
+    local_security_policy { 'Network access: Allow anonymous SID/name translation':
+      ensure         => 'present',
+      policy_setting => 'LSAAnonymousNameLookup',
+      policy_type    => 'System Access',
+      policy_value   => '0',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_access_do_not_allow_anonymous_enumeration_of_sam_accounts_is_set_to_enabled) {
+    if(!$harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Network access: Do not allow anonymous enumeration of SAM accounts':
+        ensure         => 'present',
+        policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\RestrictAnonymousSAM',
+        policy_type    => 'Registry Values',
+        policy_value   => '4,1',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_network_access_do_not_allow_anonymous_enumeration_of_sam_accounts_and_shared_is_set_to_enabled) {
+    if(!$harden_windows_server::is_domain_controller) {
+      local_security_policy { 'Network access: Do not allow anonymous enumeration of SAM accounts and shares':
+        ensure         => 'present',
+        policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\RestrictAnonymous',
+        policy_type    => 'Registry Values',
+        policy_value   => '4,1',
+      }
+    }
+  }
+
+  if($harden_windows_server::ensure_network_access_do_not_allow_storage_of_password_and_credentials_for_authentication_is_set_to_enabled) {
+    local_security_policy { 'Network access: Do not allow storage of passwords and credentials for network authentication':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\DisableDomainCreds',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_access_let_everyone_permissions_apply_to_anonymous_users_is_set_to_disabled) {
+    local_security_policy { 'Network access: Let Everyone permissions apply to anonymous users':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\EveryoneIncludesAnonymous',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+  #The data is invalid
+  #these both need to include "BROWSER" when the legacy computer browser service is enabled, not sure how to handle
+  # if($harden_windows_server::configure_network_access_named_pipes_that_can_be_accessed_anonymously) {
+  #   if($harden_windows_server::is_domain_controller) {
+  #     local_security_policy { 'Network access: Named Pipes that can be accessed anonymously':
+  #       ensure         => 'present',
+  #       policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\NullSessionPipes',
+  #       policy_type    => 'Registry Values',
+  #       policy_value   => '7,LSARPC"," NETLOGON"," SAMR',
+  #     }
+  #   } else {
+  #     local_security_policy { 'Network access: Named Pipes that can be accessed anonymously':
+  #       ensure         => 'absent',
+  #     }
+  #   }
+  # }
+
+  if($harden_windows_server::configure_network_access_remotely_accessible_registry_paths) {
+    local_security_policy { 'Network access: Remotely accessible registry paths':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths\Machine',
+      policy_type    => 'Registry Values',
+      policy_value   => '7,System\CurrentControlSet\Control\ProductOptions,System\CurrentControlSet\Control\Server Applications,Software\Microsoft\Windows NT\CurrentVersion',
+    }
+  }
+
+  #this needs to include more paths for certain roles
+  if($harden_windows_server::configure_network_access_remotely_accessible_registry_paths_and_sub_paths) {
+    local_security_policy { 'Network access: Remotely accessible registry paths and sub-paths':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths\Machine',
+      policy_type    => 'Registry Values',
+      policy_value   => '7,System\CurrentControlSet\Control\Print\Printers,System\CurrentControlSet\Services\Eventlog,Software\Microsoft\OLAP Server,Software\Microsoft\Windows NT\CurrentVersion\Print,Software\Microsoft\Windows NT\CurrentVersion\Windows,System\CurrentControlSet\Control\ContentIndex,System\CurrentControlSet\Control\Terminal Server,System\CurrentControlSet\Control\Terminal Server\UserConfig,System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration,Software\Microsoft\Windows NT\CurrentVersion\Perflib,System\CurrentControlSet\Services\SysmonLog',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_access_restrict_anonymous_access_to_named_pipes_and_shares_is_set_to_enabled) {
+    local_security_policy { 'Network access: Restrict anonymous access to Named Pipes and Shares':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RestrictNullSessAccess',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  #The data is invalid
+  # if($harden_windows_server::ensure_network_access_shares_that_can_be_accessed_anonymously_is_set_to_none) {
+  #   local_security_policy { 'Network access: Shares that can be accessed anonymously':
+  #     ensure         => 'absent',
+  #   }
+  # }
+
+  if($harden_windows_server::ensure_network_access_sharing_and_security_model_for_local_accounts_is_set_to_classic) {
+    local_security_policy { 'Network access: Sharing and security model for local accounts':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\ForceGuest',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+
 }
