@@ -1009,4 +1009,113 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_user_account_control_admin_approval_mode_for_the_admin_account_is_enabled) {
+    local_security_policy { 'User Account Control: Admin Approval Mode for the Built-in Administrator account':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\FilterAdministratorToken',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_allow_uiaccess_applications_to_prompt_for_elevation_is_disabled) {
+    local_security_policy { 'User Account Control: Allow UIAccess applications to prompt for elevation without using the secure desktop':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableUIADesktopToggle',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_behavior_of_the_elevation_prompt_for_administrators_in_admin_approval_mode) {
+    local_security_policy { 'User Account Control: Behavior of the elevation prompt for administrators in Admin Approval Mode':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,2',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_behavior_of_the_elevation_prompt_for_standard_users) {
+    local_security_policy { 'User Account Control: Behavior of the elevation prompt for standard users':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorUser',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,0',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_detect_application_installations_and_prompt_for_elevation_is_enabled) {
+    local_security_policy { 'User Account Control: Detect application installations and prompt for elevation':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableInstallerDetection',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_only_elevate_uiaccess_applications_that_are_installed_in_secure_locations) {
+    local_security_policy { 'User Account Control: Only elevate UIAccess applications that are installed in secure locations':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableSecureUIAPaths',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_run_all_administrators_in_admin_approval_mode_is_enabled) {
+    local_security_policy { 'User Account Control: Run all administrators in Admin Approval Mode':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_switch_to_the_secure_desktop_when_prompting_for_elevation_is_enabled) {
+    local_security_policy { 'User Account Control: Switch to the secure desktop when prompting for elevation':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\PromptOnSecureDesktop',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_user_account_control_virtualize_file_and_registry_write_failures_to_per_user_location_is_enabled) {
+    local_security_policy { 'User Account Control: Virtualize file and registry write failures to per-user locations':
+      ensure         => 'present',
+      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableVirtualization',
+      policy_type    => 'Registry Values',
+      policy_value   => '4,1',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_domain_firewall_state_is_set_to_on_recommended) {
+    registry::value { 'EnableFirewall':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      value => 'EnableFirewall',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_domain_inbound_connections_is_set_to_block_default) {
+    registry::value { 'DefaultInboundAction':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      value => 'DefaultInboundAction',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_domain_outbound_connections_is_set_to_allow_default) {
+    registry::value { 'DefaultOutboundAction':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      value => 'DefaultOutboundAction',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+
 }
