@@ -1569,7 +1569,118 @@ class harden_windows_server::configure {
   #
   # }
 
-  
+  if($harden_windows_server::ensure_turn_on_mapper_io_lltdio_driver_is_set_to_disabled) {
+    registry::value { 'AllowLLTDIOOnDomain':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'AllowLLTDIOOnDomain',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'AllowLLTDIOOnPublicNet':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'AllowLLTDIOOnPublicNet',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'EnableLLTDIO':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'EnableLLTDIO',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'ProhibitLLTDIOOnPrivateNet':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'ProhibitLLTDIOOnPrivateNet',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_on_responder_rspndr_driver_is_set_to_disabled) {
+    registry::value { 'AllowRspndrOnDomain':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'AllowRspndrOnDomain',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'AllowRspndrOnPublicNet':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'AllowRspndrOnPublicNet',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'EnableRspndr':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'EnableRspndr',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'ProhibitRspndrOnPrivateNet':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+      value => 'ProhibitRspndrOnPrivateNet',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_microsoft_peer_to_peer_networking_services_is_set_to_enabled) {
+    registry::value { 'PeernetDisabled':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet',
+      value => 'Disabled',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_prohibit_installation_and_configuration_of_network_bridge_on_your_dns_domain_network_is_set_to_enabled) {
+    registry::value { 'NC_AllowNetBridge_NLA':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections',
+      value => 'NC_AllowNetBridge_NLA',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_require_domain_users_to_elevate_when_setting_a_networks_location_is_set_to_enabled) {
+    registry::value { 'NC_StdDomainUserSetLocation':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections',
+      value => 'NC_StdDomainUserSetLocation',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  # Must install a template first
+  # if($harden_windows_server::ensure_hardened_unc_paths_is_set_to_enabled_with_require_mutual_authentication_and_require_integrity_for_all_netlogon_and_sysvol_shares) {
+  #
+  # }
+
+  if($harden_windows_server::disable_ipv6_ensure_tcpip6_parameter_disabledcomponents_is_set_to_0xff255) {
+    registry::value { 'DisabledComponents':
+      key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TCPIP6\Parameters',
+      value => 'DisabledComponents',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_configuration_of_wireless_settings_using_windows_connect_now_is_set_to_disabled) {
+
+  }
+
+  if($harden_windows_server::ensure_prohibit_access_of_the_windows_connect_now_wizards_is_set_to_enabled) {
+
+  }
+
+  if($harden_windows_server::ensure_apply_uac_restrictions_to_local_accounts_on_network_logons_is_set_to_enabled) {
+    if(!$harden_windows_server::is_domain_controller) {
+
+    }
+  }
+
+  if($harden_windows_server::ensure_wdigest_authentication_is_set_to_disabled) {
+
+  }
 
 
 

@@ -196,6 +196,18 @@ class harden_windows_server (
   Boolean $ensure_mss_tcpmaxdataretranmissions_ipv6_how_many_times_unacknowledged_data_is_retransmitted_is_set_to_enabled_3 = true,
   Boolean $ensure_mss_tcpmaxdataretransmissions_how_many_times_unacknowledged_data_is_retransmitted_is_set_to_enabled_3 = true,
   Boolean $ensure_mss_warninglevel_percentage_threshold_for_the_security_event_log_is_set_to_enabled_90_or_less = true,
+  #18.4
+  Boolean $ensure_turn_on_mapper_io_lltdio_driver_is_set_to_disabled = false, #LEVEL 2
+  Boolean $ensure_turn_on_responder_rspndr_driver_is_set_to_disabled = false, #LEVEL 2
+  Boolean $ensure_turn_off_microsoft_peer_to_peer_networking_services_is_set_to_enabled = false, #LEVEL 2
+  Boolean $ensure_prohibit_installation_and_configuration_of_network_bridge_on_your_dns_domain_network_is_set_to_enabled = true,
+  Boolean $ensure_require_domain_users_to_elevate_when_setting_a_networks_location_is_set_to_enabled = true,
+  Boolean $ensure_hardened_unc_paths_is_set_to_enabled_with_require_mutual_authentication_and_require_integrity_for_all_netlogon_and_sysvol_shares = true,
+  Boolean $disable_ipv6_ensure_tcpip6_parameter_disabledcomponents_is_set_to_0xff255 = false, #LEVEL 2
+  Boolean $ensure_configuration_of_wireless_settings_using_windows_connect_now_is_set_to_disabled = false, #LEVEL 2
+  Boolean $ensure_prohibit_access_of_the_windows_connect_now_wizards_is_set_to_enabled = false, #LEVEL 2
+  Boolean $ensure_apply_uac_restrictions_to_local_accounts_on_network_logons_is_set_to_enabled = true,
+  Boolean $ensure_wdigest_authentication_is_set_to_disabled = true,
   ) {
 
   include harden_windows_server::configure
