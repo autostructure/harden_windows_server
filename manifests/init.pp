@@ -176,6 +176,14 @@ class harden_windows_server (
   Boolean $ensure_audit_security_state_change_is_set_to_success = true,
   Boolean $ensure_audit_security_system_extension_is_set_to_success_and_failure = true,
   Boolean $ensure_audit_system_integrity_is_set_to_success_and_failure = true,
+  #18.2
+  Boolean $ensure_laps_admpwd_gpo_extension_cse_is_installed = true, #MS ONLY
+  Boolean $ensure_do_not_allow_password_expiration_time_longer_than_required_by_policy_is_set_to_enabled = true,
+  Boolean $ensure_enable_local_admin_password_management_is_set_to_enabled = true,
+  Boolean $ensure_password_settings_password_complexity_is_set_to_enabled_large_letters_small_letters_numbers_special_characters = true,
+  Boolean $ensure_password_settings_password_length_is_set_to_enabled_15_or_more = true,
+  Boolean $ensure_password_settings_password_age_days_is_set_to_enabled_30_or_fewer = true,
+
   ) {
 
   include harden_windows_server::configure

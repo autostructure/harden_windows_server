@@ -1368,108 +1368,145 @@ class harden_windows_server::configure {
     }
   }
 
-  if($harden_windows_server::ensure_audit_credential_validation_is_set_to_success_and_failure) {
+  # if($harden_windows_server::ensure_audit_credential_validation_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_application_group_management_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_computer_account_management_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_distribution_group_management_is_set_to_success_and_failure) {
+  #   if($harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_other_account_management_events_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_security_group_management_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_user_account_management_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_process_creation_is_set_to_success) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_directory_service_access_is_set_to_success_and_failure) {
+  #   if($harden_windows_server::is_domain_controller) {
+  #     local_security_policy { 'Audit directory service access':
+  #       ensure         => 'present',
+  #       policy_setting => 'AuditDSAccess',
+  #       policy_type    => 'Event Audit',
+  #       policy_value   => '0',
+  #     }
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_directory_service_changes_is_set_to_success_and_failure) {
+  #   if($harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_account_lockout_is_set_to_success) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_logoff_is_set_to_success) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_logon_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_other_logon_logoff_events_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_special_logon_is_set_to_success) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_audit_policy_change_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_authentication_policy_change_is_set_to_success) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_sensitive_privilege_use_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_ipsec_driver_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_other_system_events_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_security_state_change_is_set_to_success) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_security_system_extension_is_set_to_success_and_failure) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_audit_system_integrity_is_set_to_success_and_failure) {
+  #
+  # }
 
-  }
-
-  if($harden_windows_server::ensure_audit_application_group_management_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_computer_account_management_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_distribution_group_management_is_set_to_success_and_failure) {
-    if($harden_windows_server::is_domain_controller) {
-
-    }
-  }
-
-  if($harden_windows_server::ensure_audit_other_account_management_events_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_security_group_management_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_user_account_management_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_process_creation_is_set_to_success) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_directory_service_access_is_set_to_success_and_failure) {
-    if($harden_windows_server::is_domain_controller) {
-      local_security_policy { 'Audit directory service access':
-        ensure         => 'present',
-        policy_setting => 'AuditDSAccess',
-        policy_type    => 'Event Audit',
-        policy_value   => '0',
-      }
-    }
-  }
-
-  if($harden_windows_server::ensure_audit_directory_service_changes_is_set_to_success_and_failure) {
-    if($harden_windows_server::is_domain_controller) {
-
-    }
-  }
-
-  if($harden_windows_server::ensure_audit_account_lockout_is_set_to_success) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_logoff_is_set_to_success) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_logon_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_other_logon_logoff_events_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_special_logon_is_set_to_success) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_audit_policy_change_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_authentication_policy_change_is_set_to_success) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_sensitive_privilege_use_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_ipsec_driver_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_other_system_events_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_security_state_change_is_set_to_success) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_security_system_extension_is_set_to_success_and_failure) {
-
-  }
-
-  if($harden_windows_server::ensure_audit_system_integrity_is_set_to_success_and_failure) {
-
-  }
+  # Need to install LAPS somehow. Need more research
+  # if($harden_windows_server::ensure_laps_admpwd_gpo_extension_cse_is_installed) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_do_not_allow_password_expiration_time_longer_than_required_by_policy_is_set_to_enabled) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_enable_local_admin_password_management_is_set_to_enabled) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_password_settings_password_complexity_is_set_to_enabled_large_letters_small_letters_numbers_special_characters) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_password_settings_password_length_is_set_to_enabled_15_or_more) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_password_settings_password_age_days_is_set_to_enabled_30_or_fewer) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
 
 
 
