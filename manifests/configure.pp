@@ -1181,95 +1181,143 @@ class harden_windows_server::configure {
   }
 
   if($harden_windows_server::ensure_windows_firewall_private_firewall_state_is_set_to_on_recommended) {
-    registry::value { 'AllowLocalIPsecPolicyMerge':
-      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-      value => 'AllowLocalIPsecPolicyMerge',
+    registry::value { 'PrivateEnableFirewall':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      value => 'EnableFirewall',
       type  => 'dword',
       data  => '0x00000001',
     }
   }
 
   if($harden_windows_server::ensure_windows_firewall_private_inbound_connections_is_set_to_block_default) {
-    registry::value { 'AllowLocalIPsecPolicyMerge':
-      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-      value => 'AllowLocalIPsecPolicyMerge',
+    registry::value { 'PrivateDefaultInboundAction':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      value => 'DefaultInboundAction',
       type  => 'dword',
       data  => '0x00000001',
     }
   }
 
   if($harden_windows_server::ensure_windows_firewall_private_outbound_connections_is_set_to_allow_default) {
-    registry::value { 'AllowLocalIPsecPolicyMerge':
-      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-      value => 'AllowLocalIPsecPolicyMerge',
+    registry::value { 'PrivateDefaultOutboundAction':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      value => 'DefaultOutboundAction',
       type  => 'dword',
-      data  => '0x00000001',
+      data  => '0x00000000',
     }
   }
 
   if($harden_windows_server::ensure_windows_firewall_private_settings_display_a_notification_is_set_to_no) {
-    registry::value { 'AllowLocalIPsecPolicyMerge':
-      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-      value => 'AllowLocalIPsecPolicyMerge',
+    registry::value { 'PrivateDisableNotifications':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      value => 'DisableNotifications',
       type  => 'dword',
       data  => '0x00000001',
     }
   }
 
   if($harden_windows_server::ensure_windows_firewall_private_settings_apply_local_firewall_rules_is_set_to_yes_default) {
-    registry::value { 'AllowLocalIPsecPolicyMerge':
-      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-      value => 'AllowLocalIPsecPolicyMerge',
+    registry::value { 'PrivateAllowLocalPolicyMerge':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      value => 'AllowLocalPolicyMerge',
       type  => 'dword',
       data  => '0x00000001',
     }
   }
 
   if($harden_windows_server::ensure_windows_firewall_private_settings_apply_local_connection_security_rules_is_set_to_yes_default) {
-    registry::value { 'AllowLocalIPsecPolicyMerge':
-      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+    registry::value { 'PrivateAllowLocalIPsecPolicyMerge':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
       value => 'AllowLocalIPsecPolicyMerge',
       type  => 'dword',
       data  => '0x00000001',
     }
   }
 
-  #Issues with Firewall Logging, same as above
-  # if($harden_windows_server::ensure_windows_firewall_private_logging_name_is_set_to_privatefwlog) {
-  #   registry::value { 'AllowLocalIPsecPolicyMerge':
-  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-  #     value => 'AllowLocalIPsecPolicyMerge',
-  #     type  => 'dword',
-  #     data  => '0x00000001',
-  #   }
-  # }
-  #
-  # if($harden_windows_server::ensure_windows_firewall_private_logging_size_limit_is_set_to_16384_or_greater) {
-  #   registry::value { 'AllowLocalIPsecPolicyMerge':
-  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-  #     value => 'AllowLocalIPsecPolicyMerge',
-  #     type  => 'dword',
-  #     data  => '0x00000001',
-  #   }
-  # }
-  #
-  # if($harden_windows_server::ensure_windows_firewall_private_logging_log_dropped_packets_is_set_to_yes) {
-  #   registry::value { 'AllowLocalIPsecPolicyMerge':
-  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-  #     value => 'AllowLocalIPsecPolicyMerge',
-  #     type  => 'dword',
-  #     data  => '0x00000001',
-  #   }
-  # }
-  #
-  # if($harden_windows_server::ensure_windows_firewall_private_logging_log_successful_connections_is_set_to_yes) {
-  #   registry::value { 'AllowLocalIPsecPolicyMerge':
-  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
-  #     value => 'AllowLocalIPsecPolicyMerge',
-  #     type  => 'dword',
-  #     data  => '0x00000001',
-  #   }
-  # }
+  if($harden_windows_server::ensure_windows_firewall_private_logging_name_is_set_to_privatefwlog) {
+    registry::value { 'PrivateLogFilePath':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      value => 'LogFilePath',
+      type  => 'string',
+      data  => '%systemroot%\system32\logfiles\firewall\privatefw.log',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_logging_size_limit_is_set_to_16384_or_greater) {
+    registry::value { 'PrivateLogFileSize':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      value => 'LogFileSize',
+      type  => 'dword',
+      data  => '0x00004000',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_logging_log_dropped_packets_is_set_to_yes) {
+    registry::value { 'PrivateLogDroppedPackets':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      value => 'LogDroppedPackets',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_logging_log_successful_connections_is_set_to_yes) {
+    registry::value { 'PrivateLogSuccessfulConnections':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      value => 'LogSuccessfulConnections',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_public_firewall_state_is_set_to_on_recommended) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_public_inbound_connections_is_set_to_block_default) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_outbound_connections_is_set_to_allow_default) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_settings_display_a_notification_is_set_to_yes) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_settings_apply_local_firewall_rules_is_set_to_no) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_settings_apply_local_connection_security_rules_is_set_to_no) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_logging_name_is_set_to_publicfwlog) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_logging_size_limit_is_set_to_16384_or_greater) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_logging_log_dropped_packets_is_set_to_yes) {
+
+  }
+
+
+  if($harden_windows_server::ensure_windows_firewall_public_logging_log_successful_connections_is_set_to_yes) {
+
+  }
+
 
 
 }
