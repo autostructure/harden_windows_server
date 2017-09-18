@@ -1117,5 +1117,109 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_windows_firewall_domain_settings_display_a_notification_is_set_to_no) {
+    registry::value { 'DisableNotifications':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      value => 'DisableNotifications',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_domain_settings_apply_local_firewall_rules_is_set_to_yes_default) {
+    registry::value { 'AllowLocalPolicyMerge':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      value => 'AllowLocalPolicyMerge',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_domain_settings_apply_local_connection_security_rules_is_yes) {
+    registry::value { 'AllowLocalIPsecPolicyMerge':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      value => 'AllowLocalIPsecPolicyMerge',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  # I'm having issues with the logging staying applied
+  # if($harden_windows_server::ensure_windows_firewall_domain_logging_name_is_set_to_domainfwlog) {
+  #   registry::value { 'DefaultOutboundAction':
+  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+  #     value => 'DefaultOutboundAction',
+  #     type  => 'dword',
+  #     data  => '0x00000000',
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_windows_firewall_domain_logging_size_limit_is_16384_or_greater) {
+  #   registry::value { 'DefaultOutboundAction':
+  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+  #     value => 'DefaultOutboundAction',
+  #     type  => 'dword',
+  #     data  => '0x00000000',
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_windows_firewall_domain_logging_log_dropped_packets_is_set_to_yes) {
+  #   registry::value { 'DefaultOutboundAction':
+  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+  #     value => 'DefaultOutboundAction',
+  #     type  => 'dword',
+  #     data  => '0x00000000',
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_windows_firewall_domain_logging_log_successful_connections_is_set_to_yes) {
+  #   registry::value { 'DefaultOutboundAction':
+  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+  #     value => 'DefaultOutboundAction',
+  #     type  => 'dword',
+  #     data  => '0x00000000',
+  #   }
+  # }
+
+  if($harden_windows_server::ensure_windows_firewall_private_firewall_state_is_set_to_on_recommended) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_inbound_connections_is_set_to_block_default) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_outbound_connections_is_set_to_allow_default) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_settings_display_a_notification_is_set_to_no) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_settings_apply_local_firewall_rules_is_set_to_yes_default) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_settings_apply_local_connection_security_rules_is_set_to_yes_default) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_logging_name_is_set_to_privatefwlog) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_logging_size_limit_is_set_to_16384_or_greater) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_logging_log_dropped_packets_is_set_to_yes) {
+
+  }
+
+  if($harden_windows_server::ensure_windows_firewall_private_logging_log_successful_connections_is_set_to_yes) {
+
+  }
+
 
 }
