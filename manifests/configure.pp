@@ -1368,6 +1368,7 @@ class harden_windows_server::configure {
     }
   }
 
+  # 17, doesn't have a local_security_policy or registry key, more research
   # if($harden_windows_server::ensure_audit_credential_validation_is_set_to_success_and_failure) {
   #
   # }
@@ -1471,6 +1472,7 @@ class harden_windows_server::configure {
   #
   # }
 
+  # 18.2
   # Need to install LAPS somehow. Need more research
   # if($harden_windows_server::ensure_laps_admpwd_gpo_extension_cse_is_installed) {
   #   if(!$harden_windows_server::is_domain_controller) {
@@ -1507,6 +1509,67 @@ class harden_windows_server::configure {
   #
   #   }
   # }
+
+  # Skipping becuase I have to download a template and it is deprecated, will do last
+  # if($harden_windows_server::ensure_mss_autoadminlogon_enable_automatic_logon_not_recommended_is_set_to_disabled) {
+  #   registry::value { 'AutoAdminLogon':
+  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon',
+  #     value => 'AutoAdminLogon',
+  #     type  => 'string',
+  #     data  => '0',
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_disableipsourcerouting_ipv6_ip_source_routing_protection_level_is_set_to_enabled_highest_protection_source_routing_disabled) {
+  #   registry::value { 'DisableIPSourceRouting':
+  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon',
+  #     value => 'AutoAdminLogon',
+  #     type  => 'string',
+  #     data  => '0',
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_disableipsourcerouting_ip_source_routing_protection_level_is_set_to_enabled_highest_protection_source_routing_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_enableicmpredirect_allow_icmp_redirects_to_override_ospf_generated_routes_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_keepalivetime_how_often_keepalive_packets_are_sent_in_millisecondsis_set_to_enabled_300000_or_5_minutes) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_nonamereleaseondemand_allow_the_computer_to_ignore_netbios_name_release_requests_except_from_wins_server_is_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_performrouterdiscovery_allow_irdp_to_detect_and_configure_default_gateway_addresses_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_safediisearchmode_enable_safe_dll_search_mode_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_screensavergraceperiod_the_time_in_seconds_before_the_screen_saver_grace_period_expired_is_set_to_enabled_5_or_fewer) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_tcpmaxdataretranmissions_ipv6_how_many_times_unacknowledged_data_is_retransmitted_is_set_to_enabled_3) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_tcpmaxdataretransmissions_how_many_times_unacknowledged_data_is_retransmitted_is_set_to_enabled_3) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_mss_warninglevel_percentage_threshold_for_the_security_event_log_is_set_to_enabled_90_or_less) {
+  #
+  # }
+
+  
 
 
 
