@@ -73,4 +73,4 @@ Future Release:
 - Allow customization
 
 ## Contributers
-Jack Coleman
+Jack Coleman <jack@autostructure.io>
