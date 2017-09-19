@@ -6,7 +6,7 @@ This module hardens Windows Server 2008 R2 to the most recent CIS Benchmark, whi
 https://www.cisecurity.org/cis-benchmarks/
 
 ## Setup
-To use this module, you need to specify whether or not the node is a **Domain Controller** or a **Member Server** by modifying the is_domain_controller parameter. The CIS Benchmark recommends a different security configuration for each type of node. This module defaults to the **Member Server** configuration.
+To use this module, you need to specify whether or not the node is a **Domain Controller** or a **Member Server** by modifying the 'is_domain_controller' parameter. The CIS Benchmark recommends a different security configuration for each type of node. This module defaults to the **Member Server** configuration.
 
 Instantiate the class as a **Domain Controller**:
 
