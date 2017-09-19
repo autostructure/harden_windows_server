@@ -68,9 +68,11 @@ class { 'harden_windows_server':
 ## Limitations
 
 ## Development
-Future Release: 
+Future Release:
+- Support more server versions
+- Edit parameters with hiera
 - Add more level 2 features
-- Allow customization
+- Allow more customization
 
 ## Contributers
 Jack Coleman <jack@autostructure.io>
