@@ -1,7 +1,7 @@
 # harden_windows_server
 
 ## Module Description
-This module hardens Windows Serve 2008 R2 to the most recent CIS Benchmark, which can be found here:
+This module hardens Windows Server 2008 R2 to the most recent CIS Benchmark, which can be found here:
 
 https://www.cisecurity.org/cis-benchmarks/
 
