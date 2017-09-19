@@ -1655,32 +1655,70 @@ class harden_windows_server::configure {
   #
   # }
 
-  if($harden_windows_server::disable_ipv6_ensure_tcpip6_parameter_disabledcomponents_is_set_to_0xff255) {
-    registry::value { 'DisabledComponents':
-      key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TCPIP6\Parameters',
-      value => 'DisabledComponents',
+  # Have to download a thing to add the key
+  # if($harden_windows_server::disable_ipv6_ensure_tcpip6_parameter_disabledcomponents_is_set_to_0xff255) {
+  #   registry::value { 'DisabledComponents':
+  #     key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\TCPIP6\Parameters',
+  #     value => 'DisabledComponents',
+  #     type  => 'dword',
+  #     data  => '0x00000001',
+  #   }
+  # }
+
+  if($harden_windows_server::ensure_configuration_of_wireless_settings_using_windows_connect_now_is_set_to_disabled) {
+    registry::value { 'EnableRegistrars':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+      value => 'EnableRegistrars',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'DisableWPDRegistrar':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+      value => 'DisableWPDRegistrar',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'DisableUPnPRegistrar':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+      value => 'DisableUPnPRegistrar',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'DisableInBand802DOT11Registrar':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+      value => 'DisableInBand802DOT11Registrar',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+    registry::value { 'DisableFlashConfigRegistrar':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+      value => 'DisableFlashConfigRegistrar',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_prohibit_access_of_the_windows_connect_now_wizards_is_set_to_enabled) {
+    registry::value { 'DisableWcnUi':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI',
+      value => 'DisableWcnUi',
       type  => 'dword',
       data  => '0x00000001',
     }
   }
 
-  if($harden_windows_server::ensure_configuration_of_wireless_settings_using_windows_connect_now_is_set_to_disabled) {
+  # Must download more group policy templates
+  # if($harden_windows_server::ensure_apply_uac_restrictions_to_local_accounts_on_network_logons_is_set_to_enabled) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_wdigest_authentication_is_set_to_disabled) {
+  #
+  # }
 
-  }
-
-  if($harden_windows_server::ensure_prohibit_access_of_the_windows_connect_now_wizards_is_set_to_enabled) {
-
-  }
-
-  if($harden_windows_server::ensure_apply_uac_restrictions_to_local_accounts_on_network_logons_is_set_to_enabled) {
-    if(!$harden_windows_server::is_domain_controller) {
-
-    }
-  }
-
-  if($harden_windows_server::ensure_wdigest_authentication_is_set_to_disabled) {
-
-  }
+  
 
 
 
