@@ -2216,6 +2216,60 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::ensure_prevent_downloading_of_enclosures_is_set_to_enabled) {
+    registry::value { 'DisableEnclosureDownload':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds',
+      value => 'DisableEnclosureDownload',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  #non default template
+  # if($harden_windows_server::ensure_allow_indexing_of_encrypted_files_is_set_to_disabled) {
+  #
+  # }
+
+  #cant find template, maybe spynet?
+  # if($harden_windows_server::ensure_join_microsoft_maps_is_set_to_disabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_configure_default_consent_is_set_to_enabled_always_ask_before_sending_data) {
+    registry::value { 'DefaultConsent':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Consent',
+      value => 'DefaultConsent',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_allow_user_control_over_installs_is_set_to_disabled) {
+    registry::value { 'EnableUserControl':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer',
+      value => 'EnableUserControl',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_always_install_with_elevated_privileges_is_set_to_disabled) {
+    registry::value { 'AlwaysInstallElevated':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer',
+      value => 'AlwaysInstallElevated',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_prevent_internet_explorer_security_prompt_for_windows_installer_scripts_is_set_to_disabled) {
+    registry::value { 'EnableUserControl':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer',
+      value => 'EnableUserControl',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
 
 
 }

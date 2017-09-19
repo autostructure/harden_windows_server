@@ -315,7 +315,7 @@ class harden_windows_server (
   Boolean $ensure_notify_antivirus_programs_when_opening_attachments_is_set_to_enabled = true,
   Boolean $ensure_prevent_users_from_sharing_files_within_their_profile_is_set_to_enabled = true,
   Boolean $ensure_always_install_with_elevated_privileges_is_set_to_disabled_windows_installer = true,
-  Boolean $ensure_prevent_codec_download_is_set_to_enabled = false, #LEVEL 2 
+  Boolean $ensure_prevent_codec_download_is_set_to_enabled = false, #LEVEL 2
   ) {
 
   include harden_windows_server::configure
