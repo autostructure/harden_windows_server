@@ -305,6 +305,17 @@ class harden_windows_server (
   Boolean $ensure_do_not_display_install_updates_and_shut_down_option_in_shut_down_windows_dialog_box_is_set_to_disabled = true,
   Boolean $ensure_no_auto_restart_with_logged_on_users_for_scheduled_automatic_updates_installations_is_set_to_disabled = true,
   Boolean $ensure_reschedule_automatic_updates_scheduled_installations_is_set_to_enabled_1_minute = true,
+  #19
+  Boolean $ensure_enable_screen_saver_is_set_to_enabled = true,
+  Boolean $ensure_force_specific_screen_saver_screen_saver_executable_name_is_set_to_enabled_scrnsavescr = true,
+  Boolean $ensure_password_protect_the_screen_saver_is_set_to_enabled = true,
+  Boolean $ensure_screen_saver_timeout_is_set_to_enabled_900_seconds_or_fewer_but_not_0 = true,
+  Boolean $ensure_turn_off_help_experience_improvement_program_is_set_to_enabled = false, # LEVEL 2
+  Boolean $ensure_do_not_preserve_zone_information_in_file_attachments_is_set_to_disabled = true,
+  Boolean $ensure_notify_antivirus_programs_when_opening_attachments_is_set_to_enabled = true,
+  Boolean $ensure_prevent_users_from_sharing_files_within_their_profile_is_set_to_enabled = true,
+  Boolean $ensure_always_install_with_elevated_privileges_is_set_to_disabled_windows_installer = true,
+  Boolean $ensure_prevent_codec_download_is_set_to_enabled = false, #LEVEL 2
   ) {
 
   include harden_windows_server::configure
