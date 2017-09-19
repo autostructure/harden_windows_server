@@ -6,7 +6,7 @@ This module hardens Windows Server 2008 R2 to the most recent CIS Benchmark, whi
 https://www.cisecurity.org/cis-benchmarks/
 
 ## Setup
-To use this module, you need to specify whether or not the node is a **Domain Controller** or a **Member Server** by modifying the 'is_domain_controller' parameter. The CIS Benchmark recommends a different security configuration for each type of node. This module defaults to the **Member Server** configuration.
+To use this module, you need to specify whether or not the node is a **Domain Controller** or a **Member Server** by modifying the `is_domain_controller` parameter. The CIS Benchmark recommends a different security configuration for each type of node. This module defaults to the **Member Server** configuration.
 
 Instantiate the class as a **Domain Controller**:
 
@@ -39,12 +39,11 @@ The CIS Benchmark has two types of security configurations: **Level 1** and **Le
 - acts as defense in depth measure
 - may negatively inhibit the utility or performance of the technology
 
-
 By default, all **Level 1** items are managed by the module. However, each organization is unique and might need to disable certain **Level 1** items so that they can configure them themselves. See our reference for a list of all managed items and disable them as shown below, if needed.
 
-For example, the ensure_account_lockout_duration_is_set_to_15_or_more_minutes item sets the lockout duration to 30 minutes by default. If your organization requires a different lockout duration, disable this parameter so you can manually configure it. In a future release, you will be able to manage custom values within the module.
+For example, the `ensure_account_lockout_duration_is_set_to_15_or_more_minutes` item sets the lockout duration to 30 minutes by default. If your organization requires a different lockout duration, disable this parameter so you can manually configure it. In a future release, you will be able to manage custom values within the module.
 
-Disable ensure_account_lockout_duration_is_set_to_15_or_more_minutes:
+Disable `ensure_account_lockout_duration_is_set_to_15_or_more_minutes`:
 
 ``` puppet
 class { 'harden_windows_server':
@@ -53,9 +52,9 @@ class { 'harden_windows_server':
 }
 ```
 
-**Level 2** items are not managed, by default. To enable a **Level 2** item, find the parameter in our reference and set it to true.
+**Level 2** items are not managed, by default. To enable a **Level 2** item, find the parameter in our reference and set it to `true`.
 
-Enable ensure_log_on_as_a_batch_job_is_set_to_administrators:
+Enable `ensure_log_on_as_a_batch_job_is_set_to_administrators`:
 
 ``` puppet
 class { 'harden_windows_server':
