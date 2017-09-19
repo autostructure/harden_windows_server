@@ -1889,5 +1889,99 @@ class harden_windows_server::configure {
   #   }
   # }
 
+  if($harden_windows_server::ensure_disallow_autoplay_for_non_volume_devices_is_set_to_enabled) {
+    registry::value { 'NoAutoplayfornonVolume':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      value => 'NoAutoplayfornonVolume',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_set_the_default_behavior_for_autorun_is_set_to_enabled_do_not_execute_any_autorun_commands) {
+    registry::value { 'NoAutorun':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer',
+      value => 'NoAutorun',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_autoplay_is_set_to_enabled_all_drives) {
+    registry::value { 'NoDriveTypeAutoRun':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer',
+      value => 'NoDriveTypeAutoRun',
+      type  => 'dword',
+      data  => '0x000000ff',
+    }
+  }
+
+  # Can't find GPO for this
+  # if($harden_windows_server::ensure_do_not_display_the_password_reveal_button_is_set_to_enabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_enumerate_administrator_accounts_on_elevation_is_set_to_disabled) {
+    registry::value { 'EnumerateAdministrators':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI',
+      value => 'EnumerateAdministrators',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_desktop_gadgets_is_set_to_enabled) {
+    registry::value { 'TurnOffSidebar':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar',
+      value => 'TurnOffSidebar',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_user_installed_desktop_gadgets_is_set_to_enabled) {
+    registry::value { 'TurnOffUserInstalledGadgets':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar',
+      value => 'TurnOffUserInstalledGadgets',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  # Have to download a thing and it's deprecated
+  # if($harden_windows_server::ensure_emet_551_or_higher_is_installed) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_default_action_and_mitigation_settings_is_set_to_enabled_plus_subsettings) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_default_protections_for_internet_explorer_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_default_protections_for_popular_software_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_default_protections_for_recommended_software_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_system_aslr_is_set_to_enabled_application_opt_in) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_system_dep_is_set_to_enabled_application_opt_out) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_system_sehop_is_set_to_enabled_application_opt_out) {
+  #
+  # }
+
+
+
 
 }

@@ -291,12 +291,12 @@ class harden_windows_server (
   Boolean $ensure_prevent_internet_explorer_security_prompt_for_windows_installer_scripts_is_set_to_disabled = false, #LEVEL 2
   Boolean $ensure_turn_on_powershell_script_block_logging_is_set_to_disabled = true,
   Boolean $ensure_turn_on_powershell_transcription_is_set_to_disabled = true,
-  Boolean $ensure_allow_basic_authentication_is_set_to_disabled = true,
-  Boolean $ensure_allow_unencrypted_traffic_is_set_to_disabled = true,
+  Boolean $ensure_winrm_client_allow_basic_authentication_is_set_to_disabled = true,
+  Boolean $ensure_winrm_client_allow_unencrypted_traffic_is_set_to_disabled = true,
   Boolean $ensure_disallow_digest_authentication_is_set_to_enabled = true,
-  Boolean $ensure_allow_basic_authentication_is_set_to_disabled = true,
+  Boolean $ensure_winrm_service_allow_basic_authentication_is_set_to_disabled = true,
   Boolean $ensure_allow_remote_server_management_through_winrm_is_set_to_disabled = false, #LEVEL 2
-  Boolean $ensure_allow_unencrypted_traffic_is_set_to_disabled = true,
+  Boolean $ensure_winrm_service_allow_unencrypted_traffic_is_set_to_disabled = true,
   Boolean $ensure_disallow_winrm_from_storing_runas_credentials_is_set_to_enabled = true,
   Boolean $ensure_allow_remote_shell_access_is_set_to_disabled = false, #LEVEL 2
   Boolean $ensure_configure_automatic_updates_is_set_to_enabled = true,
