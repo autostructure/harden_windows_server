@@ -1980,7 +1980,7 @@ class harden_windows_server::configure {
   # if($harden_windows_server::ensure_system_sehop_is_set_to_enabled_application_opt_out) {
   #
   # }
-
+#
 
 
 
