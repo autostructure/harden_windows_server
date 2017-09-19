@@ -6,7 +6,7 @@ This module hardens Windows Server 2008 R2 to the most recent CIS Benchmark, whi
 https://www.cisecurity.org/cis-benchmarks/
 
 ## Setup
-To use this module, you need to specify whether or not the node is a **Domain Controller** or a **Member Server**. The CIS Benchmark recommends a different security configuration for each type of node. This module defaults to the **Member Server** configuration.
+To use this module, you need to specify whether or not the node is a **Domain Controller** or a **Member Server** by modifying the is_domain_controller parameter. The CIS Benchmark recommends a different security configuration for each type of node. This module defaults to the **Member Server** configuration.
 
 Instantiate the class as a **Domain Controller**:
 
@@ -28,13 +28,19 @@ class { 'harden_windows_server':
 The CIS Benchmark has two types of security configurations: **Level 1** and **Level 2**.
 
 **Level 1** items intend to:
+
 o be practical and prudent;
+
 o provide a clear security benefit; and
+
 o not inhibit the utility of the technology beyond acceptable means.
 
 **Level 2** items exhibit one or more of the following characteristics:
+
 o are intended for environments or use cases where security is paramount
+
 o acts as defense in depth measure
+
 o may negatively inhibit the utility or performance of the technology
 
 By default, all **Level 1** items are managed by the module. However, each organization is unique and might need to disable certain **Level 1** items so that they can conf. See our reference for a list of all managed items and disable them, if needed.
