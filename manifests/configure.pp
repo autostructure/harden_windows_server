@@ -1718,8 +1718,176 @@ class harden_windows_server::configure {
   #
   # }
 
-  
+  # can't find group policy object
+  # if($harden_windows_server::ensure_include_command_line_in_process_creation_events_is_set_to_disabled) {
+  #
+  # }
 
+  if($harden_windows_server::ensure_allow_remote_access_to_the_plug_and_play_interface_is_set_to_disabled) {
+    registry::value { 'AllowRemoteRPC':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings',
+      value => 'AllowRemoteRPC',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+
+  if($harden_windows_server::ensure_configure_registry_policy_processing_do_not_apply_during_periodic_background_processing_is_set_to_enabled_false) {
+    registry::value { 'NoBackgroundPolicy':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}',
+      value => 'NoBackgroundPolicy',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+
+  if($harden_windows_server::ensure_configure_registry_policy_processing_process_even_if_the_group_policy_objects_have_not_changed_is_set_to_enabled_true) {
+    registry::value { 'NoGPOListChange':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}',
+      value => 'NoGPOListChange',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+
+  # Can we do ensure => absent on a registry key?
+  # if($harden_windows_server::ensure_turn_off_background_refresh_of_group_policy_is_set_to_disabled) {
+  #
+  # }
+
+  # All Are LEVEL 2
+  # if($harden_windows_server::ensure_turn_off_downloading_of_print_drivers_over_http_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_handwriting_personalization_data_sharing_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_handwriting_recognition_error_reporting_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_internet_connection_wizard_if_url_connection_is_referring_to_microsoftcom_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_internet_download_for_web_publishing_and_online_ordering_wizards_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_internet_file_association_service_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_printing_over_http_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_registration_if_url_connection_is_referring_to_microsoftcom_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_search_companion_content_file_updates_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_the_order_prints_picture_task_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_the_publish_to_web_task_for_files_and_folders_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_the_windows_messenger_customer_experience_improvement_program_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_windows_customer_experience_improvement_program_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_windows_error_reporting_is_set_to_enabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_always_use_classic_logon) {
+    if(!$harden_windows_server::is_domain_controller) {
+      registry::value { 'LogonType':
+        key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System',
+        value => 'LogonType',
+        type  => 'dword',
+        data  => '0x00000000',
+      }
+    }
+  }
+
+  # Both Level 2
+  # if($harden_windows_server::ensure_require_a_password_when_a_computer_wakes_on_battery_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_require_a_password_when_a_computer_wakes_plugged_in_is_set_to_enabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_configure_offer_remote_assistance_is_set_to_disabled) {
+    registry::value { 'fAllowUnsolicited':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fAllowUnsolicited',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_configure_solicited_remote_assistance_is_set_to_disabled) {
+    registry::value { 'fAllowToGetHelp':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fAllowToGetHelp',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_enable_rpc_endpoint_mapper_client_authentication_is_set_to_enabled) {
+    if(!$harden_windows_server::is_domain_controller) {
+      registry::value { 'EnableAuthEpResolution':
+        key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Rpc',
+        value => 'EnableAuthEpResolution',
+        type  => 'dword',
+        data  => '0x00000001',
+      }
+    }
+  }
+
+  # ALL LEVEL 2
+  # if($harden_windows_server::ensure_restrict_unauthenticated_rpc_clients_is_set_to_enabled_authenticatied) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
+  #
+  # if($harden_windows_server::ensure_microsoft_support_diagnostic_tool_turn_on_msdt_interactive_communication_with_support_provider_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_enable_disable_perftrack_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_enable_windows_ntp_client_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_enable_windows_ntp_server_is_set_to_disabled) {
+  #   if(!$harden_windows_server::is_domain_controller) {
+  #
+  #   }
+  # }
 
 
 }
