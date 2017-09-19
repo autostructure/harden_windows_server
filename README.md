@@ -37,11 +37,9 @@ o not inhibit the utility of the technology beyond acceptable means.
 
 **Level 2** items exhibit one or more of the following characteristics:
 
-o are intended for environments or use cases where security is paramount
-
-o acts as defense in depth measure
-
-o may negatively inhibit the utility or performance of the technology
+- are intended for environments or use cases where security is paramount
+- acts as defense in depth measure
+- may negatively inhibit the utility or performance of the technology
 
 
 By default, all **Level 1** items are managed by the module. However, each organization is unique and might need to disable certain **Level 1** items so that they can configure them themselves. See our reference for a list of all managed items and disable them as shown below, if needed.
@@ -54,6 +52,17 @@ Disable ensure_account_lockout_duration_is_set_to_15_or_more_minutes:
 class { 'harden_windows_server':
   is_domain_controller => false,
   ensure_account_lockout_duration_is_set_to_15_or_more_minutes => false,
+}
+```
+
+**Level 2** items are not managed, by default. To enable a **Level 2** item, find the parameter in our reference and set it to true.
+
+Enable ensure_log_on_as_a_batch_job_is_set_to_administrators:
+
+``` puppet
+class { 'harden_windows_server':
+  is_domain_controller => false,
+  ensure_log_on_as_a_batch_job_is_set_to_administrators => true,
 }
 ```
 
