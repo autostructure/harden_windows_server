@@ -1980,7 +1980,241 @@ class harden_windows_server::configure {
   # if($harden_windows_server::ensure_system_sehop_is_set_to_enabled_application_opt_out) {
   #
   # }
-#
+
+
+  if($harden_windows_server::ensure_application_control_event_log_behavior_when_the_log_file_reaches_its_maximum_size_is_set_to_disabled) {
+    registry::value { 'ApplicationRetention':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application',
+      value => 'Retention',
+      type  => 'string',
+      data  => '0',
+    }
+  }
+
+  if($harden_windows_server::ensure_application_specify_the_maximum_log_file_size_kb_is_set_to_enabled_32768_or_greater) {
+    registry::value { 'ApplicationMaxSize':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application',
+      value => 'MaxSize',
+      type  => 'dword',
+      data  => '0x00008000',
+    }
+  }
+
+  if($harden_windows_server::ensure_security_control_event_log_behavior_when_the_log_file_reaches_its_maximum_size_is_set_to_disabled) {
+    registry::value { 'SecurityRetention':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security',
+      value => 'Retention',
+      type  => 'string',
+      data  => '0',
+    }
+  }
+
+  if($harden_windows_server::ensure_security_specify_the_maximum_log_file_size_kb_is_set_to_enabled_196608_or_greater) {
+    registry::value { 'SecurityMaxSize':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security',
+      value => 'MaxSize',
+      type  => 'dword',
+      data  => '0x00030000',
+    }
+  }
+
+  if($harden_windows_server::ensure_setup_control_event_log_behavior_when_the_log_reaches_its_maximum_size_is_set_to_disabled) {
+    registry::value { 'SetupRetention':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup',
+      value => 'Retention',
+      type  => 'string',
+      data  => '0',
+    }
+  }
+
+  if($harden_windows_server::ensure_setup_specify_the_maximum_log_file_size_kb_is_set_to_enabled_32768_or_greater) {
+    registry::value { 'SetupMaxSize':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup',
+      value => 'MaxSize',
+      type  => 'dword',
+      data  => '0x00008000',
+    }
+  }
+
+  if($harden_windows_server::ensure_system_control_event_log_behavior_when_the_log_file_reaches_its_maximum_size_is_set_to_disabled) {
+    registry::value { 'SystemRetention':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System',
+      value => 'Retention',
+      type  => 'string',
+      data  => '0',
+    }
+  }
+
+  if($harden_windows_server::ensure_system_specify_the_maximum_log_file_size_kb_is_set_to_enabled_32768_or_greater) {
+    registry::value { 'SystemMaxSize':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System',
+      value => 'MaxSize',
+      type  => 'dword',
+      data  => '0x00008000',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_data_execution_prevention_for_explorer_is_set_to_disabled) {
+    registry::value { 'NoDataExecutionPrevention':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      value => 'NoDataExecutionPrevention',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_heap_termination_on_corruption_is_set_to_disabled) {
+    registry::value { 'NoHeapTerminationOnCorruption':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      value => 'NoHeapTerminationOnCorruption',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_shell_protocol_proteted_mode_is_set_to_disabled) {
+    registry::value { 'PreXPSP2ShellProtocolBehavior':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer',
+      value => 'PreXPSP2ShellProtocolBehavior',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_turn_off_location_is_set_to_enabled) {
+    registry::value { 'DisableLocation':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors',
+      value => 'DisableLocation',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  # Can't find these administrative templates
+  # if($harden_windows_server::ensure_prevent_the_usage_of_onedrive_for_filestorage_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_prevent_the_usage_of_onedrive_for_file_storage_on_windows_81_is_set_to_enabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_do_not_allow_passwords_to_be_saved_is_set_to_enabled) {
+    registry::value { 'DisablePasswordSaving':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'DisablePasswordSaving',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_restrict_remote_desktop_services_users_to_a_single_remote_desktop_services_session_is_set_to_enabled) {
+    registry::value { 'fSingleSessionPerUser':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fSingleSessionPerUser',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_allow_com_port_redirection_is_set_to_enabled) {
+    registry::value { 'fDisableCcm':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fDisableCcm',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_allow_drive_redirection_is_set_to_enabled) {
+    registry::value { 'fDisableCdm':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fDisableCdm',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_allow_lpt_port_redirection_is_set_to_enabled) {
+    registry::value { 'fDisableLPT':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fDisableLPT',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_allow_supported_plug_and_play_device_redirection_is_set_to_enabled) {
+    registry::value { 'fDisablePNPRedir':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fDisablePNPRedir',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_always_prompt_for_password_upon_connection_is_set_to_enabled) {
+    registry::value { 'fPromptForPassword':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fPromptForPassword',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_require_secure_rpc_communication_is_set_to_enabled) {
+    registry::value { 'fEncryptRPCTraffic':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'fEncryptRPCTraffic',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_set_client_connection_encryption_level_is_set_to_enabled_high_level) {
+    registry::value { 'MinEncryptionLevel':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'MinEncryptionLevel',
+      type  => 'dword',
+      data  => '0x00000003',
+    }
+  }
+
+  if($harden_windows_server::ensure_set_time_limit_for_active_but_idle_remote_desktop_services_sessions_is_set_to_enabled_15_minutes_or_less) {
+    registry::value { 'MaxIdleTime':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'MaxIdleTime',
+      type  => 'dword',
+      data  => '0x000dbba0',
+    }
+  }
+
+  if($harden_windows_server::ensure_set_time_limit_for_disconnected_sessions_is_set_to_enabled_1_minute) {
+    registry::value { 'MaxDisconnectionTime':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'MaxDisconnectionTime',
+      type  => 'dword',
+      data  => '0x0000ea60',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_delete_temp_folders_upon_exit_is_set_to_disabled) {
+    registry::value { 'DeleteTempDirsOnExit':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'DeleteTempDirsOnExit',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_use_temporary_folders_per_session_is_set_to_disabled) {
+    registry::value { 'PerSessionTempDir':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      value => 'PerSessionTempDir',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
 
 
 
