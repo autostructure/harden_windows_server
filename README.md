@@ -27,6 +27,7 @@ class { 'harden_windows_server':
 ## Usage
 The CIS Benchmark has two types of security configurations: **Level 1** and **Level 2**.
 
+
 **Level 1** items intend to:
 
 o be practical and prudent;
@@ -34,6 +35,7 @@ o be practical and prudent;
 o provide a clear security benefit; and
 
 o not inhibit the utility of the technology beyond acceptable means.
+
 
 **Level 2** items exhibit one or more of the following characteristics:
 
@@ -43,9 +45,10 @@ o acts as defense in depth measure
 
 o may negatively inhibit the utility or performance of the technology
 
-By default, all **Level 1** items are managed by the module. However, each organization is unique and might need to disable certain **Level 1** items so that they can conf. See our reference for a list of all managed items and disable them, if needed.
 
-For example, the ensure_account_lockout_duration_is_set_to_15_or_more_minutes item sets the lockout duration to 30 minutes by default. If your organization requires a different time, disable this parameter and manually configure that item. In a future release, you will be able to manage custom values within the module.
+By default, all **Level 1** items are managed by the module. However, each organization is unique and might need to disable certain **Level 1** items so that they can configure them themselves. See our reference for a list of all managed items and disable them as shown below, if needed.
+
+For example, the ensure_account_lockout_duration_is_set_to_15_or_more_minutes item sets the lockout duration to 30 minutes by default. If your organization requires a different lockout duration, disable this parameter so you can manually configure it. In a future release, you will be able to manage custom values within the module.
 
 Disable ensure_account_lockout_duration_is_set_to_15_or_more_minutes:
 
