@@ -26,8 +26,7 @@ class { 'harden_windows_server':
 
 ## Usage
 The CIS Benchmark has two types of security configurations: **Level 1** and **Level 2**.
-
-
+>
 **Level 1** items intend to:
 
 o be practical and prudent;
@@ -35,8 +34,7 @@ o be practical and prudent;
 o provide a clear security benefit; and
 
 o not inhibit the utility of the technology beyond acceptable means.
-
-
+>
 **Level 2** items exhibit one or more of the following characteristics:
 
 o are intended for environments or use cases where security is paramount
