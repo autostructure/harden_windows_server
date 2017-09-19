@@ -70,9 +70,8 @@ class { 'harden_windows_server':
 
 ## Development
 Future Release: 
-
-Add more level 2 features
-Allow customization
+- Add more level 2 features
+- Allow customization
 
 ## Contributers
 Jack Coleman
