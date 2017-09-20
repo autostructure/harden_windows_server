@@ -2,7 +2,7 @@
   "name": "autostructure-harden_windows_server",
   "version": "0.1.0",
   "author": "Autostructure",
-  "summary": "Hardens Windows Server 2008 R2 to CIS recommendations",
+  "summary": "Hardens Windows Server 2008 R2",
   "license": "",
   "source": "https://github.com/autostructure/harden_windows_server",
   "project_page": "https://github.com/autostructure/harden_windows_server",
