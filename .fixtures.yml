@@ -1,7 +1,3 @@
 fixtures:
   symlinks:
     harden_windows_server: "#{source_dir}"
-  forge_modules:
-    stdlib: "puppetlabs/stdlib"
-    local_security_policy: "ayohrling/local_security_policy"
-    registry: "puppetlabs/registry"
