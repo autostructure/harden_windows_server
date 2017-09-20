@@ -9,7 +9,8 @@
   "issues_url": "https://github.com/autostructure/harden_windows_server",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">1.0.0"},
-    {"name":"cannonps-local_group_policy","version_requirement":"1.1.0"}
+    {"name":"cannonps-local_group_policy","version_requirement":"1.1.0"},
+    {"name":"puppetlabs-registry","version_requirement":"1.1.4"}
   ],
   "description": "Harden Windows Server"
 }

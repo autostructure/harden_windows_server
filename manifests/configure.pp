@@ -2271,5 +2271,181 @@ class harden_windows_server::configure {
     }
   }
 
+  # Need updated template
+  # if($harden_windows_server::ensure_turn_on_powershell_script_block_logging_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_on_powershell_transcription_is_set_to_disabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_winrm_client_allow_basic_authentication_is_set_to_disabled) {
+    registry::value { 'ClientAllowBasic':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client',
+      value => 'AllowBasic',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_winrm_client_allow_unencrypted_traffic_is_set_to_disabled) {
+    registry::value { 'ClientAllowUnencryptedTraffic':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client',
+      value => 'AllowUnencryptedTraffic',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_disallow_digest_authentication_is_set_to_enabled) {
+    registry::value { 'AllowDigest':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client',
+      value => 'AllowDigest',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_winrm_service_allow_basic_authentication_is_set_to_disabled) {
+    registry::value { 'ServiceAllowBasic':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service',
+      value => 'AllowBasic',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  # Can't find GPO
+  # if($harden_windows_server::ensure_allow_remote_server_management_through_winrm_is_set_to_disabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_winrm_service_allow_unencrypted_traffic_is_set_to_disabled) {
+    registry::value { 'ServiceAllowUnencryptedTraffic':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service',
+      value => 'AllowUnencryptedTraffic',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  # Can't find GPO
+  # if($harden_windows_server::ensure_disallow_winrm_from_storing_runas_credentials_is_set_to_enabled) {
+  #
+  # }
+
+  if($harden_windows_server::ensure_allow_remote_shell_access_is_set_to_disabled) {
+    registry::value { 'AllowRemoteShellAccess':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS',
+      value => 'AllowRemoteShellAccess',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_configure_automatic_updates_is_set_to_enabled) {
+    registry::value { 'NoAutoUpdate':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      value => 'NoAutoUpdate',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_configure_automatic_updates_scheduled_install_day_is_set_to_0_every_day) {
+    registry::value { 'ScheduledInstallDay':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      value => 'ScheduledInstallDay',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_adjust_default_option_to_install_updates_and_shut_down_in_shut_down_windows_dialog_box_is_set_to_disabled) {
+    registry::value { 'NoAUAsDefaultShutdownOption':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      value => 'NoAUAsDefaultShutdownOption',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_do_not_display_install_updates_and_shut_down_option_in_shut_down_windows_dialog_box_is_set_to_disabled) {
+    registry::value { 'NoAUShutdownOption':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      value => 'NoAUShutdownOption',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_no_auto_restart_with_logged_on_users_for_scheduled_automatic_updates_installations_is_set_to_disabled) {
+    registry::value { 'NoAutoRebootWithLoggedOnUsers':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      value => 'NoAutoRebootWithLoggedOnUsers',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_reschedule_automatic_updates_scheduled_installations_is_set_to_enabled_1_minute) {
+    registry::value { 'RescheduleWaitTimeEnabled':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      value => 'RescheduleWaitTimeEnabled',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+    registry::value { 'RescheduleWaitTime':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      value => 'RescheduleWaitTime',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
+
+  # Need to figure out how to make changes to each user on the system
+  # if($harden_windows_server::ensure_enable_screen_saver_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_force_specific_screen_saver_screen_saver_executable_name_is_set_to_enabled_scrnsavescr) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_password_protect_the_screen_saver_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_screen_saver_timeout_is_set_to_enabled_900_seconds_or_fewer_but_not_0) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_turn_off_help_experience_improvement_program_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_do_not_preserve_zone_information_in_file_attachments_is_set_to_disabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_notify_antivirus_programs_when_opening_attachments_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_prevent_users_from_sharing_files_within_their_profile_is_set_to_enabled) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_always_install_with_elevated_privileges_is_set_to_disabled_windows_installer) {
+  #
+  # }
+  #
+  # if($harden_windows_server::ensure_prevent_codec_download_is_set_to_enabled) {
+  #
+  # }
+
+
+
 
 }
