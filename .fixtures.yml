@@ -2,6 +2,6 @@ fixtures:
   symlinks:
     harden_windows_server: "#{source_dir}"
   repositories:
-    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib"
-    local_security_policy: "https://github.com/ayohrling/local_security_policy"
-    registry: "https://github.com/puppetlabs/puppetlabs-registry"
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+    local_security_policy: "https://github.com/ayohrling/local_security_policy.git"
+    registry: "https://github.com/puppetlabs/puppetlabs-registry.git"
