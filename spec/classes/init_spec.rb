@@ -804,7 +804,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainEnableFirewall').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
       'value' => 'EnableFirewall',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -812,7 +812,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainDefaultInboundAction').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
       'value' => 'DefaultInboundAction',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -820,7 +820,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainDefaultOutboundAction').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
       'value' => 'DefaultOutboundAction',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -828,7 +828,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainbDisableNotifications').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
       'value' => 'DisableNotifications',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -836,7 +836,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainAllowLocalPolicyMerge').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
       'value' => 'AllowLocalPolicyMerge',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -844,7 +844,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainAllowLocalIPsecPolicyMerge').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
       'value' => 'AllowLocalIPsecPolicyMerge',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -852,7 +852,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainLogFilePath').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
       'value' => 'LogFilePath',
       'type'  => 'string',
       'data'  => '%systemroot%\system32\logfiles\firewall\domainfw.log'
@@ -860,7 +860,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainLogFileSize').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
       'value' => 'LogFileSize',
       'type'  => 'dword',
       'data'  => '0x00004000'
@@ -868,7 +868,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainLogDroppedPackets').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
       'value' => 'LogDroppedPackets',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -876,7 +876,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('DomainLogSuccessfulConnections').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
       'value' => 'LogSuccessfulConnections',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -884,7 +884,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateEnableFirewall').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
       'value' => 'EnableFirewall',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -892,7 +892,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateDefaultInboundAction').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
       'value' => 'DefaultInboundAction',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -900,7 +900,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateDefaultOutboundAction').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
       'value' => 'DefaultOutboundAction',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -908,7 +908,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateDisableNotifications').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
       'value' => 'DisableNotifications',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -916,7 +916,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateAllowLocalPolicyMerge').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
       'value' => 'AllowLocalPolicyMerge',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -924,7 +924,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateAllowLocalIPsecPolicyMerge').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
       'value' => 'AllowLocalIPsecPolicyMerge',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -932,7 +932,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateLogFilePath').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
       'value' => 'LogFilePath',
       'type'  => 'string',
       'data'  => '%systemroot%\system32\logfiles\firewall\privatefw.log'
@@ -940,7 +940,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateLogFileSize').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
       'value' => 'LogFileSize',
       'type'  => 'dword',
       'data'  => '0x00004000'
@@ -948,7 +948,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateLogDroppedPackets').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
       'value' => 'LogDroppedPackets',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -956,7 +956,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PrivateLogSuccessfulConnections').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
       'value' => 'LogSuccessfulConnections',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -964,7 +964,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicEnableFirewall').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
       'value' => 'EnableFirewall',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -972,7 +972,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicDefaultInboundAction').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
       'value' => 'DefaultInboundAction',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -980,7 +980,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicDefaultOutboundAction').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
       'value' => 'DefaultOutboundAction',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -988,7 +988,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicDisableNotifications').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
       'value' => 'DisableNotifications',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -996,7 +996,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicAllowLocalPolicyMerge').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
       'value' => 'AllowLocalPolicyMerge',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -1004,7 +1004,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicAllowLocalIPsecPolicyMerge').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
       'value' => 'AllowLocalIPsecPolicyMerge',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -1012,7 +1012,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicLogFilePath').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
       'value' => 'LogFilePath',
       'type'  => 'string',
       'data'  => '%systemroot%\system32\logfiles\firewall\publicfw.log'
@@ -1020,7 +1020,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicLogFileSize').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
       'value' => 'LogFileSize',
       'type'  => 'dword',
       'data'  => '0x00004000'
@@ -1028,7 +1028,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicLogDroppedPackets').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
       'value' => 'LogDroppedPackets',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -1036,7 +1036,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('PublicLogSuccessfulConnections').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
       'value' => 'LogSuccessfulConnections',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -1045,7 +1045,7 @@ describe 'harden_windows_server' do
   # L2
   # it {
   #   should contain_registry__value('AllowLLTDIOOnDomain').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'AllowLLTDIOOnDomain',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1053,7 +1053,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('AllowLLTDIOOnPublicNet').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'AllowLLTDIOOnPublicNet',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1061,7 +1061,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('EnableLLTDIO').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'EnableLLTDIO',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1069,7 +1069,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('ProhibitLLTDIOOnPrivateNet').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'ProhibitLLTDIOOnPrivateNet',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1077,7 +1077,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('AllowRspndrOnDomain').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'AllowRspndrOnDomain',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1085,7 +1085,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('AllowRspndrOnPublicNet').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'AllowRspndrOnPublicNet',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1093,7 +1093,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('EnableRspndr').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'EnableRspndr',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1101,7 +1101,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('ProhibitRspndrOnPrivateNet').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
   #     'value' => 'ProhibitRspndrOnPrivateNet',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1109,7 +1109,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('PeernetDisabled').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet',
   #     'value' => 'Disabled',
   #     'type'  => 'dword',
   #     'data'  => '0x00000001'
@@ -1117,7 +1117,7 @@ describe 'harden_windows_server' do
   # }
   it {
     should contain_registry__value('NC_AllowNetBridge_NLA').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections',
       'value' => 'NC_AllowNetBridge_NLA',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -1125,7 +1125,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('NC_StdDomainUserSetLocation').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections',
       'value' => 'NC_StdDomainUserSetLocation',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -1133,7 +1133,7 @@ describe 'harden_windows_server' do
   }
   # it {
   #   should contain_registry__value('EnableRegistrars').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
   #     'value' => 'EnableRegistrars',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1141,7 +1141,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('DisableWPDRegistrar').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
   #     'value' => 'DisableWPDRegistrar',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1149,7 +1149,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('DisableUPnPRegistrar').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
   #     'value' => 'DisableUPnPRegistrar',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1157,7 +1157,7 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('DisableInBand802DOT11Registrar').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
   #     'value' => 'DisableInBand802DOT11Registrar',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
@@ -1165,23 +1165,23 @@ describe 'harden_windows_server' do
   # }
   # it {
   #   should contain_registry__value('DisableFlashConfigRegistrar').with(
-  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
   #     'value' => 'DisableFlashConfigRegistrar',
   #     'type'  => 'dword',
   #     'data'  => '0x00000000'
   #   )
   # }
-  it {
-    should contain_registry__value('DisableWcnUi').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI',
-      'value' => 'DisableWcnUi',
-      'type'  => 'dword',
-      'data'  => '0x00000001'
-    )
-  }
+  # it {
+  #   should contain_registry__value('DisableWcnUi').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI',
+  #     'value' => 'DisableWcnUi',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000001'
+  #   )
+  # }
   it {
     should contain_registry__value('AllowRemoteRPC').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Settings',
       'value' => 'AllowRemoteRPC',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -1189,7 +1189,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('NoBackgroundPolicy').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}',
       'value' => 'NoBackgroundPolicy',
       'type'  => 'dword',
       'data'  => '0x00000000'
@@ -1197,11 +1197,186 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('NoGPOListChange').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}',
       'value' => 'NoGPOListChange',
       'type'  => 'dword',
       'data'  => '0x00000000'
     )
   }
-
+  it {
+    should contain_registry__value('LogonType').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System',
+      'value' => 'LogonType',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('fAllowUnsolicited').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fAllowUnsolicited',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('fAllowToGetHelp').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fAllowToGetHelp',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('EnableAuthEpResolution').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Rpc',
+      'value' => 'EnableAuthEpResolution',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('NoAutoplayfornonVolume').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      'value' => 'NoAutoplayfornonVolume',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('NoAutorun').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      'value' => 'NoAutorun',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('NoDriveTypeAutoRun').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      'value' => 'NoDriveTypeAutoRun',
+      'type'  => 'dword',
+      'data'  => '0x000000ff'
+    )
+  }
+  it {
+    should contain_registry__value('EnumerateAdministrators').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI',
+      'value' => 'EnumerateAdministrators',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('TurnOffSidebar').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar',
+      'value' => 'TurnOffSidebar',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('TurnOffUserInstalledGadgets').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar',
+      'value' => 'TurnOffUserInstalledGadgets',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('ApplicationRetention').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application',
+      'value' => 'Retention',
+      'type'  => 'string',
+      'data'  => '0'
+    )
+  }
+  it {
+    should contain_registry__value('ApplicationMaxSize').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application',
+      'value' => 'MaxSize',
+      'type'  => 'dword',
+      'data'  => '0x00008000'
+    )
+  }
+  it {
+    should contain_registry__value('SecurityRetention').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security',
+      'value' => 'Retention',
+      'type'  => 'string',
+      'data'  => '0'
+    )
+  }
+  it {
+    should contain_registry__value('SecurityMaxSize').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Security',
+      'value' => 'MaxSize',
+      'type'  => 'dword',
+      'data'  => '0x00030000'
+    )
+  }
+  it {
+    should contain_registry__value('SetupRetention').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup',
+      'value' => 'Retention',
+      'type'  => 'string',
+      'data'  => '0'
+    )
+  }
+  it {
+    should contain_registry__value('SetupMaxSize').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup',
+      'value' => 'MaxSize',
+      'type'  => 'dword',
+      'data'  => '0x0008000'
+    )
+  }
+  it {
+    should contain_registry__value('SystemRetention').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System',
+      'value' => 'Retention',
+      'type'  => 'string',
+      'data'  => '0'
+    )
+  }
+  it {
+    should contain_registry__value('SystemMaxSize').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System',
+      'value' => 'MaxSize',
+      'type'  => 'dword',
+      'data'  => '0x0008000'
+    )
+  }
+  it {
+    should contain_registry__value('NoDataExecutionPrevention').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      'value' => 'NoDataExecutionPrevention',
+      'type'  => 'dword',
+      'data'  => '0x0000000'
+    )
+  }
+  it {
+    should contain_registry__value('NoHeapTerminationOnCorruption').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      'value' => 'NoHeapTerminationOnCorruption',
+      'type'  => 'dword',
+      'data'  => '0x0000000'
+    )
+  }
+  it {
+    should contain_registry__value('PreXPSP2ShellProtocolBehavior').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer',
+      'value' => 'PreXPSP2ShellProtocolBehavior',
+      'type'  => 'dword',
+      'data'  => '0x0000000'
+    )
+  }
+  it {
+    should contain_registry__value('DisableLocation').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors',
+      'value' => 'DisableLocation',
+      'type'  => 'dword',
+      'data'  => '0x0000001'
+    )
+  }
 end
