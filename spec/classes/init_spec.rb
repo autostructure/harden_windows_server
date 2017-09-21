@@ -802,5 +802,13 @@ describe 'harden_windows_server' do
       'policy_value'   => '4,1'
     )
   }
+  it {
+    should contain_registry__value('DomainEnableFirewall').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'value' => 'EnableFirewall',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
 
 end
