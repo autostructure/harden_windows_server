@@ -7,6 +7,17 @@
   "source": "https://github.com/autostructure/harden_windows_server",
   "project_page": "https://github.com/autostructure/harden_windows_server",
   "issues_url": "https://github.com/autostructure/harden_windows_server",
+  "operatingsystem_support": [
+  {
+    "operatingsystem": "Windows",
+    "operatingsystemrelease": [
+      "Server 2008",
+      "Server 2008 R2",
+      "Server 2012",
+      "Server 2012 R2"
+    ]
+  }
+],
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">1.0.0"},
     {"name":"ayohrling-local_security_policy","version_requirement":"0.6.1"},
