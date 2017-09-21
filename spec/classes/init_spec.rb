@@ -229,7 +229,7 @@ describe 'harden_windows_server' do
     )
   }
   it {
-    should contain_local_security_policy('Enable computer user accounts to be trusted for delegation').with(
+    should contain_local_security_policy('Enable computer and user accounts to be trusted for delegation').with(
       'ensure'         => 'absent'
     )
   }
@@ -258,7 +258,7 @@ describe 'harden_windows_server' do
     )
   }
   it {
-    should contain_local_security_policy('Increate scheduling priority').with(
+    should contain_local_security_policy('Increase scheduling priority').with(
       'ensure'         => 'present',
       'policy_setting' => 'SeIncreaseBasePriorityPrivilege',
       'policy_type'    => 'Privilege Rights',
