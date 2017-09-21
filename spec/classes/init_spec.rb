@@ -496,14 +496,15 @@ describe 'harden_windows_server' do
       'policy_value'   => '1,"Title Bar"'
     )
   }
-  it {
-    should contain_local_security_policy('Interactive logon: Number of previous logons to cache (in case domain controller is not available)').with(
-      'ensure'         => 'present',
-      'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\CachedLogonsCount',
-      'policy_type'    => 'Registry Values',
-      'policy_value'   => '1,"4"'
-    )
-  }
+  # L2
+  # it {
+  #   should contain_local_security_policy('Interactive logon: Number of previous logons to cache (in case domain controller is not available)').with(
+  #     'ensure'         => 'present',
+  #     'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\CachedLogonsCount',
+  #     'policy_type'    => 'Registry Values',
+  #     'policy_value'   => '1,"4"'
+  #   )
+  # }
   it {
     should contain_local_security_policy('Interactive logon: Prompt user to change password before expiration').with(
       'ensure'         => 'present',
@@ -600,14 +601,15 @@ describe 'harden_windows_server' do
       'policy_value'   => '4,1'
     )
   }
-  it {
-    should contain_local_security_policy('Network access: Do not allow storage of passwords and credentials for network authentication').with(
-      'ensure'         => 'present',
-      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\DisableDomainCreds',
-      'policy_type'    => 'Registry Values',
-      'policy_value'   => '4,0'
-    )
-  }
+  # L2
+  # it {
+  #   should contain_local_security_policy('Network access: Do not allow storage of passwords and credentials for network authentication').with(
+  #     'ensure'         => 'present',
+  #     'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\DisableDomainCreds',
+  #     'policy_type'    => 'Registry Values',
+  #     'policy_value'   => '4,0'
+  #   )
+  # }
   it {
     should contain_local_security_policy('Network access: Let Everyone permissions apply to anonymous users').with(
       'ensure'         => 'present',
