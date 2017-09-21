@@ -1245,7 +1245,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('NoAutorun').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer',
       'value' => 'NoAutorun',
       'type'  => 'dword',
       'data'  => '0x00000001'
@@ -1253,7 +1253,7 @@ describe 'harden_windows_server' do
   }
   it {
     should contain_registry__value('NoDriveTypeAutoRun').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer',
       'value' => 'NoDriveTypeAutoRun',
       'type'  => 'dword',
       'data'  => '0x000000ff'
@@ -1328,7 +1328,7 @@ describe 'harden_windows_server' do
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup',
       'value' => 'MaxSize',
       'type'  => 'dword',
-      'data'  => '0x0008000'
+      'data'  => '0x00008000'
     )
   }
   it {
@@ -1344,7 +1344,7 @@ describe 'harden_windows_server' do
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\System',
       'value' => 'MaxSize',
       'type'  => 'dword',
-      'data'  => '0x0008000'
+      'data'  => '0x00008000'
     )
   }
   it {
@@ -1352,7 +1352,7 @@ describe 'harden_windows_server' do
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
       'value' => 'NoDataExecutionPrevention',
       'type'  => 'dword',
-      'data'  => '0x0000000'
+      'data'  => '0x00000000'
     )
   }
   it {
@@ -1360,7 +1360,7 @@ describe 'harden_windows_server' do
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer',
       'value' => 'NoHeapTerminationOnCorruption',
       'type'  => 'dword',
-      'data'  => '0x0000000'
+      'data'  => '0x00000000'
     )
   }
   it {
@@ -1368,7 +1368,7 @@ describe 'harden_windows_server' do
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer',
       'value' => 'PreXPSP2ShellProtocolBehavior',
       'type'  => 'dword',
-      'data'  => '0x0000000'
+      'data'  => '0x00000000'
     )
   }
   it {
@@ -1376,7 +1376,7 @@ describe 'harden_windows_server' do
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors',
       'value' => 'DisableLocation',
       'type'  => 'dword',
-      'data'  => '0x0000001'
+      'data'  => '0x00000001'
     )
   }
 end
