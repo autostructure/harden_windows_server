@@ -658,18 +658,149 @@ describe 'harden_windows_server' do
       'policy_value'   => '4,1'
     )
   }
-
-
-
-
-
-
-
-
-
   it {
-    should contain_local_security_policy('Access this computer from the network').with(
-      'ensure' => 'present'
+    should contain_local_security_policy('Network security: Force logoff when logon hours expire').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'ForceLogoffWhenHourExpire',
+      'policy_type'    => 'System Access',
+      'policy_value'   => '1'
     )
   }
+  it {
+    should contain_local_security_policy('Network security: LAN Manager authentication level').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LmCompatibilityLevel',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,5'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network security: LDAP client signing requirements').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LDAP\LDAPClientIntegrity',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network security: Minimum session security for NTLM SSP based (including secure RPC) clients').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinClientSec',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,537395200'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network security: Minimum session security for NTLM SSP based (including secure RPC) servers').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinServerSec',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,537395200'
+    )
+  }
+  it {
+    should contain_local_security_policy('Shutdown: Allow system to be shut down without having to log on').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ShutdownWithoutLogon',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,0'
+    )
+  }
+  it {
+    should contain_local_security_policy('System objects: Require case insensitivity for non-Windows subsystems').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\Kernel\ObCaseInsensitive',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g., Symbolic Links)').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\ProtectionMode',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('System settings: Optional subsystems').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\SubSystems\optional',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '7,Defined: (blank)'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Admin Approval Mode for the Built-in Administrator account').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\FilterAdministratorToken',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Allow UIAccess applications to prompt for elevation without using the secure desktop').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableUIADesktopToggle',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,0'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Behavior of the elevation prompt for administrators in Admin Approval Mode').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,2'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Behavior of the elevation prompt for standard users').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorUser',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,0'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Detect application installations and prompt for elevation').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableInstallerDetection',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Only elevate UIAccess applications that are installed in secure locations').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableSecureUIAPaths',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Run all administrators in Admin Approval Mode').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Switch to the secure desktop when prompting for elevation').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\PromptOnSecureDesktop',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('User Account Control: Virtualize file and registry write failures to per-user locations').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableVirtualization',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+
 end
