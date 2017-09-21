@@ -810,5 +810,237 @@ describe 'harden_windows_server' do
       'data'  => '0x00000001'
     )
   }
+  it {
+    should contain_registry__value('DomainDefaultInboundAction').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'value' => 'DefaultInboundAction',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('DomainDefaultOutboundAction').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'value' => 'DefaultOutboundAction',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('DomainbDisableNotifications').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'value' => 'DisableNotifications',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('DomainAllowLocalPolicyMerge').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'value' => 'AllowLocalPolicyMerge',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('DomainAllowLocalIPsecPolicyMerge').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile',
+      'value' => 'AllowLocalIPsecPolicyMerge',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('DomainLogFilePath').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'value' => 'LogFilePath',
+      'type'  => 'string',
+      'data'  => '%systemroot%\system32\logfiles\firewall\domainfw.log'
+    )
+  }
+  it {
+    should contain_registry__value('DomainLogFileSize').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'value' => 'LogFileSize',
+      'type'  => 'dword',
+      'data'  => '0x00004000'
+    )
+  }
+  it {
+    should contain_registry__value('DomainLogDroppedPackets').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'value' => 'LogDroppedPackets',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('DomainLogSuccessfulConnections').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging',
+      'value' => 'LogSuccessfulConnections',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateEnableFirewall').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'value' => 'EnableFirewall',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateDefaultInboundAction').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'value' => 'DefaultInboundAction',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateDefaultOutboundAction').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'value' => 'DefaultOutboundAction',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateDisableNotifications').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'value' => 'DisableNotifications',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateAllowLocalPolicyMerge').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'value' => 'AllowLocalPolicyMerge',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateAllowLocalIPsecPolicyMerge').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile',
+      'value' => 'AllowLocalIPsecPolicyMerge',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateLogFilePath').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'value' => 'LogFilePath',
+      'type'  => 'string',
+      'data'  => '%systemroot%\system32\logfiles\firewall\privatefw.log'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateLogFileSize').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'value' => 'LogFileSize',
+      'type'  => 'dword',
+      'data'  => '0x00004000'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateLogDroppedPackets').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'value' => 'LogDroppedPackets',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PrivateLogSuccessfulConnections').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging',
+      'value' => 'LogSuccessfulConnections',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PublicEnableFirewall').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'value' => 'EnableFirewall',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PublicDefaultInboundAction').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'value' => 'DefaultInboundAction',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PublicDefaultOutboundAction').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'value' => 'DefaultOutboundAction',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('PublicDisableNotifications').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'value' => 'DisableNotifications',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('PublicAllowLocalPolicyMerge').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'value' => 'AllowLocalPolicyMerge',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('PublicAllowLocalIPsecPolicyMerge').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
+      'value' => 'AllowLocalIPsecPolicyMerge',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('PublicLogFilePath').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'value' => 'LogFilePath',
+      'type'  => 'string',
+      'data'  => '%systemroot%\system32\logfiles\firewall\publicfw.log'
+    )
+  }
+  it {
+    should contain_registry__value('PublicLogFileSize').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'value' => 'LogFileSize',
+      'type'  => 'dword',
+      'data'  => '0x00004000'
+    )
+  }
+  it {
+    should contain_registry__value('PublicLogDroppedPackets').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'value' => 'LogDroppedPackets',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PublicLogSuccessfulConnections').with(
+      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
+      'value' => 'LogSuccessfulConnections',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
 
 end
