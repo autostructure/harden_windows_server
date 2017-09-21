@@ -480,6 +480,182 @@ describe 'harden_windows_server' do
       'policy_value'   => '4,0'
     )
   }
+  it {
+    should contain_local_security_policy('Interactive logon: Message text for users attempting to log on').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '7,Welcome!'
+    )
+  }
+  it {
+    should contain_local_security_policy('Interactive logon: Message title for users attempting to log on').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '1,"Title Bar"'
+    )
+  }
+  it {
+    should contain_local_security_policy('Interactive logon: Number of previous logons to cache (in case domain controller is not available)').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\CachedLogonsCount',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '1,"4"'
+    )
+  }
+  it {
+    should contain_local_security_policy('Interactive logon: Prompt user to change password before expiration').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\PasswordExpiryWarning',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,5'
+    )
+  }
+  it {
+    should contain_local_security_policy('Interactive logon: Require Domain Controller authentication to unlock workstation').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ForceUnlockLogon',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Interactive logon: Smart card removal behavior').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '1,"1"'
+    )
+  }
+  it {
+    should contain_local_security_policy('Microsoft network client: Digitally sign communications (if server agrees)').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnableSecuritySignature',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Microsoft network client: Send unencrypted password to third-party SMB servers').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnablePlainTextPassword',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,0'
+    )
+  }
+  it {
+    should contain_local_security_policy('Microsoft network server: Amount of idle time required before suspending session').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\AutoDisconnect',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,15'
+    )
+  }
+  it {
+    should contain_local_security_policy('Microsoft network server: Digitally sign communications (always)').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RequireSecuritySignature',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Microsoft network server: Digitally sign communications (if client agrees)').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableSecuritySignature',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Microsoft network server: Disconnect clients when logon hours expire').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableForcedLogOff',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Allow anonymous SID/name translation').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'LSAAnonymousNameLookup',
+      'policy_type'    => 'System Access',
+      'policy_value'   => '0'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Do not allow anonymous enumeration of SAM accounts').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\RestrictAnonymousSAM',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Do not allow anonymous enumeration of SAM accounts and shares').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\RestrictAnonymous',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Do not allow storage of passwords and credentials for network authentication').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\DisableDomainCreds',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,0'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Let Everyone permissions apply to anonymous users').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\EveryoneIncludesAnonymous',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,0'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Remotely accessible registry paths').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths\Machine',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '7,System\CurrentControlSet\Control\ProductOptions,System\CurrentControlSet\Control\Server Applications,Software\Microsoft\Windows NT\CurrentVersion'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Remotely accessible registry paths and sub-paths').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths\Machine',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '7,System\CurrentControlSet\Control\Print\Printers,System\CurrentControlSet\Services\Eventlog,Software\Microsoft\OLAP Server,Software\Microsoft\Windows NT\CurrentVersion\Print,Software\Microsoft\Windows NT\CurrentVersion\Windows,System\CurrentControlSet\Control\ContentIndex,System\CurrentControlSet\Control\Terminal Server,System\CurrentControlSet\Control\Terminal Server\UserConfig,System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration,Software\Microsoft\Windows NT\CurrentVersion\Perflib,System\CurrentControlSet\Services\SysmonLog'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Restrict anonymous access to Named Pipes and Shares').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RestrictNullSessAccess',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network access: Sharing and security model for local accounts').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\ForceGuest',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,0'
+    )
+  }
+  it {
+    should contain_local_security_policy('Network security: All Local System to use computer identity for NTLM').with(
+      'ensure'         => 'present',
+      'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
+      'policy_type'    => 'Registry Values',
+      'policy_value'   => '4,1'
+    )
+  }
 
 
 
