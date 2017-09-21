@@ -2,7 +2,7 @@ require 'spec_helper'
 describe 'harden_windows_server' do
   let(:facts) { {'operatingsystem' => 'windows' } }
   #it { is_expected.to compile }
-  let(:params) { { 'is_domain_controller' => 'false' } }
+  let(:params) { { 'is_domain_controller' => false } }
   it {
     should contain_local_security_policy('Enforce password history').with(
       'ensure' => 'present',
