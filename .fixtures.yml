@@ -1,8 +1,15 @@
 fixtures:
-  forge_modules:
-    stdlib:
-      repo: "puppetlabs/stdlib"
-    local_security_policy:
-      repo: "ayohrling/local_security_policy"
-    registry:
-      repo: "puppetlabs/registry"
+  symlinks:
+    harden_windows_server: "#{source_dir}"
+#  repositories:
+#    local_security_policy: "git://github.com/ayohrling/local_security_policy"
+#  forge_modules:
+#    stdlib:
+#      repo: "puppetlabs/stdlib"
+#      ref: '4.20.0'
+#    local_security_policy:
+#      repo: "ayohrling/local_security_policy"
+#      ref: '0.6.1'
+#    registry:
+#      repo: "puppetlabs/registry"
+#      ref: '1.1.4'

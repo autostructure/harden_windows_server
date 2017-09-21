@@ -1,6 +1,6 @@
 # Configuration Settings
 class harden_windows_server::configure {
-  include local_security_policy
+  class { 'local_security_policy': }
 
   if($harden_windows_server::ensure_enforce_password_history_is_set_to_24_or_more_passwords) {
     local_security_policy { 'Enforce password history':
