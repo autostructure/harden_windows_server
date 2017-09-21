@@ -1042,78 +1042,79 @@ describe 'harden_windows_server' do
       'data'  => '0x00000001'
     )
   }
-  it {
-    should contain_registry__value('AllowLLTDIOOnDomain').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'AllowLLTDIOOnDomain',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('AllowLLTDIOOnPublicNet').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'AllowLLTDIOOnPublicNet',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('EnableLLTDIO').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'EnableLLTDIO',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('ProhibitLLTDIOOnPrivateNet').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'ProhibitLLTDIOOnPrivateNet',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('AllowRspndrOnDomain').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'AllowRspndrOnDomain',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('AllowRspndrOnPublicNet').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'AllowRspndrOnPublicNet',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('EnableRspndr').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'EnableRspndr',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('ProhibitRspndrOnPrivateNet').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
-      'value' => 'ProhibitRspndrOnPrivateNet',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('PeernetDisabled').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet',
-      'value' => 'Disabled',
-      'type'  => 'dword',
-      'data'  => '0x00000001'
-    )
-  }
+  # L2
+  # it {
+  #   should contain_registry__value('AllowLLTDIOOnDomain').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'AllowLLTDIOOnDomain',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('AllowLLTDIOOnPublicNet').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'AllowLLTDIOOnPublicNet',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('EnableLLTDIO').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'EnableLLTDIO',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('ProhibitLLTDIOOnPrivateNet').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'ProhibitLLTDIOOnPrivateNet',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('AllowRspndrOnDomain').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'AllowRspndrOnDomain',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('AllowRspndrOnPublicNet').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'AllowRspndrOnPublicNet',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('EnableRspndr').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'EnableRspndr',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('ProhibitRspndrOnPrivateNet').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LLTD',
+  #     'value' => 'ProhibitRspndrOnPrivateNet',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('PeernetDisabled').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Peernet',
+  #     'value' => 'Disabled',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000001'
+  #   )
+  # }
   it {
     should contain_registry__value('NC_AllowNetBridge_NLA').with(
       'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections',
@@ -1130,46 +1131,46 @@ describe 'harden_windows_server' do
       'data'  => '0x00000001'
     )
   }
-  it {
-    should contain_registry__value('EnableRegistrars').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
-      'value' => 'EnableRegistrars',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('DisableWPDRegistrar').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
-      'value' => 'DisableWPDRegistrar',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('DisableUPnPRegistrar').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
-      'value' => 'DisableUPnPRegistrar',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('DisableInBand802DOT11Registrar').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
-      'value' => 'DisableInBand802DOT11Registrar',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
-  it {
-    should contain_registry__value('DisableFlashConfigRegistrar').with(
-      'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
-      'value' => 'DisableFlashConfigRegistrar',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
+  # it {
+  #   should contain_registry__value('EnableRegistrars').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'value' => 'EnableRegistrars',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('DisableWPDRegistrar').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'value' => 'DisableWPDRegistrar',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('DisableUPnPRegistrar').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'value' => 'DisableUPnPRegistrar',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('DisableInBand802DOT11Registrar').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'value' => 'DisableInBand802DOT11Registrar',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('DisableFlashConfigRegistrar').with(
+  #     'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars',
+  #     'value' => 'DisableFlashConfigRegistrar',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
   it {
     should contain_registry__value('DisableWcnUi').with(
       'key' => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\UI',
