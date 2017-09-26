@@ -1371,30 +1371,31 @@ describe 'harden_windows_server' do
       'data'  => '0x00000000'
     )
   }
-  it {
-    should contain_registry__value('DisableLocation').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors',
-      'value' => 'DisableLocation',
-      'type'  => 'dword',
-      'data'  => '0x00000001'
-    )
-  }
-  it {
-    should contain_registry__value('fSingleSessionPerUser').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
-      'value' => 'fSingleSessionPerUser',
-      'type'  => 'dword',
-      'data'  => '0x00000001'
-    )
-  }
-  it {
-    should contain_registry__value('fDisableCcm').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
-      'value' => 'fDisableCcm',
-      'type'  => 'dword',
-      'data'  => '0x00000001'
-    )
-  }
+  #level 2
+  # it {
+  #   should contain_registry__value('DisableLocation').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors',
+  #     'value' => 'DisableLocation',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000001'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('fSingleSessionPerUser').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+  #     'value' => 'fSingleSessionPerUser',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000001'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('fDisableCcm').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+  #     'value' => 'fDisableCcm',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000001'
+  #   )
+  # }
   it {
     should contain_registry__value('fDisableCdm').with(
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
@@ -1403,22 +1404,23 @@ describe 'harden_windows_server' do
       'data'  => '0x00000001'
     )
   }
-  it {
-    should contain_registry__value('fDisableLPT').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
-      'value' => 'fDisableLPT',
-      'type'  => 'dword',
-      'data'  => '0x00000001'
-    )
-  }
-  it {
-    should contain_registry__value('fDisablePNPRedir').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
-      'value' => 'fDisablePNPRedir',
-      'type'  => 'dword',
-      'data'  => '0x00000001'
-    )
-  }
+  #level 2
+  # it {
+  #   should contain_registry__value('fDisableLPT').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+  #     'value' => 'fDisableLPT',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000001'
+  #   )
+  # # }
+  # it {
+  #   should contain_registry__value('fDisablePNPRedir').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+  #     'value' => 'fDisablePNPRedir',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000001'
+  #   )
+  # }
   it {
     should contain_registry__value('fPromptForPassword').with(
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
@@ -1443,22 +1445,23 @@ describe 'harden_windows_server' do
       'data'  => '0x00000003'
     )
   }
-  it {
-    should contain_registry__value('MaxIdleTime').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
-      'value' => 'MaxIdleTime',
-      'type'  => 'dword',
-      'data'  => '0x000dbba0'
-    )
-  }
-  it {
-    should contain_registry__value('MaxDisconnectionTime').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
-      'value' => 'MaxDisconnectionTime',
-      'type'  => 'dword',
-      'data'  => '0x0000ea60'
-    )
-  }
+  #level 2
+  # it {
+  #   should contain_registry__value('MaxIdleTime').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+  #     'value' => 'MaxIdleTime',
+  #     'type'  => 'dword',
+  #     'data'  => '0x000dbba0'
+  #   )
+  # }
+  # it {
+  #   should contain_registry__value('MaxDisconnectionTime').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+  #     'value' => 'MaxDisconnectionTime',
+  #     'type'  => 'dword',
+  #     'data'  => '0x0000ea60'
+  #   )
+  # }
   it {
     should contain_registry__value('DeleteTempDirsOnExit').with(
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
@@ -1555,14 +1558,15 @@ describe 'harden_windows_server' do
       'data'  => '0x00000000'
     )
   }
-  it {
-    should contain_registry__value('AllowRemoteShellAccess').with(
-      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS',
-      'value' => 'AllowRemoteShellAccess',
-      'type'  => 'dword',
-      'data'  => '0x00000000'
-    )
-  }
+  #level 2
+  # it {
+  #   should contain_registry__value('AllowRemoteShellAccess').with(
+  #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS',
+  #     'value' => 'AllowRemoteShellAccess',
+  #     'type'  => 'dword',
+  #     'data'  => '0x00000000'
+  #   )
+  # }
   it {
     should contain_registry__value('NoAutoUpdate').with(
       'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
