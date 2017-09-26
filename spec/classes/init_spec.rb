@@ -1379,4 +1379,244 @@ describe 'harden_windows_server' do
       'data'  => '0x00000001'
     )
   }
+  it {
+    should contain_registry__value('fSingleSessionPerUser').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fSingleSessionPerUser',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('fDisableCcm').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fDisableCcm',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('fDisableCdm').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fDisableCdm',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('fDisableLPT').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fDisableLPT',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('fDisablePNPRedir').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fDisablePNPRedir',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('fPromptForPassword').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fPromptForPassword',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('fEncryptRPCTraffic').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'fEncryptRPCTraffic',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('MinEncryptionLevel').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'MinEncryptionLevel',
+      'type'  => 'dword',
+      'data'  => '0x00000003'
+    )
+  }
+  it {
+    should contain_registry__value('MaxIdleTime').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'MaxIdleTime',
+      'type'  => 'dword',
+      'data'  => '0x000dbba0'
+    )
+  }
+  it {
+    should contain_registry__value('MaxDisconnectionTime').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'MaxDisconnectionTime',
+      'type'  => 'dword',
+      'data'  => '0x0000ea60'
+    )
+  }
+  it {
+    should contain_registry__value('DeleteTempDirsOnExit').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'DeleteTempDirsOnExit',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('PerSessionTempDir').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+      'value' => 'PerSessionTempDir',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('DisableEnclosureDownload').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds',
+      'value' => 'DisableEnclosureDownload',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('DefaultConsent').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Consent',
+      'value' => 'DefaultConsent',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('EnableUserControl').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer',
+      'value' => 'EnableUserControl',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('AlwaysInstallElevated').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer',
+      'value' => 'AlwaysInstallElevated',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('EnableUserControl').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer',
+      'value' => 'EnableUserControl',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('ClientAllowBasic').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client',
+      'value' => 'AllowBasic',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('ClientAllowUnencryptedTraffic').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client',
+      'value' => 'AllowUnencryptedTraffic',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('AllowDigest').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client',
+      'value' => 'AllowDigest',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('ServiceAllowBasic').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service',
+      'value' => 'AllowBasic',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('ServiceAllowUnencryptedTraffic').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service',
+      'value' => 'AllowUnencryptedTraffic',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('AllowRemoteShellAccess').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service\WinRS',
+      'value' => 'AllowRemoteShellAccess',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('NoAutoUpdate').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      'value' => 'NoAutoUpdate',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('ScheduledInstallDay').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      'value' => 'ScheduledInstallDay',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('NoAUAsDefaultShutdownOption').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      'value' => 'NoAUAsDefaultShutdownOption',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('NoAUShutdownOption').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      'value' => 'NoAUShutdownOption',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('NoAutoRebootWithLoggedOnUsers').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      'value' => 'NoAutoRebootWithLoggedOnUsers',
+      'type'  => 'dword',
+      'data'  => '0x00000000'
+    )
+  }
+  it {
+    should contain_registry__value('RescheduleWaitTimeEnabled').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      'value' => 'RescheduleWaitTimeEnabled',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
+  it {
+    should contain_registry__value('RescheduleWaitTime').with(
+      'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU',
+      'value' => 'RescheduleWaitTime',
+      'type'  => 'dword',
+      'data'  => '0x00000001'
+    )
+  }
 end
