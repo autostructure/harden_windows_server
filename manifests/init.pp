@@ -153,29 +153,7 @@ class harden_windows_server (
   Boolean $ensure_windows_firewall_public_logging_log_dropped_packets_is_set_to_yes = true,
   Boolean $ensure_windows_firewall_public_logging_log_successful_connections_is_set_to_yes = true,
   #17
-  Boolean $ensure_audit_credential_validation_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_application_group_management_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_computer_account_management_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_distribution_group_management_is_set_to_success_and_failure = true, #DC ONLY
-  Boolean $ensure_audit_other_account_management_events_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_security_group_management_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_user_account_management_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_process_creation_is_set_to_success = true,
-  Boolean $ensure_audit_directory_service_access_is_set_to_success_and_failure = true, #DC ONLY
-  Boolean $ensure_audit_directory_service_changes_is_set_to_success_and_failure = true, #DC ONLY
-  Boolean $ensure_audit_account_lockout_is_set_to_success = true,
-  Boolean $ensure_audit_logoff_is_set_to_success = true,
-  Boolean $ensure_audit_logon_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_other_logon_logoff_events_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_special_logon_is_set_to_success = true,
-  Boolean $ensure_audit_audit_policy_change_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_authentication_policy_change_is_set_to_success = true,
-  Boolean $ensure_audit_sensitive_privilege_use_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_ipsec_driver_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_other_system_events_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_security_state_change_is_set_to_success = true,
-  Boolean $ensure_audit_security_system_extension_is_set_to_success_and_failure = true,
-  Boolean $ensure_audit_system_integrity_is_set_to_success_and_failure = true,
+  Boolean $advanced_audit_policy_configuration = true,
   #18.2
   Boolean $ensure_laps_admpwd_gpo_extension_cse_is_installed = true, #MS ONLY
   Boolean $ensure_do_not_allow_password_expiration_time_longer_than_required_by_policy_is_set_to_enabled = true,

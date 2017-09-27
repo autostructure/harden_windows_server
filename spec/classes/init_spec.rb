@@ -1083,6 +1083,12 @@ describe 'harden_windows_server' do
         'data'  => '0x00000001'
       )
     }
+    it {
+      should contain_file('C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv').with(
+        'ensure' => 'file',
+        'source' => 'puppet:///modules/harden_windows_server/auditMS.csv'
+      )
+    }
     # L2
     # it {
     #   should contain_registry__value('AllowLLTDIOOnDomain').with(
@@ -2779,6 +2785,12 @@ describe 'harden_windows_server' do
         'value' => 'LogSuccessfulConnections',
         'type'  => 'dword',
         'data'  => '0x00000001'
+      )
+    }
+    it {
+      should contain_file('C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv').with(
+        'ensure' => 'file',
+        'source' => 'puppet:///modules/harden_windows_server/auditDC.csv'
       )
     }
     # L2

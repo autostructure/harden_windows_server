@@ -1330,7 +1330,6 @@ class harden_windows_server::configure {
     }
   }
 
-
   if($harden_windows_server::ensure_windows_firewall_public_outbound_connections_is_set_to_allow_default) {
     registry::value { 'PublicDefaultOutboundAction':
       key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
@@ -1339,7 +1338,6 @@ class harden_windows_server::configure {
       data  => '0x00000000',
     }
   }
-
 
   if($harden_windows_server::ensure_windows_firewall_public_settings_display_a_notification_is_set_to_yes) {
     registry::value { 'PublicDisableNotifications':
@@ -1350,7 +1348,6 @@ class harden_windows_server::configure {
     }
   }
 
-
   if($harden_windows_server::ensure_windows_firewall_public_settings_apply_local_firewall_rules_is_set_to_no) {
     registry::value { 'PublicAllowLocalPolicyMerge':
       key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile',
@@ -1359,7 +1356,6 @@ class harden_windows_server::configure {
       data  => '0x00000000',
     }
   }
-
 
   if($harden_windows_server::ensure_windows_firewall_public_settings_apply_local_connection_security_rules_is_set_to_no) {
     registry::value { 'PublicAllowLocalIPsecPolicyMerge':
@@ -1370,7 +1366,6 @@ class harden_windows_server::configure {
     }
   }
 
-
   if($harden_windows_server::ensure_windows_firewall_public_logging_name_is_set_to_publicfwlog) {
     registry::value { 'PublicLogFilePath':
       key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
@@ -1379,7 +1374,6 @@ class harden_windows_server::configure {
       data  => '%systemroot%\system32\logfiles\firewall\publicfw.log',
     }
   }
-
 
   if($harden_windows_server::ensure_windows_firewall_public_logging_size_limit_is_set_to_16384_or_greater) {
     registry::value { 'PublicLogFileSize':
@@ -1390,7 +1384,6 @@ class harden_windows_server::configure {
     }
   }
 
-
   if($harden_windows_server::ensure_windows_firewall_public_logging_log_dropped_packets_is_set_to_yes) {
     registry::value { 'PublicLogDroppedPackets':
       key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging',
@@ -1399,7 +1392,6 @@ class harden_windows_server::configure {
       data  => '0x00000001',
     }
   }
-
 
   if($harden_windows_server::ensure_windows_firewall_public_logging_log_successful_connections_is_set_to_yes) {
     registry::value { 'PublicLogSuccessfulConnections':
@@ -1410,6 +1402,19 @@ class harden_windows_server::configure {
     }
   }
 
+  if($harden_windows_server::advanced_audit_policy_configuration) {
+    if($harden_windows_server::is_domain_controller) {
+      file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
+        ensure => file,
+        source => 'puppet:///modules/harden_windows_server/auditDC.csv',
+      }
+    } else {
+      file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
+        ensure => file,
+        source => 'puppet:///modules/harden_windows_server/auditMS.csv',
+      }
+    }
+  }
   # 17, doesn't have a local_security_policy or registry key, more research
   # if($harden_windows_server::ensure_audit_credential_validation_is_set_to_success_and_failure) {
   #
