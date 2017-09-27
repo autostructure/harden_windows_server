@@ -935,9 +935,9 @@ class harden_windows_server::configure {
   }
 
   if($harden_windows_server::ensure_network_security_allow_localsystem_null_session_fallback_is_set_to_disabled) {
-    registry::value { 'allowwnullsessionfallback':
+    registry::value { 'allownullsessionfallback':
       key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0',
-      value => 'allowwnullsessionfallback',
+      value => 'allownullsessionfallback',
       type  => 'dword',
       data  => '0x00000000',
     }
@@ -964,7 +964,7 @@ class harden_windows_server::configure {
   if($harden_windows_server::ensure_network_security_do_not_store_lan_manager_hash_value_on_next_password_change_is_set_to_enabled) {
     registry::value { 'NoLmHash':
       key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa',
-      value => 'NoLmHAsh',
+      value => 'NoLmHash',
       type  => 'dword',
       data  => '0x00000001',
     }
