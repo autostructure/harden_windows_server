@@ -1402,27 +1402,27 @@ class harden_windows_server::configure {
     }
   }
 
-  if($harden_windows_server::advanced_audit_policy_configuration) {
-    if($harden_windows_server::is_domain_controller) {
-      file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
-        ensure => file,
-        source => 'puppet:///modules/harden_windows_server/auditDC.csv',
-      }
-      file { 'C:\Windows\Security\Audit\audit.csv':
-        ensure => file,
-        source => 'puppet:///modules/harden_windows_server/auditDC.csv',
-      }
-    } else {
-      file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
-        ensure => file,
-        source => 'puppet:///modules/harden_windows_server/auditMS.csv',
-      }
-      file { 'C:\Windows\Security\Audit\audit.csv':
-        ensure => file,
-        source => 'puppet:///modules/harden_windows_server/auditMS.csv',
-      }
-    }
-  }
+  # if($harden_windows_server::advanced_audit_policy_configuration) {
+  #   if($harden_windows_server::is_domain_controller) {
+  #     file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
+  #       ensure => file,
+  #       source => 'puppet:///modules/harden_windows_server/auditDC.csv',
+  #     }
+  #     file { 'C:\Windows\Security\Audit\audit.csv':
+  #       ensure => file,
+  #       source => 'puppet:///modules/harden_windows_server/auditDC.csv',
+  #     }
+  #   } else {
+  #     file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
+  #       ensure => file,
+  #       source => 'puppet:///modules/harden_windows_server/auditMS.csv',
+  #     }
+  #     file { 'C:\Windows\Security\Audit\audit.csv':
+  #       ensure => file,
+  #       source => 'puppet:///modules/harden_windows_server/auditMS.csv',
+  #     }
+  #   }
+  # }
 
   # 18.2
   # Need to install LAPS somehow. Need more research
