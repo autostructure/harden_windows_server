@@ -1408,8 +1408,16 @@ class harden_windows_server::configure {
         ensure => file,
         source => 'puppet:///modules/harden_windows_server/auditDC.csv',
       }
+      file { 'C:\Windows\Security\Audit\audit.csv':
+        ensure => file,
+        source => 'puppet:///modules/harden_windows_server/auditDC.csv',
+      }
     } else {
       file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
+        ensure => file,
+        source => 'puppet:///modules/harden_windows_server/auditMS.csv',
+      }
+      file { 'C:\Windows\Security\Audit\audit.csv':
         ensure => file,
         source => 'puppet:///modules/harden_windows_server/auditMS.csv',
       }
