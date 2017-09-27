@@ -680,7 +680,7 @@ describe 'harden_windows_server' do
         'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\pku2u',
         'value' => 'AllowOnlineID',
         'type'  => 'dword',
-        'data'  => '0x00000001'
+        'data'  => '0x00000000'
       )
     }
     it {
@@ -2378,7 +2378,7 @@ describe 'harden_windows_server' do
         'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\pku2u',
         'value' => 'AllowOnlineID',
         'type'  => 'dword',
-        'data'  => '0x00000001'
+        'data'  => '0x00000000'
       )
     }
     it {
