@@ -83,7 +83,6 @@ class harden_windows_server::configure {
     }
   }
 
-  #2.2
   if($harden_windows_server::ensure_access_credential_manager_as_a_trusted_caller_is_set_to_no_one) {
     local_security_policy { 'Access Credential Manager as a trusted caller':
       ensure         => 'absent',
@@ -255,21 +254,20 @@ class harden_windows_server::configure {
     }
   }
 
-  #need to add local account
   if($harden_windows_server::configure_deny_access_to_this_computer_from_the_network) {
     if($harden_windows_server::is_domain_controller) {
       local_security_policy { 'Deny access to this computer from the network':
         ensure         => 'present',
         policy_setting => 'SeDenyNetworkLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-546',
+        policy_value   => '*S-1-5-32-546,*S-1-2-0',
       }
     } else {
       local_security_policy { 'Deny access to this computer from the network':
         ensure         => 'present',
         policy_setting => 'SeDenyNetworkLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-546',
+        policy_value   => '*S-1-5-32-546,*S-1-2-0,*S-1-5-32-544',
       }
     }
   }
@@ -301,13 +299,12 @@ class harden_windows_server::configure {
     }
   }
 
-  #need to add local account
   if($harden_windows_server::ensure_deny_log_on_through_remote_desktop_services_to_include_guests_local_account) {
     local_security_policy { 'Deny log on through Remote Desktop Services':
       ensure         => 'present',
       policy_setting => 'SeDenyRemoteInteractiveLogonRight',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-546',
+      policy_value   => '*S-1-5-32-546,*S-1-2-0',
     }
   }
 
@@ -344,7 +341,7 @@ class harden_windows_server::configure {
     }
   }
 
-  #S-1-5-17 is only used when the Web Server (IIS) role is activated
+  #S-1-5-17 is only used when the Web Server (IIS) role is activated for MS
   if($harden_windows_server::configure_impersonate_a_client_after_authentication) {
     if($harden_windows_server::is_domain_controller) {
       local_security_policy { 'Impersonate a client after authentication':
@@ -358,7 +355,7 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeImpersonatePrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6,*S-1-5-17',
+        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
       }
     }
   }
@@ -504,7 +501,7 @@ class harden_windows_server::configure {
     }
   }
 
-  #Not supported by local_security_policy
+  #Not supported by local_security_policy and no registry key
   #if($harden_windows_server::ensure_accounts_administrator_account_status_is_set_to_disabled) {
 
   #}
@@ -522,23 +519,21 @@ class harden_windows_server::configure {
     }
   }
 
-  #Must choose a different name for Administrator
   if($harden_windows_server::configure_accounts_rename_administrator_account) {
     local_security_policy { 'Accounts: Rename administrator account':
       ensure         => 'present',
       policy_setting => 'NewAdministratorName',
       policy_type    => 'System Access',
-      policy_value   => '"Administrator"',
+      policy_value   => '"adminaccount"',
     }
   }
 
-  #Must choose a different name for Guest
   if($harden_windows_server::configure_accounts_rename_guest_account) {
     local_security_policy { 'Accounts: Rename guest account':
       ensure         => 'present',
       policy_setting => 'NewGuestName',
       policy_type    => 'System Access',
-      policy_value   => '"Guest"',
+      policy_value   => '"guestaccount"',
     }
   }
 
@@ -579,18 +574,39 @@ class harden_windows_server::configure {
     }
   }
 
-  #Domain Controller not supported by local_security_policy
-  #if($harden_windows_server::ensure_domain_controller_allow_server_operators_to_schedule_tasks_is_set_to_disabled) {
 
-  #}
+  if($harden_windows_server::ensure_domain_controller_allow_server_operators_to_schedule_tasks_is_set_to_disabled) {
+    if($harden_windows_server::is_domain_controller) {
+      registry::value { 'SubmitControl':
+        key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa',
+        value => 'SubmitControl',
+        type  => 'dword',
+        data  => '0x00000000',
+      }
+    }
+  }
 
-  #if($harden_windows_server::ensure_domain_controller_ldap_server_signing_requirements_is_set_to_require_signing) {
+  if($harden_windows_server::ensure_domain_controller_ldap_server_signing_requirements_is_set_to_require_signing) {
+    if($harden_windows_server::is_domain_controller) {
+      registry::value { 'LDAPServerIntegrity':
+        key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Service\NTDS\Parameters',
+        value => 'LDAPServerIntegrity',
+        type  => 'dword',
+        data  => '0x00000002',
+      }
+    }
+  }
 
-  #}
-
-  #if($harden_windows_server::ensure_domain_controller_refuse_machine_account_password_changes_is_set_to_disabled) {
-
-  #}
+  if($harden_windows_server::ensure_domain_controller_refuse_machine_account_password_changes_is_set_to_disabled) {
+    if($harden_windows_server::is_domain_controller) {
+      registry::value { 'RefusePasswordChange':
+        key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Service\Netlogon\Parameters',
+        value => 'RefusePasswordChange',
+        type  => 'dword',
+        data  => '0x00000000',
+      }
+    }
+  }
 
   if($harden_windows_server::ensure_domain_member_digitally_encrypt_or_sign_secure_channel_data_always_is_set_to_enabled) {
     local_security_policy { 'Domain member: Digitally encrypt or sign secure channel data (always)':
@@ -664,25 +680,26 @@ class harden_windows_server::configure {
     }
   }
 
-  #Choose a better text
-  if($harden_windows_server::configure_interactive_logon_message_text_for_users_attempting_to_log_on) {
-    local_security_policy { 'Interactive logon: Message text for users attempting to log on':
-      ensure         => 'present',
-      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
-      policy_type    => 'Registry Values',
-      policy_value   => '7,Welcome!',
-    }
-  }
-
-  #Choose a better text
-  if($harden_windows_server::configure_interactive_logon_message_title_for_users_attempting_to_log_on) {
-    local_security_policy { 'Interactive logon: Message title for users attempting to log on':
-      ensure         => 'present',
-      policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
-      policy_type    => 'Registry Values',
-      policy_value   => '1,"Title Bar"',
-    }
-  }
+  # These texts should be organization specific, will not manage in first release
+  # #Choose a better text
+  # if($harden_windows_server::configure_interactive_logon_message_text_for_users_attempting_to_log_on) {
+  #   local_security_policy { 'Interactive logon: Message text for users attempting to log on':
+  #     ensure         => 'present',
+  #     policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
+  #     policy_type    => 'Registry Values',
+  #     policy_value   => '7,Welcome!',
+  #   }
+  # }
+  #
+  # #Choose a better text
+  # if($harden_windows_server::configure_interactive_logon_message_title_for_users_attempting_to_log_on) {
+  #   local_security_policy { 'Interactive logon: Message title for users attempting to log on':
+  #     ensure         => 'present',
+  #     policy_setting => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
+  #     policy_type    => 'Registry Values',
+  #     policy_value   => '1,"Title Bar"',
+  #   }
+  # }
 
   if($harden_windows_server::ensure_interactive_logon_number_of_previous_logons_to_cache_is_set_to_4_or_fewer_logons) {
     if(!$harden_windows_server::is_domain_controller) {
@@ -787,10 +804,16 @@ class harden_windows_server::configure {
     }
   }
 
-  #supposedly supported by local_security_policy but not showing up with puppet resource local_security_policy
-  #if($harden_windows_server::ensure_microsoft_network_server_spn_target_name_validation_level_is_set_to_accept_if_provided_by_client) {
-  #
-  #}
+  if($harden_windows_server::ensure_microsoft_network_server_spn_target_name_validation_level_is_set_to_accept_if_provided_by_client) {
+    if(!$harden_windows_server::is_domain_controller) {
+      registry::value { 'SmbServerNameHardeningLevel':
+        key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters',
+        value => 'SmbServerNameHardeningLevel',
+        type  => 'dword',
+        data  => '0x00000001',
+      }
+    }
+  }
 
   if($harden_windows_server::ensure_network_access_allow_anonymous_sid_name_tranlation_is_set_to_disabled) {
     local_security_policy { 'Network access: Allow anonymous SID/name translation':
@@ -883,7 +906,7 @@ class harden_windows_server::configure {
       policy_setting => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RestrictNullSessAccess',
       policy_type    => 'Registry Values',
       policy_value   => '4,1',
-    }
+    }t
   }
 
   #The data is invalid
@@ -911,22 +934,41 @@ class harden_windows_server::configure {
     }
   }
 
-  #Not supported by local_security_policy module
-  # if($harden_windows_server::ensure_network_security_allow_localsystem_null_session_fallback_is_set_to_disabled) {
-  #
-  # }
-  #
-  # if($harden_windows_server::ensure_network_security_allow_pku2u_authentication_requests_to_use_online_identities_is_set_to_disabled) {
-  #
-  # }
-  #
-  # if($harden_windows_server::ensure_network_security_configure_encryption_types_allow_for_kerberos) {
-  #
-  # }
-  #
-  # if($harden_windows_server::ensure_network_security_do_not_store_lan_manager_hash_value_on_next_password_change_is_set_to_enabled) {
-  #
-  # }
+  if($harden_windows_server::ensure_network_security_allow_localsystem_null_session_fallback_is_set_to_disabled) {
+    registry::value { 'allowwnullsessionfallback':
+      key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0',
+      value => 'allowwnullsessionfallback',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_security_allow_pku2u_authentication_requests_to_use_online_identities_is_set_to_disabled) {
+    registry::value { 'AllowOnlineID':
+      key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\pku2u',
+      value => 'AllowOnlineID',
+      type  => 'dword',
+      data  => '0x00000000',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_security_configure_encryption_types_allow_for_kerberos) {
+    registry::value { 'SupportedEncryptionTypes':
+      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters',
+      value => 'SupportedEncryptionTypes',
+      type  => 'dword',
+      data  => '0x7ffffffc',
+    }
+  }
+
+  if($harden_windows_server::ensure_network_security_do_not_store_lan_manager_hash_value_on_next_password_change_is_set_to_enabled) {
+    registry::value { 'NoLmHash':
+      key   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa',
+      value => 'NoLmHAsh',
+      type  => 'dword',
+      data  => '0x00000001',
+    }
+  }
 
   if($harden_windows_server::ensure_network_security_force_logoff_when_logon_hours_expire_is_set_to_enabled) {
     local_security_policy { 'Network security: Force logoff when logon hours expire':

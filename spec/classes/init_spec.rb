@@ -194,7 +194,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546'
+        'policy_value'   => '*S-1-5-32-546,*S-1-2-0,*S-1-5-32-544'
       )
     }
     it {
@@ -226,7 +226,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546'
+        'policy_value'   => '*S-1-5-32-546,*S-1-2-0'
       )
     }
     it {
@@ -255,7 +255,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeImpersonatePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6,*S-1-5-17'
+        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6'
       )
     }
     it {
@@ -374,7 +374,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'NewAdministratorName',
         'policy_type'    => 'System Access',
-        'policy_value'   => '"Administrator"'
+        'policy_value'   => '"adminaccount"'
       )
     }
     it {
@@ -382,7 +382,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'NewGuestName',
         'policy_type'    => 'System Access',
-        'policy_value'   => '"Guest"'
+        'policy_value'   => '"guestaccount"'
       )
     }
     it {
@@ -481,22 +481,22 @@ describe 'harden_windows_server' do
         'policy_value'   => '4,0'
       )
     }
-    it {
-      should contain_local_security_policy('Interactive logon: Message text for users attempting to log on').with(
-        'ensure'         => 'present',
-        'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
-        'policy_type'    => 'Registry Values',
-        'policy_value'   => '7,Welcome!'
-      )
-    }
-    it {
-      should contain_local_security_policy('Interactive logon: Message title for users attempting to log on').with(
-        'ensure'         => 'present',
-        'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
-        'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"Title Bar"'
-      )
-    }
+    # it {
+    #   should contain_local_security_policy('Interactive logon: Message text for users attempting to log on').with(
+    #     'ensure'         => 'present',
+    #     'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
+    #     'policy_type'    => 'Registry Values',
+    #     'policy_value'   => '7,Welcome!'
+    #   )
+    # }
+    # it {
+    #   should contain_local_security_policy('Interactive logon: Message title for users attempting to log on').with(
+    #     'ensure'         => 'present',
+    #     'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
+    #     'policy_type'    => 'Registry Values',
+    #     'policy_value'   => '1,"Title Bar"'
+    #   )
+    # }
     # L2
     # it {
     #   should contain_local_security_policy('Interactive logon: Number of previous logons to cache (in case domain controller is not available)').with(
@@ -579,6 +579,14 @@ describe 'harden_windows_server' do
       )
     }
     it {
+      should contain_registry__value('SmbServerNameHardeningLevel').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters',
+        'value' => 'SmbServerNameHardeningLevel',
+        'type'  => 'dword',
+        'data'  => '0x00000001'
+      )
+    }
+    it {
       should contain_local_security_policy('Network access: Allow anonymous SID/name translation').with(
         'ensure'         => 'present',
         'policy_setting' => 'LSAAnonymousNameLookup',
@@ -657,6 +665,38 @@ describe 'harden_windows_server' do
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
         'policy_type'    => 'Registry Values',
         'policy_value'   => '4,1'
+      )
+    }
+    it {
+      should contain_registry__value('allownullsessionfallback').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0',
+        'value' => 'allownullsessionfallback',
+        'type'  => 'dword',
+        'data'  => '0x00000000'
+      )
+    }
+    it {
+      should contain_registry__value('AllowOnlineID').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\pku2u',
+        'value' => 'AllowOnlineID',
+        'type'  => 'dword',
+        'data'  => '0x00000001'
+      )
+    }
+    it {
+      should contain_registry__value('SupportedEncryptionTypes').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters',
+        'value' => 'SupportedEncryptionTypes',
+        'type'  => 'dword',
+        'data'  => '0x7ffffffc'
+      )
+    }
+    it {
+      should contain_registry__value('NoLmHash').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa',
+        'value' => 'NoLmHash',
+        'type'  => 'dword',
+        'data'  => '0x00000001'
       )
     }
     it {
@@ -1822,7 +1862,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546'
+        'policy_value'   => '*S-1-5-32-546,*S-1-2-0'
       )
     }
     it {
@@ -1854,7 +1894,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546'
+        'policy_value'   => '*S-1-5-32-546,*S-1-2-0'
       )
     }
     it {
@@ -2014,7 +2054,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'NewAdministratorName',
         'policy_type'    => 'System Access',
-        'policy_value'   => '"Administrator"'
+        'policy_value'   => '"adminaccount"'
       )
     }
     it {
@@ -2022,7 +2062,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'NewGuestName',
         'policy_type'    => 'System Access',
-        'policy_value'   => '"Guest"'
+        'policy_value'   => '"guestaccount"'
       )
     }
     it {
@@ -2055,6 +2095,30 @@ describe 'harden_windows_server' do
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers\AddPrinterDrivers',
         'policy_type'    => 'Registry Values',
         'policy_value'   => '4,1'
+      )
+    }
+    it {
+      should contain_registry__value('SubmitControl').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa',
+        'value' => 'SubmitControl',
+        'type'  => 'dword',
+        'data'  => '0x00000000'
+      )
+    }
+    it {
+      should contain_registry__value('LDAPServerIntegrity').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Service\NTDS\Parameters',
+        'value' => 'LDAPServerIntegrity',
+        'type'  => 'dword',
+        'data'  => '0x00000002'
+      )
+    }
+    it {
+      should contain_registry__value('RefusePasswordChange').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Service\Netlogon\Parameters',
+        'value' => 'RefusePasswordChange',
+        'type'  => 'dword',
+        'data'  => '0x00000000'
       )
     }
     it {
@@ -2121,22 +2185,22 @@ describe 'harden_windows_server' do
         'policy_value'   => '4,0'
       )
     }
-    it {
-      should contain_local_security_policy('Interactive logon: Message text for users attempting to log on').with(
-        'ensure'         => 'present',
-        'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
-        'policy_type'    => 'Registry Values',
-        'policy_value'   => '7,Welcome!'
-      )
-    }
-    it {
-      should contain_local_security_policy('Interactive logon: Message title for users attempting to log on').with(
-        'ensure'         => 'present',
-        'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
-        'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"Title Bar"'
-      )
-    }
+    # it {
+    #   should contain_local_security_policy('Interactive logon: Message text for users attempting to log on').with(
+    #     'ensure'         => 'present',
+    #     'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText',
+    #     'policy_type'    => 'Registry Values',
+    #     'policy_value'   => '7,Welcome!'
+    #   )
+    # }
+    # it {
+    #   should contain_local_security_policy('Interactive logon: Message title for users attempting to log on').with(
+    #     'ensure'         => 'present',
+    #     'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeCaption',
+    #     'policy_type'    => 'Registry Values',
+    #     'policy_value'   => '1,"Title Bar"'
+    #   )
+    # }
     # L2 MS
     # it {
     #   should contain_local_security_policy('Interactive logon: Number of previous logons to cache (in case domain controller is not available)').with(
@@ -2299,6 +2363,38 @@ describe 'harden_windows_server' do
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
         'policy_type'    => 'Registry Values',
         'policy_value'   => '4,1'
+      )
+    }
+    it {
+      should contain_registry__value('allownullsessionfallback').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0',
+        'value' => 'allownullsessionfallback',
+        'type'  => 'dword',
+        'data'  => '0x00000000'
+      )
+    }
+    it {
+      should contain_registry__value('AllowOnlineID').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\pku2u',
+        'value' => 'AllowOnlineID',
+        'type'  => 'dword',
+        'data'  => '0x00000001'
+      )
+    }
+    it {
+      should contain_registry__value('SupportedEncryptionTypes').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters',
+        'value' => 'SupportedEncryptionTypes',
+        'type'  => 'dword',
+        'data'  => '0x7ffffffc'
+      )
+    }
+    it {
+      should contain_registry__value('NoLmHash').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa',
+        'value' => 'NoLmHash',
+        'type'  => 'dword',
+        'data'  => '0x00000001'
       )
     }
     it {
