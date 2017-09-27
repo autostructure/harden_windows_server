@@ -1873,12 +1873,18 @@ class harden_windows_server::configure {
   #
   # }
 
+  # if($harden_windows_server::ensure_enumerate_administrator_accounts_on_elevation_is_set_to_disabled) {
+  #   registry::value { 'EnumerateAdministrators':
+  #     key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI',
+  #     value => 'EnumerateAdministrators',
+  #     type  => 'dword',
+  #     data  => '0x00000000',
+  #   }
+  # }
+
   if($harden_windows_server::ensure_enumerate_administrator_accounts_on_elevation_is_set_to_disabled) {
-    registry::value { 'EnumerateAdministrators':
-      key   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI',
-      value => 'EnumerateAdministrators',
-      type  => 'dword',
-      data  => '0x00000000',
+    local_group_policy { 'Enumerate administrator accounts on elevation':
+      ensure => present,
     }
   }
 
