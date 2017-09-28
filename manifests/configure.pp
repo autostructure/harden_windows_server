@@ -1425,7 +1425,7 @@ class harden_windows_server::configure {
   # }
 
   # 18.2
-  # Need to install LAPS somehow. Need more research
+  # Need to install LAPS, might not manage these
   # if($harden_windows_server::ensure_laps_admpwd_gpo_extension_cse_is_installed) {
   #   if(!$harden_windows_server::is_domain_controller) {
   #
@@ -1881,12 +1881,6 @@ class harden_windows_server::configure {
       data  => '0x00000000',
     }
   }
-
-  # if($harden_windows_server::ensure_enumerate_administrator_accounts_on_elevation_is_set_to_disabled) {
-  #   local_group_policy { 'Enumerate administrator accounts on elevation':
-  #     ensure => present,
-  #   }
-  # }
 
   if($harden_windows_server::ensure_turn_off_desktop_gadgets_is_set_to_enabled) {
     registry::value { 'TurnOffSidebar':
