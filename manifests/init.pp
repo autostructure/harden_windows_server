@@ -296,5 +296,5 @@ class harden_windows_server (
   Boolean $ensure_prevent_codec_download_is_set_to_enabled = false, #LEVEL 2
   ) {
 
-  include harden_windows_server::configure
+  include ::harden_windows_server::configure
 }
