@@ -221,14 +221,100 @@ class { 'harden_windows_server':
 | 17.x.x | Advanced Audit Policy Configuration                                                                    |          |   |  X  |  Support coming soon                                                |
 | 18.2.x | LAPS                                                                                                   |          |   |  X  |  Support coming soon                                                |
 | 18.3.x | MSS (Legacy)                                                                                           |          |   |  X  |  Support coming soon                                                |
+| 18.4.11.2 | Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'| X        | X |     |                                                        |
+| 18.4.11.3 | Ensure 'Require domain users to elevate when setting a network's location' is set to 'Enabled'      | X        | X |     |                                                                     |
+| 18.4.14.1 | Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'|          |   |  X  |  Support coming soon|
+| 18.4.19.2.1 | Disable IPv6 (Ensure TCPIP6 Parameter 'DisabledComponents' is set to '0xff (255)')                |          |   |  X  |  Support coming soon                                                |
+| 18.6.1 | Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled' (MS ONLY)      |          |   |  X  |  Support coming soon                                                |
+| 18.6.2 | Ensure 'WDigest Authentication' is set to 'Disabled'                                                   |          |   |  X  |  Support coming soon                                                |
+| 18.8.3.1 | Ensure 'Include command line in process creation events' is set to 'Disabled'                        |          |   |  X  |  Support coming soon                                                |
+| 18.8.6.2 | Ensure 'Allow remote access to the Plug and Play interface' is set to 'Disabled'                     | X        | X |     |                                                                     |
+| 18.8.19.2 | Ensure 'configure registry policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE'| X        | X |     |                                             |
+| 18.8.19.3 | Ensure 'Configure registry policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'| X        | X |     |                                       |
+| 18.8.19.4 | Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled'                           |          |   | X   |  Support coming soon                                                |
+| 18.8.20.1.x | Internet Communication Settings                                                                   |          |   | X   |  Support coming soon                                                |
+| 18.8.25.1 | Ensure 'Always use classic logon' is set to 'Enabled' (MS ONLY)                                     | X        |   |     |                                                                     |
+| 18.8.31.1 | Ensure 'Configure Offer Remote Assistance' is set to 'Disabled'                                     | X        | X |     |                                                                     |
+| 18.8.31.2 | Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'                                 | X        | X |     |                                                                     |
+| 18.8.32.1 | Ensure 'Enable RPC Endpoint Mapper Client Authentication' is set to 'Enabled' (MS ONLY)             | X        |   |     |                                                                     |
+| 18.9.8.1 | Ensure 'Disallow Autoplay for non-volume devices' is set to 'Enabled'                                | X        | X |     |                                                                     |
+| 18.9.8.2 | Ensure 'set the default behavior for AutoRun' is set to 'Enabled: Do not execute any autorun commands'| X        | X |     |                                                                    |
+| 18.9.8.3 | Ensure 'Turn off Autoplay' is set to 'Enabled: All drives'                                           | X        | X |     |                                                                     |
+| 18.9.15.1 | Ensure 'Do not display the password reveal button' is set to 'Enabled'                              |          |   | X   | Support coming soon                                                 |
+| 18.9.15.2 | Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled'                         | X        | X |     |                                                                     |
+| 18.9.18.1 | Ensure 'Turn off desktop gadgets' is set to 'Enabled'                                               | X        | X |     |                                                                     |
+| 18.9.18.2 | Ensure 'Turn off user-installed desktop gadgets' is set to 'Enabled'                                | X        | X |     |                                                                     |
+| 18.9.24.x | EMET                                                                                                |          |   | X   | Support coming soon                                                 |
+| 18.9.26.1.1 | Ensure 'Application: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'| X        | X |     |                                                       |
+| 18.9.26.1.2 | Ensure 'Application: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'| X        | X |     |                                                                    |
+| 18.9.26.2.1 | Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'| X        | X |     |                                                          |
+| 18.9.26.2.2 | Ensure 'Security: Specify the maximum log file size (KB)' is set to 'Enabled: 196,608 or greater' | X        | X |     |                                                                     |
+| 18.9.26.3.1 | Ensure 'Setup: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'| X        | X |     |                                                             |
+| 18.9.26.3.2 | Ensure 'Setup: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'     | X        | X |     |                                                                     |
+| 18.9.26.4.1 | Ensure 'System: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'| X        | X |     |                                                            |
+| 18.9.26.4.2 | Ensure 'System: Specify the maximum log file size (KB)' is set to 'Enabled: 32,768 or greater'    | X        | X |     |                                                                     |
+| 18.9.30.2 | Ensure 'Turn off Data Execution Prevention for Explorer' is set to 'Disabled'                       | X        | X |     |                                                                     |
+| 18.9.30.3 | Ensure 'Turn off heap termination on corruption' is set to 'Disabled'                               | X        | X |     |                                                                     |
+| 18.9.30.4 | Ensure 'Turn off shell protocol protected mode' is set to 'Disabled'                                | X        | X |     |                                                                     |
+| 18.9.47.1 | Ensure 'Prevent the usage of OneDrive for file storage' is set to 'Enabled'                         |          |   | X   | Support coming soon                                                 |
+| 18.9.47.2 | Ensure 'Prevent the usage of OneDrive for file storage on Windows 8.1' is set to 'Enabled'          |          |   | X   | Support coming soon                                                 |
+| 18.9.52.2.2 | Ensure 'Do not allow passwords to be saved' is set to 'Enabled'                                   | X        | X |     |                                                                     |
+| 18.9.52.3.3.2 | Ensure 'Do not allow drive redirection' is set to 'Enabled'                                     | X        | X |     |                                                                     |
+| 18.9.52.3.9.1 | Ensure 'Always prompt for password upon connection' is set to 'Enabled'                         | X        | X |     |                                                                     |
+| 18.9.52.3.9.2 | Ensure 'Require secure RPC communication' is set to 'Enabled'                                   | X        | X |     |                                                                     |
+| 18.9.52.3.9.3 | Ensure 'Set client connection encryption level' is set to 'Enabled: High Level'                 | X        | X |     |                                                                     |
+| 18.9.52.3.11.1 | Ensure 'Do not delete temp folders upon exit' is set to 'Disabled'                             | X        | X |     |                                                                     |
+| 18.9.52.3.11.2 | Ensure 'Do not use temporary folders per session' is set to 'Disabled'                         | X        | X |     |                                                                     |
+| 18.9.53.1 | Ensure 'Prevent downloading of enclosures' is set to 'Enabled'                                      | X        | X |     |                                                                     |
+| 18.9.54.2 | Ensure 'Allow indexing of encrypted files' is set to 'Disabled'                                     |          |   | X   | Support coming soon                                                 |
+| 18.9.70.2.1 | Ensure 'Configure Default consent' is set to 'Enabled: Always ask before sending data'            | X        | X |     |                                                                     |
+| 18.9.74.1 | Ensure 'Allow user control over installs' is set to 'Disabled'                                      | X        | X |     |                                                                     |
+| 18.9.74.2 | Ensure 'Always install with elevated privileges' is set to 'Disabled'                               | X        | X |     |                                                                     |
+| 18.9.84.1 | Ensure 'Turn on PowerShell Script Block Logging' is set to 'Disabled'                               |          |   | X   | Support coming soon                                                 |
+| 18.9.84.2 | Ensure 'Turn on PowerShell Transcription' is set to 'Disabled'                                      |          |   | X   | Support coming soon                                                 |
+| 18.9.86.1.1 | Ensure 'Allow Basic authentication' is set to 'Disabled'                                          | X        | X |     |                                                                     |
+| 18.9.86.1.2 | Ensure 'Allow unencrypted traffic' is set to 'Disabled'                                           | X        | X |     |                                                                     |
+| 18.9.86.1.3 | Ensure 'Disallow Digest authentication' is set to 'Enabled'                                       | X        | X |     |                                                                     |
+| 18.9.86.2.1 | Ensure 'Allow Basic authentication' is set to 'Disabled'                                          | X        | X |     |                                                                     |
+| 18.9.86.2.3 | Ensure 'Allow unencrypted traffic' is set to 'Disabled'                                           | X        | X |     |                                                                     |
+| 18.9.86.2.4 | Ensure 'Disallow WinRM from storing RunAs credentials' is set to 'Enabled'                        |          |   | X   | Support coming soon                                                 |
+| 18.9.90.2 | Ensure 'Configure Automatic Updates' is set to 'Enabled'                                            | X        | X |     |                                                                     |
+| 18.9.90.3 | Ensure 'Configure Automatic Updates: Schedule install day' is set to '0 - Every day'                | X        | X |     |                                                                     |
+| 18.9.90.4 | Ensure 'Do not adjust default option to 'Install Updates and Shut Down' in Shut Down Windows dialog box' is set to 'Disabled'| X        | X |     |                                            |
+| 18.9.90.5 | Ensure 'Do not display 'Install Updates and Shut Down' option in Shut Down Windows dialog box' is set to 'Disabed'| X        | X |     |                                                       |
+| 18.9.90.6 | Ensure 'No auto-restart with logged on users for scheduled automatic updates installations' is set to 'Disabled'| X        | X |     |                                                         |
+| 18.9.90.7 | Ensure 'Reschedule Automatic Updates scheduled installations' is set to 'Enabled: 1 minute'         | X        | X |     |                                                                     |
+| 19.x.x.x.x | Administrative Templates (User)                                                                    |          |   | X   | Support coming soon                                                 |
+
 
 
 ### Level 2
 | |Control                                                                                                           | Enforced |   |     | Notes                                                            |
 |-|------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
 | |                                                                                                                  | MS       | DC| N/A |                                                                  |
-| 1.1.1 | Ensure 'Enforce password history' is set to '24 or more password(s)'                                       | X        | X |     | 24 passwords                                                     |
-| 1.1.2 | Ensure 'Maximum password age' is set to '60 or fewer days, but not 0'                                      | X        | X |     | 42 days                                                          |
+| 18.4.9.1 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'                                        | X        | X |     |                                                                  |
+| 18.4.9.2 | Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled'                                         | X        | X |     |                                                                  |
+| 18.4.10.2 | Ensure 'Turn off Microsoft Peer-to-Peer Networking Services' is set to 'Enabled'                       | X        | X |     |                                                                  |
+| 18.4.20.1 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'             | X        | X |     |                                                                  |
+| 18.4.20.2 | Ensure 'Prohibit access of the Windows Connect Now wizards' is set to 'Enabled'                        | X        | X |     |                                                                  |
+| 18.8.29.5.1 | Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'                   |          |   | X   | Support coming soon                                              |
+| 18.8.29.5.2 | Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled                    |          |   | X   | Support coming soon                                              |
+| 18.8.32.2 | Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled: Authenticated' (MS ONLY)             |          |   | X   | Support coming soon                                              |
+| 18.8.39.5.1 | Ensure 'Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider' is set to 'Disabled'|          |   | X   | Support coming soon                      |
+| 18.8.39.11.1 | Ensure 'Enable/Disable PerfTrack' is set to 'Disabled'                                              |          |   | X   | Support coming soon                                              |
+| 18.8.44.1.1 | Ensure 'Enable Windows NTP Client' is set to 'Enabled'                                               |          |   | X   | Support coming soon                                              |
+| 18.8.44.1.2 | Ensure 'Enable Windows NTP Server' is set to 'Disabled' (MS ONLY)                                    |          |   | X   | Support coming soon                                              |
+| 18.9.37.1 | Ensure 'Turn off location' is set to 'Enabled'                                                         | X        | X |     |                                                                  |
+| 18.9.52.3.2.1 | Ensure 'Restrict Remote Desktop Services users to a single Remote Desktop Services session' is set to 'Enabled'| X        | X |     |                                                      |
+| 18.9.52.3.3.1 | Ensure 'Do not allow COM port redirection' is set to 'Enabled'                                     | X        | X |     |                                                                  |
+| 18.9.52.3.3.3 | Ensure 'Do not allow LPT port redirection' is set to 'Enabled'                                     | X        | X |     |                                                                  |
+| 18.9.52.3.3.4 | Ensure 'Do not allow supported Plug and Play device redirection' is set to 'Enabled'               | X        | X |     |                                                                  |
+| 18.9.52.3.10.1 | Ensure 'Set time limit for active but idle Remote Desktop Services sessions' is set to 'Enabled: 15 minutes or less'| X        | X |     |                                                |
+| 18.9.52.3.10.2 | Ensure 'Set time limit for disconnected sessions' is set to 'Enabled: 1 minute'                   | X        | X |     |                                                                  |
+| 18.9.69.3.1 | Ensure 'Join Microsoft MAPS' is set to 'Disabled'                                                    |          |   | X   | Support coming soon                                              |
+| 18.9.74.3 | Ensure 'Prevent Internet Explorer security prompt for Windows Installer scripts' is set to 'Disabled'  | X        | X |     |                                                                  |
+| 18.9.86.2.2 | Ensure 'Allow remote server management through WinRM' is set to 'Disabled'                           |          |   | X   | Support coming soon                                              |
+| 18.9.87.1 | Ensure 'Allow Remote Shell Access' is set to 'Disabled'                                                | X        | X |     |                                                                  |
 
 
 ## Limitations
