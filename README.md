@@ -232,7 +232,6 @@ class { 'harden_windows_server':
 | 18.8.19.2 | Ensure 'configure registry policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE'| X        | X |     |                                             |
 | 18.8.19.3 | Ensure 'Configure registry policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'| X        | X |     |                                       |
 | 18.8.19.4 | Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled'                           |          |   | X   |  Support coming soon                                                |
-| 18.8.20.1.x | Internet Communication Settings                                                                   |          |   | X   |  Support coming soon                                                |
 | 18.8.25.1 | Ensure 'Always use classic logon' is set to 'Enabled' (MS ONLY)                                     | X        |   |     |                                                                     |
 | 18.8.31.1 | Ensure 'Configure Offer Remote Assistance' is set to 'Disabled'                                     | X        | X |     |                                                                     |
 | 18.8.31.2 | Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'                                 | X        | X |     |                                                                     |
@@ -297,6 +296,7 @@ class { 'harden_windows_server':
 | 18.4.10.2 | Ensure 'Turn off Microsoft Peer-to-Peer Networking Services' is set to 'Enabled'                       | X        | X |     |                                                                  |
 | 18.4.20.1 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'             | X        | X |     |                                                                  |
 | 18.4.20.2 | Ensure 'Prohibit access of the Windows Connect Now wizards' is set to 'Enabled'                        | X        | X |     |                                                                  |
+| 18.8.20.1.x | Internet Communication Settings                                                                   |          |   | X   |  Support coming soon                                                |
 | 18.8.29.5.1 | Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'                   |          |   | X   | Support coming soon                                              |
 | 18.8.29.5.2 | Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled                    |          |   | X   | Support coming soon                                              |
 | 18.8.32.2 | Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled: Authenticated' (MS ONLY)             |          |   | X   | Support coming soon                                              |
