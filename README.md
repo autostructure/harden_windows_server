@@ -94,7 +94,7 @@ class { 'harden_windows_server':
 | 2.2.12 | Ensure 'Create a token object' is set to 'No One'                                                         | X        | X |     |                                                                  |
 | 2.2.13 | Ensure 'Create global objects' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'        | X        | X |     |                                                                  |
 | 2.2.14 | Ensure 'Create permanent shared objects' is set to 'No One'                                               | X        | X |     |                                                                  |
-| 2.2.15 | Configure 'Create symbolic links'                                                                         | X        | X |     |                                                                  |
+| 2.2.15 | Configure 'Create symbolic links'                                                                         | X        | X |     | Manually configure this if the hyper-v role is activated         |
 | 2.2.16 | Ensure 'Debug programs' is set to 'Administrators'                                                        | X        | X |     |                                                                  |
 | 2.2.17 | Configure 'Deny access to this computer from the network'                                                 | X        | X |     |                                                                  |
 | 2.2.18 | Ensure 'Deny log on as a batch job' to include 'Guests'                                                   | X        | X |     |                                                                  |
@@ -104,12 +104,12 @@ class { 'harden_windows_server':
 | 2.2.22 | Configure 'Enable computer and user accounts to be trusted for delegation'                                | X        | X |     |                                                                  |
 | 2.2.23 | Ensure 'Force shutdown from a remote system' is set to 'Administrators'                                   | X        | X |     |                                                                  |
 | 2.2.24 | Ensure 'Generate security audits' is set to 'LOCAL SERVICE, NETWORK SERVICE'                              | X        | X |     |                                                                  |
-| 2.2.25 | Configure 'Impersonate a client after authentication'                                                     | X        | X |     |                                                                  |
+| 2.2.25 | Configure 'Impersonate a client after authentication'                                                     | X        | X |     | Manually configure this if the web server role is activated      |
 | 2.2.26 | Ensure 'Increase scheduling priority' is set to 'Administrators'                                          | X        | X |     |                                                                  |
 | 2.2.27 | Ensure 'Load and unload device drivers' is set to 'Administrators'                                        | X        | X |     |                                                                  |
 | 2.2.28 | Ensure 'Lock pages in memory' is set to 'No One'                                                          | X        | X |     |                                                                  |
 | 2.2.29 | Ensure 'Log on as a batch job' is set to 'Administrators' (DC ONLY)                                       |          | X |     |                                                                  |
-| 2.2.30 | Configure 'Manage auditing and security log'                                                              | X        | X |     |                                                                  |
+| 2.2.30 | Configure 'Manage auditing and security log'                                                              | X        | X |     | Manually configure this if using exchange                        |
 | 2.2.31 | Ensure 'Modify an object label' is set to 'No One'                                                        | X        | X |     |                                                                  |
 | 2.2.32 | Ensure 'Modify firmware environment values' is set to 'Administrators'                                    | X        | X |     |                                                                  |
 | 2.2.33 | Ensure 'Perform volume maintenance tasks' is set to 'Administrators'                                      | X        | X |     |                                                                  |
@@ -120,11 +120,11 @@ class { 'harden_windows_server':
 | 2.2.38 | Ensure 'Shut down the system' is set to 'Administrators'                                                  | X        | X |     |                                                                  |
 | 2.2.39 | Ensure 'Synchronize directory service data' is set to 'No One' (DC ONLY)                                  |          | X |     |                                                                  |
 | 2.2.40 | Ensure 'Take ownership of files or other objects' is set to 'Administrators'                              | X        | X |     |                                                                  |
-| 2.3.1.1 | Ensure 'Accounts: Administrator account status' is set to 'Disabled'                                     | X        | X |     |                                                                  |
-| 2.3.1.2 | Ensure 'Accounts: Guest account status' is set to 'Disabled'                                             | X        | X |     |                                                                  |
+| 2.3.1.1 | Ensure 'Accounts: Administrator account status' is set to 'Disabled'                                     |          |   | X   | Must configure manually                                          |
+| 2.3.1.2 | Ensure 'Accounts: Guest account status' is set to 'Disabled'                                             |          |   | X   | Must configure manually                                          |
 | 2.3.1.3 | Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'  | X        | X |     |                                                                  |
-| 2.3.1.4 | Configure 'Accounts: Rename administrator account'                                                       | X        | X |     |                                                                  |
-| 2.3.1.5 | Configure 'Accounts: Rename guest account' .                                                             | X        | X |     |                                                                  |
+| 2.3.1.4 | Configure 'Accounts: Rename administrator account'                                                       | X        | X |     | adminaccount                                                     |
+| 2.3.1.5 | Configure 'Accounts: Rename guest account'                                                               | X        | X |     | guestaccount                                                     |
 | 2.3.2.1 | Ensure 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled'| X        | X |     |                            |
 | 2.3.2.2 | Ensure 'Audit: Shut down system immediately if unable to log security audits' is set to 'Disabled'       | X        | X |     |                                                                  |
 | 2.3.4.1 | Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators                  | X        | X |     |                                                                  |
@@ -140,8 +140,8 @@ class { 'harden_windows_server':
 | 2.3.6.6 | Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled'           | X        | X |     |                                                                  |
 | 2.3.7.1 | Ensure 'Interactive logon: Do not display last user name' is set to 'Enabled'                            | X        | X |     |                                                                  |
 | 2.3.7.2 | Ensure 'Interactive logon: Do not require CTRL+ALT_DEL' is set to 'Disabled'                             | X        | X |     |                                                                  |
-| 2.3.7.3 | Configure 'Interactive logon: Message text for users attempting to log on'                               |          |   |  X  |                                                                  |
-| 2.3.7.4 | Configure 'Interactive logon: Message title for users attempting to log on'                              |          |   |  X  |                                                                  |
+| 2.3.7.3 | Configure 'Interactive logon: Message text for users attempting to log on'                               |          |   |  X  | Organizations should use their own text                          |
+| 2.3.7.4 | Configure 'Interactive logon: Message title for users attempting to log on'                              |          |   |  X  | Organizations should use their own text                          |
 | 2.3.7.5 | Ensure 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logons' (MS ONLY)| X        |   |     |                        |
 | 2.3.7.6 | Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days'| X        | X |     |                                                             |
 | 2.3.7.7 | Ensure 'Interactive logon: Require Domain Controller Authentication to unlock workstation' is set to 'Enabled' (MS ONLY)| X        |   |     |                                                   |
@@ -159,11 +159,11 @@ class { 'harden_windows_server':
 | 2.3.10.3 | Ensure 'Network access: Do not allow anonymous enumeration of SAM accounts and shared' is set to 'Enabled' (MS ONLY)| X        |   |     |                                                      |
 | 2.3.10.4 | Ensure 'Network access: Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled'| X        | X |     |                                                 |
 | 2.3.10.5 | Ensure 'Network access: Let Everyone permissions apply to anonymous users' is set to 'Disabled'         | X        | X |     |                                                                  |
-| 2.3.10.6 | Configure 'Network access: Named Pipes that can be accessed anonymously'                                | X        | X |     |                                                                  |
+| 2.3.10.6 | Configure 'Network access: Named Pipes that can be accessed anonymously'                                |          |   | X   | Support coming soon                                              |
 | 2.3.10.7 | Configure 'Network access: Remotely accessible registry paths'                                          | X        | X |     |                                                                  |
-| 2.3.10.8 | Configure 'Network access: Remotely accessible registry paths and sub-paths'                            | X        | X |     |                                                                  |
+| 2.3.10.8 | Configure 'Network access: Remotely accessible registry paths and sub-paths'                            | X        | X |     | Manually configure this if using the Active Directory Certificate Services, Certification Authority, or WINS Server roles|
 | 2.3.10.9 | Ensure 'Network access: Restrict anonymous access to Named Pipes and Shares' is set to 'Enabled'        | X        | X |     |                                                                  |
-| 2.3.10.10 | Ensure 'Network access: Shares that can be accessed anonymously' is set to 'None'                      | X        | X |     |                                                                  |
+| 2.3.10.10 | Ensure 'Network access: Shares that can be accessed anonymously' is set to 'None'                      |          |   | X   | Support coming soon                                              |
 | 2.3.10.11 | Ensure 'Network access: Sharing and security model for local accounts' is set to 'Classic - local users authenticate as themselves'| X        | X |     |                                      |
 | 2.3.11.1 | Ensure 'Network security: Allow Local System to use computer identity for NTLM' is set to 'Enabled'     | X        | X |     |                                                                  |
 | 2.3.11.2 | Ensure 'Network security: Allow LocalSystem NULL session fallback' is set to 'Disabled'                 | X        | X |     |                                                                  |
@@ -207,7 +207,7 @@ class { 'harden_windows_server':
 | 9.2.7 | Ensure 'Windows Firewall: Private: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log'| X        | X |     |                                                          |
 | 9.2.8 | Ensure 'Windows Firewall: Private: Logging: Size limit (KB)' is set to '16,384 KB or greater'           | X        | X |     |                                                                     |
 | 9.2.9 | Ensure 'Windows Firewall: Private: Logging: Log dropped packets' is set to 'Yes'                        | X        | X |     |                                                                     |
-| 9.2.10 | Ensure 'Windows Firewall: Private: Logging: Log successful connections' is set to 'Yes'                | X        | X |     | | 2.3.17.7 | Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'| X        | X |     ||
+| 9.2.10 | Ensure 'Windows Firewall: Private: Logging: Log successful connections' is set to 'Yes'                | X        | X |     |                                                                     |
 | 9.3.1 | Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'                          | X        | X |     |                                                                     |
 | 9.3.2 | Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'                      | X        | X |     |                                                                     |
 | 9.3.3 | Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'                     | X        | X |     |                                                                     |
@@ -219,8 +219,8 @@ class { 'harden_windows_server':
 | 9.3.9 | Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'                         | X        | X |     |                                                                     |
 | 9.3.10 | Ensure 'Windows Firewall: Public: Logging: Log successful connections' is set to 'Yes'                 | X        | X |     |                                                                     |
 | 17.x.x | Advanced Audit Policy Configuration                                                                    |          |   |  X  |  Support coming soon                                                |
-| 18.2.x | LAPS                                                                                                   |          |   |  X  |  Support coming soon                                                |
-| 18.3.x | MSS (Legacy)                                                                                           |          |   |  X  |  Support coming soon                                                |
+| 18.2.x | LAPS                                                                                                   |          |   |  X  |  This section only applies if your organization is using LAPS       |
+| 18.3.x | MSS (Legacy)                                                                                           |          |   |  X  |  This section only applies if your organization is using MSS (Legacy)|
 | 18.4.11.2 | Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'| X        | X |     |                                                        |
 | 18.4.11.3 | Ensure 'Require domain users to elevate when setting a network's location' is set to 'Enabled'      | X        | X |     |                                                                     |
 | 18.4.14.1 | Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'|          |   |  X  |  Support coming soon|
@@ -232,7 +232,6 @@ class { 'harden_windows_server':
 | 18.8.19.2 | Ensure 'configure registry policy processing: Do not apply during periodic background processing' is set to 'Enabled: FALSE'| X        | X |     |                                             |
 | 18.8.19.3 | Ensure 'Configure registry policy processing: Process even if the Group Policy objects have not changed' is set to 'Enabled: TRUE'| X        | X |     |                                       |
 | 18.8.19.4 | Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled'                           |          |   | X   |  Support coming soon                                                |
-| 18.8.20.1.x | Internet Communication Settings                                                                   |          |   | X   |  Support coming soon                                                |
 | 18.8.25.1 | Ensure 'Always use classic logon' is set to 'Enabled' (MS ONLY)                                     | X        |   |     |                                                                     |
 | 18.8.31.1 | Ensure 'Configure Offer Remote Assistance' is set to 'Disabled'                                     | X        | X |     |                                                                     |
 | 18.8.31.2 | Ensure 'Configure Solicited Remote Assistance' is set to 'Disabled'                                 | X        | X |     |                                                                     |
@@ -297,6 +296,7 @@ class { 'harden_windows_server':
 | 18.4.10.2 | Ensure 'Turn off Microsoft Peer-to-Peer Networking Services' is set to 'Enabled'                       | X        | X |     |                                                                  |
 | 18.4.20.1 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'             | X        | X |     |                                                                  |
 | 18.4.20.2 | Ensure 'Prohibit access of the Windows Connect Now wizards' is set to 'Enabled'                        | X        | X |     |                                                                  |
+| 18.8.20.1.x | Internet Communication Settings                                                                   |          |   | X   |  Support coming soon                                                |
 | 18.8.29.5.1 | Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'                   |          |   | X   | Support coming soon                                              |
 | 18.8.29.5.2 | Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled                    |          |   | X   | Support coming soon                                              |
 | 18.8.32.2 | Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled: Authenticated' (MS ONLY)             |          |   | X   | Support coming soon                                              |
