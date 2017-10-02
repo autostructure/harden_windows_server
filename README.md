@@ -140,8 +140,8 @@ class { 'harden_windows_server':
 | 2.3.6.6 | Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled'           | X        | X |     |                                                                  |
 | 2.3.7.1 | Ensure 'Interactive logon: Do not display last user name' is set to 'Enabled'                            | X        | X |     |                                                                  |
 | 2.3.7.2 | Ensure 'Interactive logon: Do not require CTRL+ALT_DEL' is set to 'Disabled'                             | X        | X |     |                                                                  |
-| 2.3.7.3 | Configure 'Interactive logon: Message text for users attempting to log on'                               |          |   |  X  |                                                                  |
-| 2.3.7.4 | Configure 'Interactive logon: Message title for users attempting to log on'                              |          |   |  X  |                                                                  |
+| 2.3.7.3 | Configure 'Interactive logon: Message text for users attempting to log on'                               |          |   |  X  | Organizations should use their own text                          |
+| 2.3.7.4 | Configure 'Interactive logon: Message title for users attempting to log on'                              |          |   |  X  | Organizations should use their own text                          |
 | 2.3.7.5 | Ensure 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logons' (MS ONLY)| X        |   |     |                        |
 | 2.3.7.6 | Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days'| X        | X |     |                                                             |
 | 2.3.7.7 | Ensure 'Interactive logon: Require Domain Controller Authentication to unlock workstation' is set to 'Enabled' (MS ONLY)| X        |   |     |                                                   |
@@ -207,7 +207,7 @@ class { 'harden_windows_server':
 | 9.2.7 | Ensure 'Windows Firewall: Private: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log'| X        | X |     |                                                          |
 | 9.2.8 | Ensure 'Windows Firewall: Private: Logging: Size limit (KB)' is set to '16,384 KB or greater'           | X        | X |     |                                                                     |
 | 9.2.9 | Ensure 'Windows Firewall: Private: Logging: Log dropped packets' is set to 'Yes'                        | X        | X |     |                                                                     |
-| 9.2.10 | Ensure 'Windows Firewall: Private: Logging: Log successful connections' is set to 'Yes'                | X        | X |     | | 2.3.17.7 | Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'| X        | X |     ||
+| 9.2.10 | Ensure 'Windows Firewall: Private: Logging: Log successful connections' is set to 'Yes'                | X        | X |     |                                                                     |
 | 9.3.1 | Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'                          | X        | X |     |                                                                     |
 | 9.3.2 | Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'                      | X        | X |     |                                                                     |
 | 9.3.3 | Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'                     | X        | X |     |                                                                     |
@@ -219,8 +219,8 @@ class { 'harden_windows_server':
 | 9.3.9 | Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'                         | X        | X |     |                                                                     |
 | 9.3.10 | Ensure 'Windows Firewall: Public: Logging: Log successful connections' is set to 'Yes'                 | X        | X |     |                                                                     |
 | 17.x.x | Advanced Audit Policy Configuration                                                                    |          |   |  X  |  Support coming soon                                                |
-| 18.2.x | LAPS                                                                                                   |          |   |  X  |  Support coming soon                                                |
-| 18.3.x | MSS (Legacy)                                                                                           |          |   |  X  |  Support coming soon                                                |
+| 18.2.x | LAPS                                                                                                   |          |   |  X  |  This section only applies if your organization is using LAPS       |
+| 18.3.x | MSS (Legacy)                                                                                           |          |   |  X  |  This section only applies if your organization is using MSS (Legacy)|
 | 18.4.11.2 | Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'| X        | X |     |                                                        |
 | 18.4.11.3 | Ensure 'Require domain users to elevate when setting a network's location' is set to 'Enabled'      | X        | X |     |                                                                     |
 | 18.4.14.1 | Ensure 'Hardened UNC Paths' is set to 'Enabled, with "Require Mutual Authentication" and "Require Integrity" set for all NETLOGON and SYSVOL shares'|          |   |  X  |  Support coming soon|
