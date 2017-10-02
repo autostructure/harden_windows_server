@@ -67,11 +67,10 @@ class { 'harden_windows_server':
 
 ----------
 
-
+### Level 1
 | |Control                                                                                                           | Enforced |   |     | Notes                                                            |
 |-|------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
 | |                                                                                                                  | MS       | DC| N/A |                                                                  |
-| | Level 1                                                                                                          |          |   |     |                                                                  |
 | 1.1.1 | Ensure 'Enforce password history' is set to '24 or more password(s)'                                       | X        | X |     | 24 passwords                                                     |
 | 1.1.2 | Ensure 'Maximum password age' is set to '60 or fewer days, but not 0'                                      | X        | X |     | 42 days                                                          |
 | 1.1.3 | Ensure 'Minimum password age' is set to '1 or more day(s)'                                                 | X        | X |     | 1 day                                                            |
@@ -178,47 +177,59 @@ class { 'harden_windows_server':
 | 2.3.11.10 | Ensure 'Network security: Minimum session security for NTLM SSP based (including secure RPC) servers' is set to 'Require NTLMv2 session security, Require 128-bit encryption'| X        | X |     ||
 | 2.3.13.1 | Ensure 'Shutdown: Allow system to be shut down without having to log on' is set to 'Disabled'           | X        | X |     |                                                                  |
 | 2.3.15.1 | Ensure 'System objects: Require case insensitivity for non-Windows subsystems' is set to 'Enabled'      | X        | X |     |                                                                  |
-| 2.3.15.2 | Ensure 'System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)' is set to 'Enabled'| X        | X |     |                                                                  |
+| 2.3.15.2 | Ensure 'System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)' is set to 'Enabled'| X        | X |     |                                              |
 | 2.3.16.1 | Ensure 'System settings: Optional subsystems' is set to 'Defined: (blank)' .                            | X        | X |     |                                                                  |
-| 2.3.17.1 | Ensure 'User Account Control: Admin Apprival Mode for the Built-in Administrator account' is set to 'Enabled'| X        | X |     |                                                                  |
-| 2.3.17.2 | Ensure 'User Account Control: Allow UIAccess applications to prompt for elevation without using the secure desktop' is set to 'Disabled'| X        | X |     |                                                                  |
-| 2.3.17.3 | Ensure 'User Account Control: Behavrior of the elevation prompt for administrators in Admin Approval Mode' is set to 'Prompt for consent on the secure desktop'| X        | X |     |                                                                  |
-| 2.3.17.4 | Ensure 'User Accounc Control: Behavior of the elevation prompt for standard users' is set to 'Automatically deny elevation requests'| X        | X |     |                                                                  |
-| 2.3.17.5 | Ensure 'User Account Control: Detect application installations and prompt for elevation' is set to 'Enabled'| X        | X |     |                                                                  |
-| 2.3.17.6 | Ensure 'User Account Control: Only elevate UIAccess applications that are installed in secure locations' is set to 'Enabled'| X        | X |     |                                                                  |
+| 2.3.17.1 | Ensure 'User Account Control: Admin Apprival Mode for the Built-in Administrator account' is set to 'Enabled'| X        | X |     |                                                             |
+| 2.3.17.2 | Ensure 'User Account Control: Allow UIAccess applications to prompt for elevation without using the secure desktop' is set to 'Disabled'| X        | X |     |                                  |
+| 2.3.17.3 | Ensure 'User Account Control: Behavrior of the elevation prompt for administrators in Admin Approval Mode' is set to 'Prompt for consent on the secure desktop'| X        | X |     |           |
+| 2.3.17.4 | Ensure 'User Accounc Control: Behavior of the elevation prompt for standard users' is set to 'Automatically deny elevation requests'| X        | X |     |                                      |
+| 2.3.17.5 | Ensure 'User Account Control: Detect application installations and prompt for elevation' is set to 'Enabled'| X        | X |     |                                                              |
+| 2.3.17.6 | Ensure 'User Account Control: Only elevate UIAccess applications that are installed in secure locations' is set to 'Enabled'| X        | X |     |                                              |
 | 2.3.17.7 | Ensure 'User Account Control: Run all administrators in Admin Approval Mode' is set to 'Enabled'        | X        | X |     |                                                                  |
-| 2.3.17.8 | Ensure 'User Account Control: Switch to the secure desktop when prompting for elevation' is set to 'Enabled'| X        | X |     |                                                                  |
-| 2.3.17.9 | Ensure 'User Account Control: Virtualize file and registry write failures to per-user locations' is set to 'Enabled'| X        | X |     |                                                                  |
-| 9.1.1 | Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'                          | X        | X |     |                                                                  |
-| 9.1.2 | Ensure 'Windows Firewall: Domain: Inbound connections' is set to 'Block (default)'                      | X        | X |     |                                                                  |
-| 9.1.3 | Ensure 'Windows Firewall: Domain: Outbound connections' is set to 'Allow (default)'                     | X        | X |     |                                                                  |
-| 9.1.4 | Ensure 'Windows Firewall: Domain: Settings: Display a notification' is set to 'No'                      | X        | X |     |                                                                  |
-| 9.1.5 | Ensure 'Windows Firewall: Domain: Settings: Apply local firewall rules' is set to 'Yes (default)'       | X        | X |     |                                                                  |
-| 9.1.6 | Ensure 'Windows Firewall: Domain: Settings: Apply local connection security rules' is set to 'Yes (default)'| X        | X |     |                                                                  |
-| 9.1.7 | Ensure 'Windows Firewall: Domain: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\domainfw.log'| X        | X |     |                                                                  |
-| 9.1.8 | Ensure 'Windows Firewall: Domain: Logging: Size limit (KB)' is set to '16,384 KB or greater'            | X        | X |     |                                                                  |
-| 9.1.9 | Ensure 'Windows Firewall: Domain: Logging: Log dropped packets' is set to 'Yes'                         | X        | X |     |                                                                  |
-| 9.1.10 | Ensure 'Windows Firewall: Domain: Logging: Log successful connections' is set to 'Yes'                 | X        | X |     |                                                                  |
-| 9.2.1 | Ensure 'Windows Firewall: Private: Firewall state' is set to 'On (recommended)'                         | X        | X |     |                                                                  |
-| 9.2.2 | Ensure 'Windows Firewall: Private: Inbound connections' is set to 'Block (default)'                     | X        | X |     |                                                                  |
-| 9.2.3 | Ensure 'Windows Firewall: Private: Outbound connections' is set to 'Allow (default)'                    | X        | X |     |                                                                  |
-| 9.2.4 | Ensure 'Windows Firewall: Private: Settings: Display a notification' is set to 'No'                     | X        | X |     |                                                                  |
-| 9.2.5 | Ensure 'Windows Firewall: Private: Settings: Apply local firewall rules' is set to 'Yes (default)'      | X        | X |     |                                                                  |
-| 9.2.6 | Ensure 'Windows Firewall: Private: Settings: Apply local connection security rules' is set to 'Yes (default)'| X        | X |     |                                                                  |
-| 9.2.7 | Ensure 'Windows Firewall: Private: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log'| X        | X |     |                                                                  |
-| 9.2.8 | Ensure 'Windows Firewall: Private: Logging: Size limit (KB)' is set to '16,384 KB or greater'           | X        | X |     |                                                                  |
-| 9.2.9 | Ensure 'Windows Firewall: Private: Logging: Log dropped packets' is set to 'Yes'                        | X        | X |     |                                                                  |
-| 9.2.10 | Ensure 'Windows Firewall: Private: Logging: Log successful connections' is set to 'Yes'                | X        | X |     | | 2.3.17.7 | Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'                          | X        | X |     |                                                                  |
-| 9.3.1 | Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'                          | X        | X |     |                                                                  |
-| 9.3.2 | Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'                      | X        | X |     |                                                                  |
-| 9.3.3 | Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'                     | X        | X |     |                                                                  |
-| 9.3.4 | Ensure 'Windows Firewall: Public: Settings: Display a notification' is set to 'Yes'                     | X        | X |     |                                                                  |
-| 9.3.5 | Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'No'                  | X        | X |     |                                                                  |
-| 9.3.6 | Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'No'       | X        | X |     |                                                                  |
-| 9.3.7 | Ensure 'Windows Firewall: Public: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\publicfw.log'| X        | X |     |                                                                  |
-| 9.3.8 | Ensure 'Windows Firewall: Public: Logging: Size limit (KB)' is set to '16,384 KB or greater'            | X        | X |     |                                                                  |
-| 9.3.9 | Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'                         | X        | X |     |                                                                  |
-| 9.3.10 | Ensure 'Windows Firewall: Public: Logging: Log successful connections' is set to 'Yes'                 | X        | X |     | 
+| 2.3.17.8 | Ensure 'User Account Control: Switch to the secure desktop when prompting for elevation' is set to 'Enabled'| X        | X |     |                                                              |
+| 2.3.17.9 | Ensure 'User Account Control: Virtualize file and registry write failures to per-user locations' is set to 'Enabled'| X        | X |     |                                                      |
+| 9.1.1 | Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'                          | X        | X |     |                                                                     |
+| 9.1.2 | Ensure 'Windows Firewall: Domain: Inbound connections' is set to 'Block (default)'                      | X        | X |     |                                                                     |
+| 9.1.3 | Ensure 'Windows Firewall: Domain: Outbound connections' is set to 'Allow (default)'                     | X        | X |     |                                                                     |
+| 9.1.4 | Ensure 'Windows Firewall: Domain: Settings: Display a notification' is set to 'No'                      | X        | X |     |                                                                     |
+| 9.1.5 | Ensure 'Windows Firewall: Domain: Settings: Apply local firewall rules' is set to 'Yes (default)'       | X        | X |     |                                                                     |
+| 9.1.6 | Ensure 'Windows Firewall: Domain: Settings: Apply local connection security rules' is set to 'Yes (default)'| X        | X |     |                                                                 |
+| 9.1.7 | Ensure 'Windows Firewall: Domain: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\domainfw.log'| X        | X |     |                                                            |
+| 9.1.8 | Ensure 'Windows Firewall: Domain: Logging: Size limit (KB)' is set to '16,384 KB or greater'            | X        | X |     |                                                                     |
+| 9.1.9 | Ensure 'Windows Firewall: Domain: Logging: Log dropped packets' is set to 'Yes'                         | X        | X |     |                                                                     |
+| 9.1.10 | Ensure 'Windows Firewall: Domain: Logging: Log successful connections' is set to 'Yes'                 | X        | X |     |                                                                     |
+| 9.2.1 | Ensure 'Windows Firewall: Private: Firewall state' is set to 'On (recommended)'                         | X        | X |     |                                                                     |
+| 9.2.2 | Ensure 'Windows Firewall: Private: Inbound connections' is set to 'Block (default)'                     | X        | X |     |                                                                     |
+| 9.2.3 | Ensure 'Windows Firewall: Private: Outbound connections' is set to 'Allow (default)'                    | X        | X |     |                                                                     |
+| 9.2.4 | Ensure 'Windows Firewall: Private: Settings: Display a notification' is set to 'No'                     | X        | X |     |                                                                     |
+| 9.2.5 | Ensure 'Windows Firewall: Private: Settings: Apply local firewall rules' is set to 'Yes (default)'      | X        | X |     |                                                                     |
+| 9.2.6 | Ensure 'Windows Firewall: Private: Settings: Apply local connection security rules' is set to 'Yes (default)'| X        | X |     |                                                                |
+| 9.2.7 | Ensure 'Windows Firewall: Private: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\privatefw.log'| X        | X |     |                                                          |
+| 9.2.8 | Ensure 'Windows Firewall: Private: Logging: Size limit (KB)' is set to '16,384 KB or greater'           | X        | X |     |                                                                     |
+| 9.2.9 | Ensure 'Windows Firewall: Private: Logging: Log dropped packets' is set to 'Yes'                        | X        | X |     |                                                                     |
+| 9.2.10 | Ensure 'Windows Firewall: Private: Logging: Log successful connections' is set to 'Yes'                | X        | X |     | | 2.3.17.7 | Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)'| X        | X |     ||
+| 9.3.1 | Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)'                          | X        | X |     |                                                                     |
+| 9.3.2 | Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'                      | X        | X |     |                                                                     |
+| 9.3.3 | Ensure 'Windows Firewall: Public: Outbound connections' is set to 'Allow (default)'                     | X        | X |     |                                                                     |
+| 9.3.4 | Ensure 'Windows Firewall: Public: Settings: Display a notification' is set to 'Yes'                     | X        | X |     |                                                                     |
+| 9.3.5 | Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'No'                  | X        | X |     |                                                                     |
+| 9.3.6 | Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'No'       | X        | X |     |                                                                     |
+| 9.3.7 | Ensure 'Windows Firewall: Public: Logging: Name' is set to '%SYSTEMROOT%\System32\logfiles\firewall\publicfw.log'| X        | X |     |                                                            |
+| 9.3.8 | Ensure 'Windows Firewall: Public: Logging: Size limit (KB)' is set to '16,384 KB or greater'            | X        | X |     |                                                                     |
+| 9.3.9 | Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'                         | X        | X |     |                                                                     |
+| 9.3.10 | Ensure 'Windows Firewall: Public: Logging: Log successful connections' is set to 'Yes'                 | X        | X |     |                                                                     |
+| 17.x.x | Advanced Audit Policy Configuration                                                                    |          |   |  X  |  Support coming soon                                                |
+| 18.2.x | LAPS                                                                                                   |          |   |  X  |  Support coming soon                                                |
+| 18.3.x | MSS (Legacy)                                                                                           |          |   |  X  |  Support coming soon                                                |
+
+
+### Level 2
+| |Control                                                                                                           | Enforced |   |     | Notes                                                            |
+|-|------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
+| |                                                                                                                  | MS       | DC| N/A |                                                                  |
+| 1.1.1 | Ensure 'Enforce password history' is set to '24 or more password(s)'                                       | X        | X |     | 24 passwords                                                     |
+| 1.1.2 | Ensure 'Maximum password age' is set to '60 or fewer days, but not 0'                                      | X        | X |     | 42 days                                                          |
+
 
 ## Limitations
 
