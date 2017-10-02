@@ -108,7 +108,6 @@ class { 'harden_windows_server':
 | 2.2.26 | Ensure 'Increase scheduling priority' is set to 'Administrators'                                          | X        | X |     |                                                                  |
 | 2.2.27 | Ensure 'Load and unload device drivers' is set to 'Administrators'                                        | X        | X |     |                                                                  |
 | 2.2.28 | Ensure 'Lock pages in memory' is set to 'No One'                                                          | X        | X |     |                                                                  |
-| 2.2.29 | Ensure 'Log on as a batch job' is set to 'Administrators' (DC ONLY)                                       |          | X |     |                                                                  |
 | 2.2.30 | Configure 'Manage auditing and security log'                                                              | X        | X |     | Manually configure this if using exchange                        |
 | 2.2.31 | Ensure 'Modify an object label' is set to 'No One'                                                        | X        | X |     |                                                                  |
 | 2.2.32 | Ensure 'Modify firmware environment values' is set to 'Administrators'                                    | X        | X |     |                                                                  |
@@ -291,12 +290,13 @@ class { 'harden_windows_server':
 | |Control                                                                                                           | Enforced |   |     | Notes                                                            |
 |-|------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
 | |                                                                                                                  | MS       | DC| N/A |                                                                  |
+| 2.2.29 | Ensure 'Log on as a batch job' is set to 'Administrators' (DC ONLY)                                       |          | X |     |                                                                  |
 | 18.4.9.1 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'                                        | X        | X |     |                                                                  |
 | 18.4.9.2 | Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled'                                         | X        | X |     |                                                                  |
 | 18.4.10.2 | Ensure 'Turn off Microsoft Peer-to-Peer Networking Services' is set to 'Enabled'                       | X        | X |     |                                                                  |
 | 18.4.20.1 | Ensure 'Configuration of wireless settings using Windows Connect Now' is set to 'Disabled'             | X        | X |     |                                                                  |
 | 18.4.20.2 | Ensure 'Prohibit access of the Windows Connect Now wizards' is set to 'Enabled'                        | X        | X |     |                                                                  |
-| 18.8.20.1.x | Internet Communication Settings                                                                   |          |   | X   |  Support coming soon                                                |
+| 18.8.20.1.x | Internet Communication Settings                                                                      |          |   | X   | Support coming soon                                              |
 | 18.8.29.5.1 | Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'                   |          |   | X   | Support coming soon                                              |
 | 18.8.29.5.2 | Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled                    |          |   | X   | Support coming soon                                              |
 | 18.8.32.2 | Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled: Authenticated' (MS ONLY)             |          |   | X   | Support coming soon                                              |
