@@ -65,6 +65,93 @@ class { 'harden_windows_server':
 
 ## Reference
 
+----------
+
+
+| Control                                                                                                           | Enforced |   |     | Notes                                                            |
+|-------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
+|                                                                                                                   | Y        | N | N/A |                                                                  |
+| Level 1                                                                                                           |          |   |     |                                                                  |
+| 1 Remove Extraneous Resources                                                                                     |          |   |     |                                                                  |
+| 1.1  Remove extraneous files and directories (Scored)                                                             | X        |   |     |                                                                  |
+| 2 Limit Server Platform Information Leaks                                                                         |          |   |     |                                                                  |
+| 2.5  Disable client facing Stack Traces (Scored)                                                                  | X        |   |     |                                                                  |
+| 2.6  Turn off TRACE (Scored)                                                                                      | X        |   |     |                                                                  |
+| 3 Protect the Shutdown Port                                                                                       |          |   |     |                                                                  |
+| 3.1  Set a nondeterministic Shutdown command value (Scored)                                                       |          | X |     |                                                                  |
+| 4 Protect Tomcat Configurations                                                                                   |          |   |     |                                                                  |
+| 4.1  Restrict access to $CATALINA_HOME (Scored)                                                                   | X        |   |     |                                                                  |
+| 4.2  Restrict access to $CATALINA_BASE (Scored)                                                                   | X        |   |     |                                                                  |
+| 4.3  Restrict access to Tomcat configuration directory (Scored)                                                   | X        |   |     |                                                                  |
+| 4.4  Restrict access to Tomcat logs directory (Scored)                                                            | X        |   |     |                                                                  |
+| 4.5  Restrict access to Tomcat temp directory (Scored)                                                            | X        |   |     |                                                                  |
+| 4.6  Restrict access to Tomcat binaries directory (Scored)                                                        | X        |   |     |                                                                  |
+| 4.7  Restrict access to Tomcat web application directory (Scored)                                                 | X        |   |     |                                                                  |
+| 4.8  Restrict access to Tomcat catalina.policy (Scored)                                                           | X        |   |     |                                                                  |
+| 4.9  Restrict access to Tomcat catalina.properties (Scored)                                                       | X        |   |     |                                                                  |
+| 4.10  Restrict access to Tomcat context.xml (Scored)                                                              | X        |   |     |                                                                  |
+| 4.11  Restrict access to Tomcat logging.properties (Scored)                                                       | X        |   |     |                                                                  |
+| 4.12  Restrict access to Tomcat server.xml (Scored)                                                               | X        |   |     |                                                                  |
+| 4.13  Restrict access to Tomcat tomcat-users.xml (Scored)                                                         | X        |   |     |                                                                  |
+| 4.14  Restrict access to Tomcat web.xml (Scored)                                                                  | X        |   |     |                                                                  |
+| 6 Connector Security                                                                                              |          |   |     |                                                                  |
+| 6.2  Ensure SSLEnabled is set to True for Sensitive Connectors (Not Scored)                                       |          |   | X   | Developer must determine if a connector is sensitive.            |
+| 6.3  Ensure scheme is set accurately (Scored)                                                                     |          |   | X   | Developer must determine if connector is http or https           |
+| 6.4  Ensure secure is set to true only for SSL-enabled Connectors                                                 |          |   |     |                                                                  |
+| 6.5 Ensure SSL Protocol is set to TLS for Secure Connectors (Scored)                                              |          |   | X   | Developer must determine if a connector is secure.               |
+| 7. Establish and Protect Logging Facilities                                                                       |          |   |     |                                                                  |
+| 7.2 Specify file handler in logging.properties files (Scored)                                                     | X        |   |     |                                                                  |
+| 7.4 Ensure directory in context.xml is a secure location (Scored)                                                 | X        |   |     |                                                                  |
+| 7.5 Ensure pattern in context.xml is correct (Scored)                                                             | X        |   |     |                                                                  |
+| 7.6 Ensure directory in logging.properties is a secure location (Scored)                                          | X        |   |     |                                                                  |
+| 8. Configure Catalina Policy                                                                                      |          |   |     |                                                                  |
+| 8.1 Restrict runtime access to sensitive packages (Scored)                                                        |          | X |     |                                                                  |
+| 9. Application Deployment                                                                                         |          |   |     |                                                                  |
+| 9.1 Starting Tomcat with Security Manager (Scored)                                                                |          | X |     |                                                                  |
+| 10 Miscellaneous Configuration Settings                                                                           |          |   |     |                                                                  |
+| 10.1 Ensure Web content directory is on a separate partition from the Tomcat system files (Not Scored)            |          | X |     |                                                                  |
+| 10.4 Force SSL when accessing the manager application (Scored)                                                    |          |   | X   | Web manager application Is removed.                              |
+| 10.6 Enable strict servlet Compliance (Scored)                                                                    | X        |   |     |                                                                  |
+| 10.7 Turn off session facade recycling (Scored)                                                                   | X        |   |     |                                                                  |
+| 10.14 Do not allow symbolic linking (Scored)                                                                      | X        |   |     |                                                                  |
+| 10.15 Do not run applications as privileged (Scored)                                                              | X        |   |     |                                                                  |
+| 10.16 Do not allow cross context requests (Scored)                                                                | X        |   |     |                                                                  |
+| 10.18 Enable memory leak listener (Scored)                                                                        | X        |   |     |                                                                  |
+| 10.19 Setting Security Liftcycle Listener (Scored)                                                                | X        |   |     |                                                                  |
+| 10.20 use the logEffectiveWebXml and metadata-complete settings for deploying applications in production (Scored) |          | X |     |                                                                  |
+| Level 2                                                                                                           |          |   |     |                                                                  |
+| 1 Remove Extraneous Resources                                                                                     |          |   |     |                                                                  |
+| 1.2  Disable Unused Connectors (Not Scored)                                                                       |          |   |     |                                                                  |
+| 2 Limit Server Platform Information Leaks                                                                         |          |   |     |                                                                  |
+| 2.1  Alter the Advertised server.info String (Scored)                                                             |          |   |     |                                                                  |
+| 2.2  Alter the Advertised server.number String (Scored)                                                           |          |   |     |                                                                  |
+| 2.3  Alter the Advertised server.built Date (Scored)                                                              |          |   |     |                                                                  |
+| 2.4  Disable X-Powered-By HTTP Header and Rename the Server Value for all Connectors (Scored)                     |          |   |     |                                                                  |
+| 3.2  Disable the Shutdown port (Not Scored)                                                                       |          |   |     |                                                                  |
+| 5 Configure Realms                                                                                                |          |   |     |                                                                  |
+| 5.1  Use secure Realms (Scored)                                                                                   |          |   |     |                                                                  |
+| 5.2  Use LockOut Realms (Scored)                                                                                  |          |   |     |                                                                  |
+| 6 Connector Security                                                                                              |          |   |     |                                                                  |
+| 6.1  Setup Client-cert Authentication (Scored)                                                                    |          |   |     |                                                                  |
+| 7. Establish and Protect Logging Facilities                                                                       |          |   |     |                                                                  |
+| 7.1 Application specific logging (Scored)                                                                         | X        |   |     |                                                                  |
+| 7.3 Ensure className is set correctly in context.xml (Scored)                                                     | X        |   |     |                                                                  |
+| 7.7 Configure log file size limit (Scored)                                                                        |          | X |     |                                                                  |
+| 9. Application Deployment                                                                                         |          |   |     |                                                                  |
+| 9.2 Disabling auto deployment of applications (Scored)                                                            |          | X |     |                                                                  |
+| 9.3 Disable deploy on startup of applications (Scored)                                                            |          | X |     |                                                                  |
+| 10 Miscellaneous Configuration Settings                                                                           |          |   |     |                                                                  |
+| 10.2 Restrict access to the web administration (Not Scored)                                                       |          | X |     |                                                                  |
+| 10.3 Restrict manager application (Not Scored)                                                                    |          |   | X   | Web manager application Is removed.                              |
+| 10.5 Rename the manager application (Scored)                                                                      |          |   | X   | Web manager application Is removed.                              |
+| 10.8 Do not allow additional path delimiters (Scored)                                                             |          | X |     |                                                                  |
+| 10.9 Do not allow custom header status messages (Scored)                                                          |          | X |     |                                                                  |
+| 10.10 Configure connectionTimeout (Scored)                                                                        |          | X |     |                                                                  |
+| 10.11 Configure maxHttpHeaderSize (Scored)                                                                        |          | X |     |                                                                  |
+| 10.12 Force SSL for all applications (Scored)                                                                     |          | X |     | This requires SSL to be configured; which may not be applicable. |
+| 10.17 Do not resolve hosts on logging valves (Scored)                                                             |          | X |     |                                                                  |
+
+
 ## Limitations
 
 ## Development
