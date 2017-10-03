@@ -5,6 +5,11 @@ describe 'harden_windows_server' do
     #it { is_expected.to compile }
     let(:params) { { 'is_domain_controller' => false } }
     it {
+      should contain_class('Harden_windows_server::Configure') {
+
+      }
+    }
+    it {
       should contain_local_security_policy('Enforce password history').with(
         'ensure' => 'present',
         'policy_setting' => 'PasswordHistorySize',
@@ -528,6 +533,14 @@ describe 'harden_windows_server' do
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
         'policy_type'    => 'Registry Values',
         'policy_value'   => '1,"1"'
+      )
+    }
+    it {
+      should contain_local_security_policy('Microsoft network client: Digitally sign communications (always)').with(
+        'ensure'         => 'present',
+        'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\RequireSecuritySignature',
+        'policy_type'    => 'Registry Values',
+        'policy_value'   => '4,1'
       )
     }
     it {
@@ -1427,6 +1440,14 @@ describe 'harden_windows_server' do
     #     'data'  => '0x00000001'
     #   )
     # }
+    it {
+      should contain_registry__value('DisablePasswordSaving').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+        'value' => 'DisablePasswordSaving',
+        'type'  => 'dword',
+        'data'  => '0x00000001'
+      )
+    }
     # it {
     #   should contain_registry__value('fSingleSessionPerUser').with(
     #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
@@ -1675,6 +1696,11 @@ describe 'harden_windows_server' do
     let(:facts) { {'operatingsystem' => 'windows' } }
     #it { is_expected.to compile }
     let(:params) { { 'is_domain_controller' => true } }
+    it {
+      should contain_class('Harden_windows_server::Configure') {
+
+      }
+    }
     it {
       should contain_local_security_policy('Enforce password history').with(
         'ensure' => 'present',
@@ -2239,6 +2265,14 @@ describe 'harden_windows_server' do
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
         'policy_type'    => 'Registry Values',
         'policy_value'   => '1,"1"'
+      )
+    }
+    it {
+      should contain_local_security_policy('Microsoft network client: Digitally sign communications (always)').with(
+        'ensure'         => 'present',
+        'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\RequireSecuritySignature',
+        'policy_type'    => 'Registry Values',
+        'policy_value'   => '4,1'
       )
     }
     it {
@@ -3133,6 +3167,14 @@ describe 'harden_windows_server' do
     #     'data'  => '0x00000001'
     #   )
     # }
+    it {
+      should contain_registry__value('DisablePasswordSaving').with(
+        'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
+        'value' => 'DisablePasswordSaving',
+        'type'  => 'dword',
+        'data'  => '0x00000001'
+      )
+    }
     # it {
     #   should contain_registry__value('fSingleSessionPerUser').with(
     #     'key'   => 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services',
