@@ -320,9 +320,9 @@ class { 'harden_windows_server':
 | 18.9.87.1 | Ensure 'Allow Remote Shell Access' is set to 'Disabled'                                                | X        | X |     |                                                                  |
 
 
-| x | y | z |
-|---|---|---|
-| hi | hi | hi |
+| 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|
+| hi | hi | hi | hi | hi | hi |
 
 ### Variable List
 These variables should be used to override default values. They correspond with the controls above.
