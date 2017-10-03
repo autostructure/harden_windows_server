@@ -65,15 +65,10 @@ class { 'harden_windows_server':
 
 ## Reference
 
-----------
-
 ### Level 1
-
-----------
-
-| Number | Control                                                                                                          | Enforced |   |     | Notes                                                            |
-|---|------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
-| |                                                                                                                  | MS       | DC| N/A |                                                                  |
+|   | Control                                                                                                        | Enforced |   |     | Notes                                                            |
+|---|----------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
+|   |                                                                                                                | MS       | DC| N/A |                                                                  |
 | 1.1.1 | Ensure 'Enforce password history' is set to '24 or more password(s)'                                       | X        | X |     | 24 passwords                                                     |
 | 1.1.2 | Ensure 'Maximum password age' is set to '60 or fewer days, but not 0'                                      | X        | X |     | 42 days                                                          |
 | 1.1.3 | Ensure 'Minimum password age' is set to '1 or more day(s)'                                                 | X        | X |     | 1 day                                                            |
@@ -291,7 +286,7 @@ class { 'harden_windows_server':
 
 ### Level 2
 | |Control                                                                                                           | Enforced |   |     | Notes                                                            |
-|-|------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
+|---|----------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
 | |                                                                                                                  | MS       | DC| N/A |                                                                  |
 | 2.2.29 | Ensure 'Log on as a batch job' is set to 'Administrators' (DC ONLY)                                       |          | X |     |                                                                  |
 | 18.4.9.1 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled'                                        | X        | X |     |                                                                  |
@@ -319,10 +314,6 @@ class { 'harden_windows_server':
 | 18.9.86.2.2 | Ensure 'Allow remote server management through WinRM' is set to 'Disabled'                           |          |   | X   | Support coming soon                                              |
 | 18.9.87.1 | Ensure 'Allow Remote Shell Access' is set to 'Disabled'                                                | X        | X |     |                                                                  |
 
-
-| 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|
-| hi | hi | hi | hi | hi | hi |
 
 ### Variable List
 These variables should be used to override default values. They correspond with the controls above.
