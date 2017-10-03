@@ -1159,7 +1159,7 @@ describe 'harden_windows_server' do
     #   )
     # }
     it {
-      should contain_auditpol('Lockout').with(
+      should contain_auditpol('Account Lockout').with(
         'success' => 'enable',
         'failure' => 'disable'
       )
@@ -3016,7 +3016,7 @@ describe 'harden_windows_server' do
       )
     }
     it {
-      should contain_auditpol('Lockout').with(
+      should contain_auditpol('Account Lockout').with(
         'success' => 'enable',
         'failure' => 'disable'
       )

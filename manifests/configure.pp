@@ -1447,7 +1447,7 @@ class harden_windows_server::configure {
         failure => 'enable',
       }
     }
-    auditpol { 'Lockout':
+    auditpol { 'Account Lockout':
       success => 'enable',
       failure => 'disable',
     }
