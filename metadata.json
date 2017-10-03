@@ -25,8 +25,8 @@
       "version_requirement": ">=0.6.1 < 1.0.0"
     },
     {
-      "name": "cannonps-local_group_policy",
-      "version_requirement": ">=1.0.1 < 2.0.0"
+      "name": "jonono-auditpol",
+      "version_requirement": ">=0.1.2 < 1.0.0"
     },
     {
       "name": "puppetlabs-registry",

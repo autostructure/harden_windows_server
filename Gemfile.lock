@@ -37,7 +37,7 @@ GEM
       stringify-hash (~> 0.0.0)
     beaker-puppet_install_helper (0.7.1)
       beaker (>= 2.0)
-    beaker-rspec (6.2.0)
+    beaker-rspec (6.2.1)
       beaker (~> 3.0)
       rspec (~> 3.0)
       serverspec (~> 2)

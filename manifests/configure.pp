@@ -1402,27 +1402,104 @@ class harden_windows_server::configure {
     }
   }
 
-  # if($harden_windows_server::advanced_audit_policy_configuration) {
-  #   if($harden_windows_server::is_domain_controller) {
-  #     file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
-  #       ensure => file,
-  #       source => 'puppet:///modules/harden_windows_server/auditDC.csv',
-  #     }
-  #     file { 'C:\Windows\Security\Audit\audit.csv':
-  #       ensure => file,
-  #       source => 'puppet:///modules/harden_windows_server/auditDC.csv',
-  #     }
-  #   } else {
-  #     file { 'C:\Windows\System32\GroupPolicy\Machine\Microsoft\Windows NT\Audit\audit.csv':
-  #       ensure => file,
-  #       source => 'puppet:///modules/harden_windows_server/auditMS.csv',
-  #     }
-  #     file { 'C:\Windows\Security\Audit\audit.csv':
-  #       ensure => file,
-  #       source => 'puppet:///modules/harden_windows_server/auditMS.csv',
-  #     }
-  #   }
-  # }
+  if($harden_windows_server::advanced_audit_policy_configuration) {
+    auditpol { 'Credential Validation':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Application Group Management':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Computer Account Management':
+      success => 'enable',
+      failure => 'enable',
+    }
+    if($harden_windows_server::is_domain_controller) {
+      auditpol { 'Distribution Group Management':
+        success => 'enable',
+        failure => 'enable',
+      }
+    }
+    auditpol { 'Other Account Management Events':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Security Group Management':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'User Account Management':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Process Creation':
+      success => 'enable',
+      failure => 'disable',
+    }
+    if($harden_windows_server::is_domain_controller) {
+      auditpol { 'Directory Service Changes':
+        success => 'enable',
+        failure => 'enable',
+      }
+      auditpol { 'Directory Service Access':
+        success => 'enable',
+        failure => 'enable',
+      }
+    }
+    auditpol { 'Lockout':
+      success => 'enable',
+      failure => 'disable',
+    }
+    auditpol { 'Logoff':
+      success => 'enable',
+      failure => 'disable',
+    }
+    auditpol { 'Logon':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Other Logon/Logoff Events':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Special Logon':
+      success => 'enable',
+      failure => 'disable',
+    }
+    auditpol { 'Audit Policy Change':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Authentication Policy Change':
+      success => 'enable',
+      failure => 'disable',
+    }
+    auditpol { 'Sensitive Privilege Use':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'IPsec Driver':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Other System Events':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'Security State Change':
+      success => 'enable',
+      failure => 'disable',
+    }
+    auditpol { 'Security System Extension':
+      success => 'enable',
+      failure => 'enable',
+    }
+    auditpol { 'System Integrity':
+      success => 'enable',
+      failure => 'enable',
+    }
+  }
 
   # 18.2
   # Need to install LAPS, might not manage these
