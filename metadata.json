@@ -3,7 +3,7 @@
   "version": "0.1.7",
   "author": "Autostructure",
   "summary": "Hardens Windows Server 2008 R2",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/autostructure/harden_windows_server",
   "project_page": "https://github.com/autostructure/harden_windows_server",
   "issues_url": "https://github.com/autostructure/harden_windows_server",
@@ -21,19 +21,19 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">1.0.0"
+      "version_requirement": ">1.0.0 < 2.0.0"
     },
     {
       "name": "ayohrling-local_security_policy",
-      "version_requirement": "0.6.1"
+      "version_requirement": ">=0.6.1 < 1.0.0"
     },
     {
       "name": "cannonps-local_group_policy",
-      "version_requirement": "1.0.1"
+      "version_requirement": ">=1.0.1 < 2.0.0"
     },
     {
       "name": "puppetlabs-registry",
-      "version_requirement": "1.1.4"
+      "version_requirement": ">=1.1.4 < 2.0.0"
     }
   ],
   "description": "Harden Windows Server"
