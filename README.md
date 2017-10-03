@@ -68,7 +68,7 @@ class { 'harden_windows_server':
 ----------
 
 ### Level 1
-| |Control                                                                                                           | Enforced |   |     | Notes                                                            |
+| | Control                                                                                                          | Enforced |   |     | Notes                                                            |
 |-|------------------------------------------------------------------------------------------------------------------|----------|---|-----|------------------------------------------------------------------|
 | |                                                                                                                  | MS       | DC| N/A |                                                                  |
 | 1.1.1 | Ensure 'Enforce password history' is set to '24 or more password(s)'                                       | X        | X |     | 24 passwords                                                     |
