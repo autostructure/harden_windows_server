@@ -38,5 +38,5 @@ group :system_tests do
   gem 'beaker-puppet_install_helper'
   gem 'beaker-rspec'
 
-  gem 'fog-aws'
+  #gem 'fog-aws'
 end
