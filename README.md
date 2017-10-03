@@ -215,7 +215,7 @@ class { 'harden_windows_server':
 | 9.3.8 | Ensure 'Windows Firewall: Public: Logging: Size limit (KB)' is set to '16,384 KB or greater'            | X        | X |     |                                                                     |
 | 9.3.9 | Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'                         | X        | X |     |                                                                     |
 | 9.3.10 | Ensure 'Windows Firewall: Public: Logging: Log successful connections' is set to 'Yes'                 | X        | X |     |                                                                     |
-| 17.x.x | Advanced Audit Policy Configuration                                                                    |          |   |  X  |  Support coming soon                                                |
+| 17.x.x | Advanced Audit Policy Configuration                                                                    | X        | X |     |                                                                     |
 | 18.2.x | LAPS                                                                                                   |          |   |  X  |  This section only applies if your organization is using LAPS       |
 | 18.3.x | MSS (Legacy)                                                                                           |          |   |  X  |  This section only applies if your organization is using MSS (Legacy)|
 | 18.4.11.2 | Ensure 'Prohibit installation and configuration of Network Bridge on your DNS domain network' is set to 'Enabled'| X        | X |     |                                                        |
