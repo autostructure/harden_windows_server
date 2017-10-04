@@ -1,4 +1,4 @@
-# Configuration Settings
+# Configuration Settings for Windows Server
 class harden_windows_server::configure {
   class { '::local_security_policy': }
 
