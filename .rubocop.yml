@@ -4,7 +4,10 @@
 AllCops:
   Exclude:
     - 'spec/fixtures/**/*'
-    - 'pkg/*'
+    - 'bundle/**/*'
+    - 'vendor/**/*'
+    - 'pkg/**/*'
+    - 'spec/**/*'
 
 Style/Alias:
   Enabled: false
