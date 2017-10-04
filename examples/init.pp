@@ -1,1 +1,1 @@
-include harden_windows_server
+include ::harden_windows_server

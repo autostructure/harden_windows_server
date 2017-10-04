@@ -32,16 +32,17 @@ Rake::Task[:lint].clear
 
 PuppetLint.configuration.relative = true
 PuppetLint.configuration.disable_80chars
+PuppetLint.configuration.disable_140chars
 PuppetLint.configuration.disable_class_inherits_from_params_class
 PuppetLint.configuration.disable_class_parameter_defaults
 PuppetLint.configuration.fail_on_warnings = true
 PuppetLint.configuration.ignore_paths = ['spec/**/*.pp', 'pkg/**/*.pp']
 
 exclude_paths = [
-  "bundle/**/*",
-  "pkg/**/*",
-  "vendor/**/*",
-  "spec/**/*"
+  'bundle/**/*',
+  'pkg/**/*',
+  'vendor/**/*',
+  'spec/**/*'
 ]
 
 PuppetLint::RakeTask.new :lint do |config|
@@ -50,12 +51,12 @@ end
 
 PuppetSyntax.exclude_paths = exclude_paths
 
-desc "Populate CONTRIBUTORS file"
+desc 'Populate CONTRIBUTORS file'
 task :contributors do
   system("git log --format='%aN' | sort -u > CONTRIBUTORS")
 end
 
-desc "Run syntax, lint, and spec tests."
+desc 'Run syntax, lint, and spec tests.'
 task test: %i[
   syntax
   metadata_lint
