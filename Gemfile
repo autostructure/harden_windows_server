@@ -8,7 +8,7 @@ group :test do
   gem 'rake'
   gem 'rest-client'
   gem 'rspec'
-  gem 'rspec-puppet' # , git:     'https://github.com/rodjek/rspec-puppet.git'
+  gem 'rspec-puppet' # , git: 'https://github.com/rodjek/rspec-puppet.git'
   gem 'rspec-puppet-facts'
   gem 'rubocop'
   gem 'rubocop-rspec'
