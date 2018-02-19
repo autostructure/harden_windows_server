@@ -1,0 +1,17 @@
+# from https://github.com/puppetlabs/puppetlabs-dsc/blob/master/.travis.yml
+---
+sudo: false
+language: ruby
+cache: bundler
+script: "bundle exec rake release_checks"
+matrix:
+  fast_finish: true
+  include:
+  - rvm: 2.4.1
+    bundler_args: --without system_tests
+    env: PUPPET_GEM_VERSION="~> 5.0"
+  - rvm: 2.1.9
+    bundler_args: --without system_tests
+    env: PUPPET_GEM_VERSION="~> 4.0"
+notifications:
+email: false
