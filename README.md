@@ -1,3 +1,5 @@
+[![Build Status - Master](https://travis-ci.org/juju4/harden_windows_server.svg?branch=master)](https://travis-ci.org/juju4/harden_windows_server)
+[![Build Status - Devel](https://travis-ci.org/juju4/harden_windows_server.svg?branch=devel)](https://travis-ci.org/juju4/harden_windows_server/branches)
 # harden_windows_server
 
 ## Module Description
