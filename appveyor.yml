@@ -34,7 +34,9 @@ build: off
 test_script:
 - bundle exec puppet -V
 - ruby -v
-- bundle exec rspec spec/acceptance -fd -b
+- gem -v
+- bundle -v
+- bundle exec rake spec
 notifications:
 - provider: Email
   to:
