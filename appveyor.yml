@@ -12,15 +12,15 @@ init:
 environment:
   matrix:
   - PUPPET_GEM_VERSION: ~> 4.0
-    RUBY_VER: 21
+    RUBY_VER: 22
   - PUPPET_GEM_VERSION: ~> 4.0
-    RUBY_VER: 21-x64
+    RUBY_VER: 22-x64
   - PUPPET_GEM_VERSION: ~> 5.0
     RUBY_VER: 24
   - PUPPET_GEM_VERSION: ~> 5.0
     RUBY_VER: 24-x64
   - PUPPET_GEM_VERSION: 4.7.1
-    RUBY_VER: 21-x64
+    RUBY_VER: 22-x64
 matrix:
   fast_finish: true
 install:
