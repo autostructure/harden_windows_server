@@ -11,16 +11,10 @@ init:
 - 'mkdir C:\ProgramData\PuppetLabs\puppet\var && exit 0'
 environment:
   matrix:
-  - PUPPET_GEM_VERSION: ~> 4.0
-    RUBY_VER: 22
-  - PUPPET_GEM_VERSION: ~> 4.0
-    RUBY_VER: 22-x64
   - PUPPET_GEM_VERSION: ~> 5.0
     RUBY_VER: 24
   - PUPPET_GEM_VERSION: ~> 5.0
     RUBY_VER: 24-x64
-  - PUPPET_GEM_VERSION: 4.7.1
-    RUBY_VER: 22-x64
 matrix:
   fast_finish: true
 install:
@@ -37,6 +31,12 @@ test_script:
 - gem -v
 - bundle -v
 - bundle exec rake spec
+- $msiPath = "$($env:USERPROFILE)\puppet-agent-5.4.0-x86.msi.msi"
+- (New-Object Net.WebClient).DownloadFile('https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.4.0-x86.msi', $msiPath)
+- cmd /c start /wait msiexec /i $msiPath /q
+- puppet config print config
+- puppet config print modulepath
+- puppet apply -e "include ::harden_windows_server"
 notifications:
 - provider: Email
   to:
