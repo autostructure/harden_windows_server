@@ -11,11 +11,17 @@ init:
 - 'mkdir C:\ProgramData\PuppetLabs\puppet\var && exit 0'
 environment:
   matrix:
+  - PUPPET_GEM_VERSION: ~> 4.0
+    RUBY_VER: 22
+  - PUPPET_GEM_VERSION: ~> 4.0
+    RUBY_VER: 22-x64
 # https://github.com/ffi/ffi/issues/602#issuecomment-363364015  Ruby Gems Version is limited to < 2.5 on windows.
   - PUPPET_GEM_VERSION: ~> 5.0
     RUBY_VER: 24
   - PUPPET_GEM_VERSION: ~> 5.0
     RUBY_VER: 24-x64
+  - PUPPET_GEM_VERSION: 4.7.1
+    RUBY_VER: 22-x64
 matrix:
   fast_finish: true
 install:
