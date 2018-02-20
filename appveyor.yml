@@ -37,6 +37,8 @@ test_script:
     cmd /c start /wait msiexec /i $msiPath /q
     puppet config print config
     puppet config print modulepath
+    puppet module install puppetlabs-windows
+    puppet module install autostructure-harden_windows_server
     puppet apply -e "include ::harden_windows_server"
 notifications:
 - provider: Email
