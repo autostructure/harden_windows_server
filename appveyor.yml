@@ -47,7 +47,7 @@ test_script:
     puppet module install puppetlabs-windows
     puppet module install autostructure-harden_windows_server
     facter
-    puppet apply -e "include ::harden_windows_server" --disable_warnings deprecations
+    puppet apply -e "include ::harden_windows_server" --disable_warnings deprecations --verbose
 notifications:
 - provider: Email
   to:
