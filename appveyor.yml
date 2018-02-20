@@ -31,12 +31,13 @@ test_script:
 - gem -v
 - bundle -v
 - bundle exec rake spec
-- $msiPath = "$($env:USERPROFILE)\puppet-agent-5.4.0-x86.msi.msi"
-- (New-Object Net.WebClient).DownloadFile('https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.4.0-x86.msi', $msiPath)
-- cmd /c start /wait msiexec /i $msiPath /q
-- puppet config print config
-- puppet config print modulepath
-- puppet apply -e "include ::harden_windows_server"
+- ps: >-
+  $msiPath = "$($env:USERPROFILE)\puppet-agent-5.4.0-x86.msi.msi"
+  (New-Object Net.WebClient).DownloadFile('https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.4.0-x86.msi', $msiPath)
+  cmd /c start /wait msiexec /i $msiPath /q
+  puppet config print config
+  puppet config print modulepath
+  puppet apply -e "include ::harden_windows_server"
 notifications:
 - provider: Email
   to:
