@@ -1,5 +1,8 @@
 [![Build Status - Master](https://travis-ci.org/juju4/harden_windows_server.svg?branch=master)](https://travis-ci.org/juju4/harden_windows_server)
 [![Build Status - Devel](https://travis-ci.org/juju4/harden_windows_server.svg?branch=devel)](https://travis-ci.org/juju4/harden_windows_server/branches)
+[![Appveyor - Master](https://ci.appveyor.com/api/projects/status/ilyqrkiv5jo3ohk8/branch/master?svg=true)](https://ci.appveyor.com/project/juju4/harden-windows-server)
+![Appveyor - Devel](https://ci.appveyor.com/api/projects/status/ilyqrkiv5jo3ohk8/branch/devel?svg=true)
+
 # harden_windows_server
 
 ## Module Description
