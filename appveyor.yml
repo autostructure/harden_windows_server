@@ -18,7 +18,7 @@ install:
     $msiPath = "$($env:USERPROFILE)\puppet-agent-5.4.0-x86.msi"
     (New-Object Net.WebClient).DownloadFile('https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.4.0-x86.msi', $msiPath)
     cmd /c start /wait msiexec /i $msiPath /q
-    Get-ChildItem -Path C:\Program Files\Puppet Labs\Puppet
+    Get-ChildItem -Path "C:\Program Files\Puppet Labs\Puppet"
     puppet config print config
     puppet config print modulepath
     puppet module install puppetlabs-windows
