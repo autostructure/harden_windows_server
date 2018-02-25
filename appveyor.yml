@@ -13,15 +13,15 @@ matrix:
   fast_finish: true
 
 install:
-- SET PATH=C:\Program Files\Puppet Labs\Puppet\bin;C:\Ruby%RUBY_VER%\bin;%PATH%
+- SET PATH=C:\Program Files\Puppet Labs\Puppet;C:\Ruby%RUBY_VER%\bin;%PATH%
 - ps: |
     $msiPath = "$($env:USERPROFILE)\puppet-agent-5.4.0-x64.msi"
     (New-Object Net.WebClient).DownloadFile('https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.4.0-x64.msi', $msiPath)
     cmd /c start /wait msiexec /i $msiPath /q /L* c:\install-puppet.log
-#    Get-Content -Path c:\install-puppet.log
+    Get-Content -Path c:\install-puppet.log
     Get-ChildItem -Path "C:\Program Files"
-#    Get-ChildItem -Path "C:\Program Files\Puppet Labs"
-#    Get-ChildItem -Path "C:\Program Files\Puppet Labs\Puppet"
+    Get-ChildItem -Path "C:\Program Files\Puppet Labs"
+    Get-ChildItem -Path "C:\Program Files\Puppet Labs\Puppet"
     puppet config print config
     puppet config print modulepath
     puppet module install puppetlabs-windows
