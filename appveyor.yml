@@ -36,7 +36,7 @@ test_script:
     puppet apply -e "include ::harden_windows_server" --disable_warnings deprecations --verbose
 
 after_test:
-- cmd: inspec exec https://github.com/dev-sec/windows-baseline/
+- cmd: c:\opscode\inspec\bin\inspec.bat exec https://github.com/dev-sec/windows-baseline/
 
 notifications:
 - provider: Email
