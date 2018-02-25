@@ -9,35 +9,34 @@ init:
 - 'mkdir C:\ProgramData\PuppetLabs\facter && exit 0'
 - 'mkdir C:\ProgramData\PuppetLabs\hiera && exit 0'
 - 'mkdir C:\ProgramData\PuppetLabs\puppet\var && exit 0'
-environment:
-  matrix:
-  - PUPPET_GEM_VERSION: ~> 4.0
-    RUBY_VER: 22
-  - PUPPET_GEM_VERSION: ~> 4.0
-    RUBY_VER: 22-x64
-# https://github.com/ffi/ffi/issues/602#issuecomment-363364015  Ruby Gems Version is limited to < 2.5 on windows.
-  - PUPPET_GEM_VERSION: ~> 5.0
-    RUBY_VER: 24
-  - PUPPET_GEM_VERSION: ~> 5.0
-    RUBY_VER: 24-x64
-  - PUPPET_GEM_VERSION: 4.7.1
-    RUBY_VER: 22-x64
 matrix:
   fast_finish: true
+
 install:
 - SET PATH=C:\Ruby%RUBY_VER%\bin;%PATH%
 - ps: |
-    gem list openssl
-    ruby -ropenssl -e 'puts \"OpenSSL Version - #{OpenSSL::OPENSSL_VERSION}\"; puts \"OpenSSL Library Version - #{OpenSSL::OPENSSL_LIBRARY_VERSION}\"'
-- bundle install --jobs 4 --retry 2 --without system_tests build
-- type Gemfile.lock
+    $msiPath = "$($env:USERPROFILE)\puppet-agent-5.4.0-x86.msi"
+    (New-Object Net.WebClient).DownloadFile('https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.4.0-x86.msi', $msiPath)
+    cmd /c start /wait msiexec /i $msiPath /q
+    puppet config print config
+    puppet config print modulepath
+    puppet module install puppetlabs-windows
+    puppet module install autostructure-harden_windows_server
+- type nul > C:\ProgramData\PuppetLabs\puppet\etc\hiera.yaml
+- ps: |
+    $msiPath = "$($env:USERPROFILE)\inspec-2.0.17-1-x64.msi"
+    (New-Object Net.WebClient).DownloadFile('https://packages.chef.io/files/stable/inspec/2.0.17/windows/2016/inspec-2.0.17-1-x64.msi', $msiPath)
+    cmd /c start /wait msiexec /i $msiPath /q
+
 build: off
+
 test_script:
-- bundle exec puppet -V
-- ruby -v
-- gem -v
-- bundle -v
-- bundle exec rake spec
+- ps: |
+    puppet apply -e "include ::harden_windows_server" --disable_warnings deprecations --verbose
+
+after_test:
+- cmd: inspec exec https://github.com/dev-sec/windows-baseline/
+
 notifications:
 - provider: Email
   to:
