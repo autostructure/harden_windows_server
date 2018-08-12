@@ -652,12 +652,12 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths\Machine',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '7,System\CurrentControlSet\Control\Print\Printers,System\CurrentControlSet\Services\Eventlog,' +
-                            'Software\Microsoft\OLAP Server,Software\Microsoft\Windows NT\CurrentVersion\Print,' +
-                            'Software\Microsoft\Windows NT\CurrentVersion\Windows,System\CurrentControlSet\Control\ContentIndex,' +
-                            'System\CurrentControlSet\Control\Terminal Server,' +
-                            'System\CurrentControlSet\Control\Terminal Server\UserConfig,' +
-                            'System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration,' +
+        'policy_value'   => '7,System\CurrentControlSet\Control\Print\Printers,System\CurrentControlSet\Services\Eventlog,' \
+                            'Software\Microsoft\OLAP Server,Software\Microsoft\Windows NT\CurrentVersion\Print,' \
+                            'Software\Microsoft\Windows NT\CurrentVersion\Windows,System\CurrentControlSet\Control\ContentIndex,' \
+                            'System\CurrentControlSet\Control\Terminal Server,' \
+                            'System\CurrentControlSet\Control\Terminal Server\UserConfig,' \
+                            'System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration,' \
                             'Software\Microsoft\Windows NT\CurrentVersion\Perflib,System\CurrentControlSet\Services\SysmonLog',
       )
     }
@@ -2508,12 +2508,12 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths\Machine',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '7,System\CurrentControlSet\Control\Print\Printers,System\CurrentControlSet\Services\Eventlog,' +
-                            'Software\Microsoft\OLAP Server,Software\Microsoft\Windows NT\CurrentVersion\Print,' +
-                            'Software\Microsoft\Windows NT\CurrentVersion\Windows,System\CurrentControlSet\Control\ContentIndex,' +
-                            'System\CurrentControlSet\Control\Terminal Server,' +
-                            'System\CurrentControlSet\Control\Terminal Server\UserConfig,' +
-                            'System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration,' +
+        'policy_value'   => '7,System\CurrentControlSet\Control\Print\Printers,System\CurrentControlSet\Services\Eventlog,' \
+                            'Software\Microsoft\OLAP Server,Software\Microsoft\Windows NT\CurrentVersion\Print,' \
+                            'Software\Microsoft\Windows NT\CurrentVersion\Windows,System\CurrentControlSet\Control\ContentIndex,' \
+                            'System\CurrentControlSet\Control\Terminal Server,' \
+                            'System\CurrentControlSet\Control\Terminal Server\UserConfig,' \
+                            'System\CurrentControlSet\Control\Terminal Server\DefaultUserConfiguration,' \
                             'Software\Microsoft\Windows NT\CurrentVersion\Perflib,System\CurrentControlSet\Services\SysmonLog',
       )
     }
