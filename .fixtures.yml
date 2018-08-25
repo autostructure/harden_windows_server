@@ -1,19 +1,16 @@
 fixtures:
   symlinks:
     harden_windows_server: "#{source_dir}"
-  repositories:
-    local_security_policy: "git://github.com/ayohrling/local_security_policy"
-  repositories:
-    registry: "git://github.com/puppetlabs/puppetlabs-registry"
-  repositories:
-    auditpol: "git://github.com/simonfuhrer/puppet-auditpol"
   forge_modules:
     stdlib:
       repo: "puppetlabs/stdlib"
-      ref: '4.20.0'
+      ref: '4.25.1'
     local_security_policy:
       repo: "ayohrling/local_security_policy"
-      ref: '0.6.1'
+      ref: '0.6.3'
     registry:
       repo: "puppetlabs/registry"
-      ref: '2.0.1'
+      ref: '2.0.2'
+    auditpol:
+      repo: 'autostructure/auditpol'
+      ref: '1.0.0'
