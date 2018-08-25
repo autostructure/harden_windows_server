@@ -51,7 +51,7 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'ClearTextPassword',
       policy_type    => 'System Access',
-      policy_value   => '0',
+      policy_value   => 'disabled',
     }
   }
 
