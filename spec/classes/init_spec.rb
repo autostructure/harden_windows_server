@@ -45,7 +45,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'PasswordComplexity',
         'policy_type'    => 'System Access',
-        'policy_value'   => 'enabled'
+        'policy_value'   => 'enabled',
       )
     }
     it {
