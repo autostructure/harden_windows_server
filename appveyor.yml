@@ -22,7 +22,7 @@ install:
     puppet config print modulepath
     puppet module install puppetlabs-windows
     puppet module install autostructure-harden_windows_server
-- type nul > C:\ProgramData\PuppetLabs\puppet\etc\hiera.yaml
+- copy /y hiera.yaml C:\ProgramData\PuppetLabs\puppet\etc\hiera.yaml
 - ps: |
     $msiPath = "$($env:USERPROFILE)\inspec-2.0.17-1-x64.msi"
     (New-Object Net.WebClient).DownloadFile('https://packages.chef.io/files/stable/inspec/2.0.17/windows/2016/inspec-2.0.17-1-x64.msi', $msiPath)
