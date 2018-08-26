@@ -94,14 +94,16 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeNetworkLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544,*S-1-5-11,*S-1-5-9',
+#        policy_value   => '*S-1-5-32-544,*S-1-5-11,*S-1-5-9',
+        policy_value   => 'set: Administrators, Authenticated Users, Enterprise Domain Controllers',
       }
     } else {
       local_security_policy { 'Access this computer from the network':
         ensure         => 'present',
         policy_setting => 'SeNetworkLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544,*S-1-5-11',
+#        policy_value   => '*S-1-5-32-544,*S-1-5-11',
+        policy_value   => 'set: Administrators, Authenticated Users',
       }
     }
   }
@@ -118,7 +120,8 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeMachineAccountPrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-544',
+        policy_value   => 'set: Administrators',
       }
     }
   }
@@ -139,14 +142,16 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeInteractiveLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544,*S-1-5-9',
+#        policy_value   => '*S-1-5-32-544,*S-1-5-9',
+        policy_value   => 'set: Administrators, Enterprise Domain Controllers',
       }
     } else {
       local_security_policy { 'Allow log on locally':
         ensure         => 'present',
         policy_setting => 'SeInteractiveLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-544',
+        policy_value   => 'set: Administrators',
       }
     }
   }
@@ -157,14 +162,16 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeRemoteInteractiveLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-544',
+        policy_value   => 'set: Administrators',
       }
     } else {
       local_security_policy { 'Allow log on through Remote Desktop Services':
         ensure         => 'present',
         policy_setting => 'SeRemoteInteractiveLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544,*S-1-5-32-555',
+#        policy_value   => '*S-1-5-32-544,*S-1-5-32-555',
+        policy_value   => 'set: Administrators, Remote Desktop Users',
       }
     }
   }
@@ -174,7 +181,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeBackupPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -183,7 +191,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeSystemtimePrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-19,*S-1-5-32-544',
+#      policy_value   => '*S-1-5-19,*S-1-5-32-544',
+      policy_value   => 'set: Local Service, Administrators',
     }
   }
 
@@ -192,7 +201,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeTimeZonePrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-19,*S-1-5-32-544',
+#      policy_value   => '*S-1-5-19,*S-1-5-32-544',
+      policy_value   => 'set: Local Service, Administrators',
     }
   }
 
@@ -201,7 +211,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeCreatePagefilePrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -216,7 +227,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeCreateGlobalPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+#      policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+      policy_value   => 'set: Local Service, Network Service, Administrators, Service',
     }
   }
 
@@ -233,14 +245,16 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeCreateSymbolicLinkPrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-544',
+        policy_value   => 'set: Administrators',
       }
     } else {
       local_security_policy { 'Create symbolic links':
         ensure         => 'present',
         policy_setting => 'SeCreateSymbolicLinkPrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544,*S-1-5-83-0',
+#        policy_value   => '*S-1-5-32-544,*S-1-5-83-0',
+        policy_value   => 'set: Administrators, NT VIRTUAL MACHINE\Virtual Machines',
       }
     }
   }
@@ -250,7 +264,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeDebugPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -260,14 +275,16 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeDenyNetworkLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-546,*S-1-2-0',
+#        policy_value   => '*S-1-5-32-546,*S-1-2-0',
+        policy_value   => 'set: Guests, Local',
       }
     } else {
       local_security_policy { 'Deny access to this computer from the network':
         ensure         => 'present',
         policy_setting => 'SeDenyNetworkLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-546,*S-1-2-0,*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-546,*S-1-2-0,*S-1-5-32-544',
+        policy_value   => 'set: Guests, Local, Administrators',
       }
     }
   }
@@ -277,7 +294,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeDenyBatchLogonRight',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-546',
+#      policy_value   => '*S-1-5-32-546',
+      policy_value   => 'set: Guests',
     }
   }
 
@@ -286,7 +304,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeDenyServiceLogonRight',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-546',
+#      policy_value   => '*S-1-5-32-546',
+      policy_value   => 'set: Guests',
     }
   }
 
@@ -295,7 +314,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeDenyInteractiveLogonRight',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-546',
+#      policy_value   => '*S-1-5-32-546',
+      policy_value   => 'set: Guests',
     }
   }
 
@@ -304,7 +324,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeDenyRemoteInteractiveLogonRight',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-546,*S-1-2-0',
+#      policy_value   => '*S-1-5-32-546,*S-1-2-0',
+      policy_value   => 'set: Guests, Local',
     }
   }
 
@@ -314,7 +335,8 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeEnableDelegationPrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-544',
+        policy_value   => 'set: Administrators',
       }
     } else {
       local_security_policy { 'Enable computer and user accounts to be trusted for delegation':
@@ -328,7 +350,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeRemoteShutdownPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -337,7 +360,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeAuditPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-19,*S-1-5-20',
+#      policy_value   => '*S-1-5-19,*S-1-5-20',
+      policy_value   => 'set: Local Service, Network Service',
     }
   }
 
@@ -348,14 +372,16 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeImpersonatePrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+#        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        policy_value   => 'set: Local Service, Network Service, Administrators, Service',
       }
     } else {
       local_security_policy { 'Impersonate a client after authentication':
         ensure         => 'present',
         policy_setting => 'SeImpersonatePrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+#        policy_value   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        policy_value   => 'set: Local Service, Network Service, Administrators, Service',
       }
     }
   }
@@ -365,7 +391,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeIncreaseBasePriorityPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -374,7 +401,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeLoadDriverPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -391,7 +419,8 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeBatchLogonRight',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544,*S-1-5-32-551,*S-1-5-32-559',
+#        policy_value   => '*S-1-5-32-544,*S-1-5-32-551,*S-1-5-32-559',
+        policy_value   => 'set: Administrators, Backup Operators, Performance Log Users',
       }
     }
   }
@@ -403,14 +432,16 @@ class harden_windows_server::configure {
         ensure         => 'present',
         policy_setting => 'SeSecurityPrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-544',
+        policy_value   => 'set: Administrators',
       }
     } else {
       local_security_policy { 'Manage auditing and security log':
         ensure         => 'present',
         policy_setting => 'SeSecurityPrivilege',
         policy_type    => 'Privilege Rights',
-        policy_value   => '*S-1-5-32-544',
+#        policy_value   => '*S-1-5-32-544',
+        policy_value   => 'set: Administrators',
       }
     }
   }
@@ -426,7 +457,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeSystemEnvironmentPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -435,7 +467,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeManageVolumePrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -444,7 +477,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeProfileSingleProcessPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -453,7 +487,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeSystemProfilePrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544,*S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420',
+#      policy_value   => '*S-1-5-32-544,*S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420',
+      policy_value   => 'set: Administrators, NT SERVICE\WdiServiceHost',
     }
   }
 
@@ -462,7 +497,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeAssignPrimaryTokenPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-19,*S-1-5-20',
+#      policy_value   => '*S-1-5-19,*S-1-5-20',
+      policy_value   => 'set: Local Service, Network Service',
     }
   }
 
@@ -471,7 +507,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeRestorePrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -480,7 +517,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeShutdownPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 
@@ -497,7 +535,8 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'SeTakeOwnershipPrivilege',
       policy_type    => 'Privilege Rights',
-      policy_value   => '*S-1-5-32-544',
+#      policy_value   => '*S-1-5-32-544',
+      policy_value   => 'set: Administrators',
     }
   }
 

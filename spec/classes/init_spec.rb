@@ -90,7 +90,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-11',
+        'policy_value'   => 'set: Administrators, Authenticated Users',
       )
     }
     it {
@@ -116,7 +116,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -124,7 +124,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-32-555',
+        'policy_value'   => 'set: Administrators, Remote Desktop Users',
       )
     }
     it {
@@ -132,7 +132,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeBackupPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -140,7 +140,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemtimePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -148,7 +148,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTimeZonePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -156,7 +156,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreatePagefilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -169,7 +169,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateGlobalPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -182,7 +182,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateSymbolicLinkPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-83-0',
+        'policy_value'   => 'set: Administrators, NT VIRTUAL MACHINE\Virtual Machines',
       )
     }
     it {
@@ -190,7 +190,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDebugPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -198,7 +198,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0,*S-1-5-32-544',
+        'policy_value'   => 'set: Guests, Local, Administrators',
       )
     }
     it {
@@ -206,7 +206,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyBatchLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -214,7 +214,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyServiceLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -222,7 +222,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -230,7 +230,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0',
+        'policy_value'   => 'set: Guests, Local',
       )
     }
     it {
@@ -243,7 +243,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -251,7 +251,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAuditPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -259,7 +259,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeImpersonatePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -267,7 +267,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseBasePriorityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -275,7 +275,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeLoadDriverPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -293,7 +293,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSecurityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -306,7 +306,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemEnvironmentPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -314,7 +314,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeManageVolumePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -322,7 +322,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeProfileSingleProcessPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -330,7 +330,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemProfilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420',
+        'policy_value'   => 'set: Administrators, NT SERVICE\WdiServiceHost',
       )
     }
     it {
@@ -338,7 +338,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAssignPrimaryTokenPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -346,7 +346,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRestorePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -354,7 +354,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -362,7 +362,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTakeOwnershipPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1913,7 +1913,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-11,*S-1-5-9',
+        'policy_value'   => 'set: Administrators, Authenticated Users, Enterprise Domain Controllers',
       )
     }
     it {
@@ -1926,7 +1926,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeMachineAccountPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1942,7 +1942,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-9',
+        'policy_value'   => 'set: Administrators, Enterprise Domain Controllers',
       )
     }
     it {
@@ -1950,7 +1950,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1958,7 +1958,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeBackupPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1966,7 +1966,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemtimePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -1974,7 +1974,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTimeZonePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -1982,7 +1982,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreatePagefilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1995,7 +1995,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateGlobalPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -2008,7 +2008,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateSymbolicLinkPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2016,7 +2016,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDebugPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2024,7 +2024,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0',
+        'policy_value'   => 'set: Guests, Local',
       )
     }
     it {
@@ -2032,7 +2032,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyBatchLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -2040,7 +2040,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyServiceLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -2048,7 +2048,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -2056,7 +2056,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0',
+        'policy_value'   => 'set: Guests, Local',
       )
     }
     it {
@@ -2064,7 +2064,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeEnableDelegationPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2072,7 +2072,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2080,7 +2080,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAuditPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -2088,7 +2088,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeImpersonatePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -2096,7 +2096,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseBasePriorityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2104,7 +2104,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeLoadDriverPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2126,7 +2126,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSecurityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2139,7 +2139,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemEnvironmentPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2147,7 +2147,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeManageVolumePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2155,7 +2155,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeProfileSingleProcessPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2163,7 +2163,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemProfilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420',
+        'policy_value'   => 'set: Administrators, NT SERVICE\WdiServiceHost',
       )
     }
     it {
@@ -2171,7 +2171,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAssignPrimaryTokenPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -2179,7 +2179,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRestorePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2187,7 +2187,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2200,7 +2200,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTakeOwnershipPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
