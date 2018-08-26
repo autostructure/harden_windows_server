@@ -602,7 +602,7 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AllocateDASD',
       policy_type    => 'Registry Values',
-      policy_value   => '1,"0"',
+      policy_value   => 'Administrators',
     }
   }
 
