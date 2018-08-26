@@ -605,7 +605,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'LSAAnonymousNameLookup',
         'policy_type'    => 'System Access',
-        'policy_value'   => '0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -2460,7 +2460,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'LSAAnonymousNameLookup',
         'policy_type'    => 'System Access',
-        'policy_value'   => '0',
+        'policy_value'   => 'disabled',
       )
     }
     # Both MS
