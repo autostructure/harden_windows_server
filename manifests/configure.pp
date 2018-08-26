@@ -582,7 +582,7 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\SCENoApplyLegacyAuditPolicy',
       policy_type    => 'Registry Values',
-      policy_value   => '4,1',
+      policy_value   => 'enabled',
     }
   }
 
