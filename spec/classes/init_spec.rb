@@ -108,7 +108,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseQuotaPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators',
       )
     }
     it {
@@ -1934,7 +1934,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseQuotaPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators',
       )
     }
     it {
