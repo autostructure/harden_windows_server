@@ -820,7 +820,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorUser',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => 'disabled',
+        'policy_value'   => 'Automatically deny elevation requests',
       )
     }
     it {
@@ -2676,7 +2676,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorUser',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => 'disabled',
+        'policy_value'   => 'Automatically deny elevation requests',
       )
     }
     it {
