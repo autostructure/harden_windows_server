@@ -962,7 +962,7 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\ForceGuest',
       policy_type    => 'Registry Values',
-      policy_value   => 'disabled',
+      policy_value   => 'Classic - local users authenticate as themselves',
     }
   }
 
