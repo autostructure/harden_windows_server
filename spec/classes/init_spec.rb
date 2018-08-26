@@ -776,7 +776,7 @@ describe 'harden_windows_server' do
       )
     }
     it {
-      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g., Symbolic Links)').with(
+      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)').with(
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\ProtectionMode',
         'policy_type'    => 'Registry Values',
@@ -2632,7 +2632,7 @@ describe 'harden_windows_server' do
       )
     }
     it {
-      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g., Symbolic Links)').with(
+      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)').with(
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\ProtectionMode',
         'policy_type'    => 'Registry Values',

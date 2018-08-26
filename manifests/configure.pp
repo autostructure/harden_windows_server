@@ -1075,7 +1075,7 @@ class harden_windows_server::configure {
   }
 
   if($harden_windows_server::ensure_system_objects_strengthen_default_permissions_of_internal_system_objects_is_enabled) {
-    local_security_policy { 'System objects: Strengthen default permissions of internal system objects (e.g., Symbolic Links)':
+    local_security_policy { 'System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)':
       ensure         => 'present',
       policy_setting => 'MACHINE\System\CurrentControlSet\Control\Session Manager\ProtectionMode',
       policy_type    => 'Registry Values',
