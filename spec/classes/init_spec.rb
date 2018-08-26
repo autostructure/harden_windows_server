@@ -724,7 +724,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'ForceLogoffWhenHourExpire',
         'policy_type'    => 'System Access',
-        'policy_value'   => '1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -732,7 +732,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LmCompatibilityLevel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,5',
+        'policy_value'   => 'Send NTLMv2 response only. Refuse LM & NTLM',
       )
     }
     it {
@@ -748,7 +748,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinClientSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -756,7 +756,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinServerSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -812,7 +812,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,2',
+        'policy_value'   => 'Prompt for consent on the secure desktop',
       )
     }
     it {
@@ -2580,7 +2580,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'ForceLogoffWhenHourExpire',
         'policy_type'    => 'System Access',
-        'policy_value'   => '1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2588,7 +2588,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LmCompatibilityLevel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,5',
+        'policy_value'   => 'Send NTLMv2 response only. Refuse LM & NTLM',
       )
     }
     it {
@@ -2604,7 +2604,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinClientSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -2612,7 +2612,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinServerSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -2668,7 +2668,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,2',
+        'policy_value'   => 'Prompt for consent on the secure desktop',
       )
     }
     it {
