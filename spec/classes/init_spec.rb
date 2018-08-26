@@ -533,7 +533,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"1"',
+        'policy_value'   => 'Lock Workstation',
       )
     }
     it {
@@ -2396,7 +2396,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"1"',
+        'policy_value'   => 'Lock Workstation',
       )
     }
     it {
