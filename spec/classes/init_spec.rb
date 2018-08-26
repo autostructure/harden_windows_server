@@ -183,7 +183,7 @@ describe 'harden_windows_server' do
         'policy_setting' => 'SeCreateSymbolicLinkPrivilege',
         'policy_type'    => 'Privilege Rights',
 # FIXME! only if Hyper-V role
-#        'policy_value'   => 'set: Administrators, Virtual Machines',
+        # 'policy_value'   => 'set: Administrators, Virtual Machines',
         'policy_value'   => 'set: Administrators',
       )
     }
