@@ -1034,7 +1034,7 @@ class harden_windows_server::configure {
       ensure         => 'present',
       policy_setting => 'MACHINE\System\CurrentControlSet\Services\LDAP\LDAPClientIntegrity',
       policy_type    => 'Registry Values',
-      policy_value   => 'enabled',
+      policy_value   => 'Negotiate signing',
     }
   }
 

@@ -740,7 +740,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LDAP\LDAPClientIntegrity',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => 'enabled',
+        'policy_value'   => 'Negotiate signing',
       )
     }
     it {
@@ -2596,7 +2596,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LDAP\LDAPClientIntegrity',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => 'enabled',
+        'policy_value'   => 'Negotiate signing',
       )
     }
     it {
