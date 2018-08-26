@@ -254,7 +254,9 @@ class harden_windows_server::configure {
         policy_setting => 'SeCreateSymbolicLinkPrivilege',
         policy_type    => 'Privilege Rights',
 #        policy_value   => '*S-1-5-32-544,*S-1-5-83-0',
-        policy_value   => 'set: Administrators, Virtual Machines',
+# FIXME! only if Hyper-V role
+#        policy_value   => 'set: Administrators, Virtual Machines',
+        policy_value   => 'set: Administrators',
       }
     }
   }
