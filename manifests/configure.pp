@@ -967,7 +967,7 @@ class harden_windows_server::configure {
   }
 
   if($harden_windows_server::ensure_network_security_allow_local_system_to_use_computer_identity_for_ntlm_is_set_to_enabled) {
-    local_security_policy { 'Network security: All Local System to use computer identity for NTLM':
+    local_security_policy { 'Network security: Allow Local System to use computer identity for NTLM':
       ensure         => 'present',
       policy_setting => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
       policy_type    => 'Registry Values',
