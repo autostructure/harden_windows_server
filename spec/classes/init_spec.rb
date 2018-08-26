@@ -182,7 +182,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateSymbolicLinkPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => 'set: Administrators, NT VIRTUAL MACHINE\Virtual Machines',
+        'policy_value'   => 'set: Administrators, Virtual Machines',
       )
     }
     it {
