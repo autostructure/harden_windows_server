@@ -370,7 +370,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LimitBlankPasswordUse',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2208,7 +2208,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LimitBlankPasswordUse',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
