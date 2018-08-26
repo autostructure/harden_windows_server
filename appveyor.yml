@@ -18,10 +18,19 @@ install:
     $msiPath = "$($env:USERPROFILE)\puppet-agent-5.4.0-x64.msi"
     (New-Object Net.WebClient).DownloadFile('https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.4.0-x64.msi', $msiPath)
     cmd /c start /wait msiexec /i $msiPath /q /L* c:\install-puppet.log
+- ps: |
+    (New-Object Net.WebClient).DownloadFile('https://github.com/juju4/harden_windows_server/archive/master.tar.gz', "$($env:USERPROFILE)\autostructure-harden_windows_server-HEAD.tar.gz")
+- ps: |
     puppet config print config
     puppet config print modulepath
     puppet module install puppetlabs-windows
     puppet module install autostructure-harden_windows_server
+    # https://puppet.com/docs/puppet/5.3/modules_installing.html#installing-from-a-release-tarball
+    #puppet module install ayohrling-local_security_policy
+    #puppet module install jonono-auditpol
+    puppet module install kpn-local_security_policy
+    puppet module install autostructure-auditpol
+    puppet module install "$($env:USERPROFILE)\autostructure-harden_windows_server-HEAD.tar.gz" --ignore-dependencies
 - copy /y hiera.yaml C:\ProgramData\PuppetLabs\puppet\etc\hiera.yaml
 - ps: |
     $msiPath = "$($env:USERPROFILE)\inspec-2.2.61-1-x64.msi"
