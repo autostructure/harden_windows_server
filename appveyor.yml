@@ -24,7 +24,7 @@ install:
     puppet config print config
     puppet config print modulepath
     puppet module install puppetlabs-windows
-    puppet module install autostructure-harden_windows_server
+    #puppet module install autostructure-harden_windows_server
     # https://puppet.com/docs/puppet/5.3/modules_installing.html#installing-from-a-release-tarball
     #puppet module install ayohrling-local_security_policy
     #puppet module install jonono-auditpol
