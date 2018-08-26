@@ -2536,7 +2536,7 @@ describe 'harden_windows_server' do
       )
     }
     it {
-      is_expected.to contain_local_security_policy('Network security: All Local System to use computer identity for NTLM').with(
+      is_expected.to contain_local_security_policy('Network security: Allow Local System to use computer identity for NTLM').with(
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
         'policy_type'    => 'Registry Values',
