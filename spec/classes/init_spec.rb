@@ -45,7 +45,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'PasswordComplexity',
         'policy_type'    => 'System Access',
-        'policy_value'   => '1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -53,7 +53,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'ClearTextPassword',
         'policy_type'    => 'System Access',
-        'policy_value'   => '0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -90,7 +90,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-11',
+        'policy_value'   => 'set: Administrators, Authenticated Users',
       )
     }
     it {
@@ -108,7 +108,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseQuotaPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators',
       )
     }
     it {
@@ -116,7 +116,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -124,7 +124,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-32-555',
+        'policy_value'   => 'set: Administrators, Remote Desktop Users',
       )
     }
     it {
@@ -132,7 +132,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeBackupPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -140,7 +140,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemtimePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -148,7 +148,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTimeZonePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -156,7 +156,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreatePagefilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -169,7 +169,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateGlobalPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -182,7 +182,9 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateSymbolicLinkPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-83-0',
+        # FIXME! only if Hyper-V role
+        # 'policy_value'   => 'set: Administrators, Virtual Machines',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -190,7 +192,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDebugPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -198,7 +200,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0,*S-1-5-32-544',
+        'policy_value'   => 'set: Guests, Local, Administrators',
       )
     }
     it {
@@ -206,7 +208,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyBatchLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -214,7 +216,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyServiceLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -222,7 +224,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -230,7 +232,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0',
+        'policy_value'   => 'set: Guests, Local',
       )
     }
     it {
@@ -243,7 +245,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -251,7 +253,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAuditPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -259,7 +261,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeImpersonatePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -267,7 +269,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseBasePriorityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -275,7 +277,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeLoadDriverPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -293,7 +295,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSecurityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -306,7 +308,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemEnvironmentPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -314,7 +316,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeManageVolumePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -322,7 +324,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeProfileSingleProcessPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -330,7 +332,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemProfilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420',
+        'policy_value'   => 'set: Administrators, NT SERVICE\WdiServiceHost',
       )
     }
     it {
@@ -338,7 +340,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAssignPrimaryTokenPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -346,7 +348,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRestorePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -354,7 +356,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -362,7 +364,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTakeOwnershipPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -370,7 +372,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LimitBlankPasswordUse',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -394,7 +396,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\SCENoApplyLegacyAuditPolicy',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -402,7 +404,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\CrashOnAuditFail',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -410,7 +412,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AllocateDASD',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"0"',
+        'policy_value'   => 'Administrators',
       )
     }
     it {
@@ -418,7 +420,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers\AddPrinterDrivers',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -426,7 +428,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\RequireSignOrSeal',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -434,7 +436,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\SealSecureChannel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -442,7 +444,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\SignSecureChannel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -450,7 +452,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\DisablePasswordChange',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -466,7 +468,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\RequireStrongKey',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -474,7 +476,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\DontDisplayLastUserName',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -482,7 +484,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableCAD',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     # it {
@@ -523,7 +525,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ForceUnlockLogon',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -531,7 +533,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"1"',
+        'policy_value'   => 'Lock Workstation',
       )
     }
     it {
@@ -539,7 +541,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\RequireSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -547,7 +549,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnableSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -555,7 +557,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnablePlainTextPassword',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -571,7 +573,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RequireSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -579,7 +581,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -587,7 +589,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableForcedLogOff',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -603,7 +605,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'LSAAnonymousNameLookup',
         'policy_type'    => 'System Access',
-        'policy_value'   => '0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -611,7 +613,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\RestrictAnonymousSAM',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -619,7 +621,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\RestrictAnonymous',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     # L2
@@ -636,7 +638,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\EveryoneIncludesAnonymous',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -666,7 +668,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RestrictNullSessAccess',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -674,15 +676,15 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\ForceGuest',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'Classic - local users authenticate as themselves',
       )
     }
     it {
-      is_expected.to contain_local_security_policy('Network security: All Local System to use computer identity for NTLM').with(
+      is_expected.to contain_local_security_policy('Network security: Allow Local System to use computer identity for NTLM').with(
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -722,7 +724,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'ForceLogoffWhenHourExpire',
         'policy_type'    => 'System Access',
-        'policy_value'   => '1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -730,7 +732,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LmCompatibilityLevel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,5',
+        'policy_value'   => 'Send NTLMv2 response only. Refuse LM & NTLM',
       )
     }
     it {
@@ -738,7 +740,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LDAP\LDAPClientIntegrity',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'Negotiate signing',
       )
     }
     it {
@@ -746,7 +748,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinClientSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -754,7 +756,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinServerSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -762,7 +764,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ShutdownWithoutLogon',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -770,15 +772,15 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\Kernel\ObCaseInsensitive',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
-      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g., Symbolic Links)').with(
+      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)').with(
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\ProtectionMode',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -794,7 +796,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\FilterAdministratorToken',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -802,7 +804,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableUIADesktopToggle',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -810,7 +812,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,2',
+        'policy_value'   => 'Prompt for consent on the secure desktop',
       )
     }
     it {
@@ -818,7 +820,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorUser',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'Automatically deny elevation requests',
       )
     }
     it {
@@ -826,7 +828,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableInstallerDetection',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -834,7 +836,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableSecureUIAPaths',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -842,7 +844,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -850,7 +852,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\PromptOnSecureDesktop',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -858,7 +860,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableVirtualization',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -1868,7 +1870,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'PasswordComplexity',
         'policy_type'    => 'System Access',
-        'policy_value'   => '1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -1876,7 +1878,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'ClearTextPassword',
         'policy_type'    => 'System Access',
-        'policy_value'   => '0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -1913,7 +1915,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-11,*S-1-5-9',
+        'policy_value'   => 'set: Administrators, Authenticated Users, Enterprise Domain Controllers',
       )
     }
     it {
@@ -1926,7 +1928,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeMachineAccountPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1934,7 +1936,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseQuotaPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators',
       )
     }
     it {
@@ -1942,7 +1944,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-9',
+        'policy_value'   => 'set: Administrators, Enterprise Domain Controllers',
       )
     }
     it {
@@ -1950,7 +1952,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1958,7 +1960,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeBackupPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1966,7 +1968,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemtimePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -1974,7 +1976,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTimeZonePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-32-544',
+        'policy_value'   => 'set: Local Service, Administrators',
       )
     }
     it {
@@ -1982,7 +1984,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreatePagefilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -1995,7 +1997,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateGlobalPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -2008,7 +2010,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeCreateSymbolicLinkPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2016,7 +2018,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDebugPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2024,7 +2026,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyNetworkLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0',
+        'policy_value'   => 'set: Guests, Local',
       )
     }
     it {
@@ -2032,7 +2034,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyBatchLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -2040,7 +2042,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyServiceLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -2048,7 +2050,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546',
+        'policy_value'   => 'set: Guests',
       )
     }
     it {
@@ -2056,7 +2058,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeDenyRemoteInteractiveLogonRight',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-546,*S-1-2-0',
+        'policy_value'   => 'set: Guests, Local',
       )
     }
     it {
@@ -2064,7 +2066,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeEnableDelegationPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2072,7 +2074,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRemoteShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2080,7 +2082,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAuditPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -2088,7 +2090,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeImpersonatePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20,*S-1-5-32-544,*S-1-5-6',
+        'policy_value'   => 'set: Local Service, Network Service, Administrators, Service',
       )
     }
     it {
@@ -2096,7 +2098,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeIncreaseBasePriorityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2104,7 +2106,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeLoadDriverPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2126,7 +2128,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSecurityPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2139,7 +2141,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemEnvironmentPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2147,7 +2149,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeManageVolumePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2155,7 +2157,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeProfileSingleProcessPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2163,7 +2165,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeSystemProfilePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544,*S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420',
+        'policy_value'   => 'set: Administrators, NT SERVICE\WdiServiceHost',
       )
     }
     it {
@@ -2171,7 +2173,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeAssignPrimaryTokenPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-19,*S-1-5-20',
+        'policy_value'   => 'set: Local Service, Network Service',
       )
     }
     it {
@@ -2179,7 +2181,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeRestorePrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2187,7 +2189,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeShutdownPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2200,7 +2202,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'SeTakeOwnershipPrivilege',
         'policy_type'    => 'Privilege Rights',
-        'policy_value'   => '*S-1-5-32-544',
+        'policy_value'   => 'set: Administrators',
       )
     }
     it {
@@ -2208,7 +2210,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LimitBlankPasswordUse',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2232,7 +2234,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\SCENoApplyLegacyAuditPolicy',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2240,7 +2242,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\CrashOnAuditFail',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -2248,7 +2250,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AllocateDASD',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"0"',
+        'policy_value'   => 'Administrators',
       )
     }
     it {
@@ -2256,7 +2258,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers\AddPrinterDrivers',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2288,7 +2290,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\RequireSignOrSeal',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2296,7 +2298,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\SealSecureChannel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2304,7 +2306,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\SignSecureChannel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2312,7 +2314,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\DisablePasswordChange',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -2328,7 +2330,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\Netlogon\Parameters\RequireStrongKey',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2336,7 +2338,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\DontDisplayLastUserName',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2344,7 +2346,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableCAD',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     # it {
@@ -2394,7 +2396,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\ScRemoveOption',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '1,"1"',
+        'policy_value'   => 'Lock Workstation',
       )
     }
     it {
@@ -2402,7 +2404,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\RequireSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2410,7 +2412,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnableSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2418,7 +2420,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\EnablePlainTextPassword',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -2434,7 +2436,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RequireSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2442,7 +2444,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableSecuritySignature',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2450,7 +2452,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\EnableForcedLogOff',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2458,7 +2460,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'LSAAnonymousNameLookup',
         'policy_type'    => 'System Access',
-        'policy_value'   => '0',
+        'policy_value'   => 'disabled',
       )
     }
     # Both MS
@@ -2492,7 +2494,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\EveryoneIncludesAnonymous',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -2522,7 +2524,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LanManServer\Parameters\RestrictNullSessAccess',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2530,15 +2532,15 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\ForceGuest',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'Classic - local users authenticate as themselves',
       )
     }
     it {
-      is_expected.to contain_local_security_policy('Network security: All Local System to use computer identity for NTLM').with(
+      is_expected.to contain_local_security_policy('Network security: Allow Local System to use computer identity for NTLM').with(
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\UseMachineId',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2578,7 +2580,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'ForceLogoffWhenHourExpire',
         'policy_type'    => 'System Access',
-        'policy_value'   => '1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2586,7 +2588,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\LmCompatibilityLevel',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,5',
+        'policy_value'   => 'Send NTLMv2 response only. Refuse LM & NTLM',
       )
     }
     it {
@@ -2594,7 +2596,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Services\LDAP\LDAPClientIntegrity',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'Negotiate signing',
       )
     }
     it {
@@ -2602,7 +2604,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinClientSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -2610,7 +2612,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0\NTLMMinServerSec',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,537395200',
+        'policy_value'   => 'Require NTLMv2 session security,Require 128-bit encryption',
       )
     }
     it {
@@ -2618,7 +2620,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ShutdownWithoutLogon',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -2626,15 +2628,15 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\Kernel\ObCaseInsensitive',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
-      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g., Symbolic Links)').with(
+      is_expected.to contain_local_security_policy('System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)').with(
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\System\CurrentControlSet\Control\Session Manager\ProtectionMode',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2650,7 +2652,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\FilterAdministratorToken',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2658,7 +2660,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableUIADesktopToggle',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'disabled',
       )
     }
     it {
@@ -2666,7 +2668,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorAdmin',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,2',
+        'policy_value'   => 'Prompt for consent on the secure desktop',
       )
     }
     it {
@@ -2674,7 +2676,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\ConsentPromptBehaviorUser',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,0',
+        'policy_value'   => 'Automatically deny elevation requests',
       )
     }
     it {
@@ -2682,7 +2684,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableInstallerDetection',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2690,7 +2692,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableSecureUIAPaths',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2698,7 +2700,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2706,7 +2708,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\PromptOnSecureDesktop',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {
@@ -2714,7 +2716,7 @@ describe 'harden_windows_server' do
         'ensure'         => 'present',
         'policy_setting' => 'MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableVirtualization',
         'policy_type'    => 'Registry Values',
-        'policy_value'   => '4,1',
+        'policy_value'   => 'enabled',
       )
     }
     it {

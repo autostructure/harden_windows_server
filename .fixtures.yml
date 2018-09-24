@@ -13,4 +13,4 @@ fixtures:
       ref: '2.0.2'
     auditpol:
       repo: 'autostructure/auditpol'
-      red: '1.0.0'
+      ref: '1.0.0'
