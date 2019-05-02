@@ -1,0 +1,6 @@
+---
+# basic, just for appveyor
+version: 5
+defaults:
+  data_hash: yaml_data
+  datadir: data
